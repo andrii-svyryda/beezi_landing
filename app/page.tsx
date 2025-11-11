@@ -3,6 +3,8 @@ import Hero from "./components/sections/Hero";
 import Description from "./components/sections/Description";
 import FeatureCards from "./components/sections/FeatureCards";
 import Features from "./components/sections/Features";
+import ModelRouting from "./components/sections/ModelRouting";
+import Integration from "./components/sections/Integration";
 import Demo from "./components/sections/Demo";
 import Benefits from "./components/sections/Benefits";
 import Testimonials from "./components/sections/Testimonials";
@@ -19,6 +21,8 @@ export default function Home() {
         <FeatureCards />
         <Features />
         <Demo />
+        <ModelRouting />
+        <Integration />
         <Benefits />
         <Testimonials />
         <CTA />
