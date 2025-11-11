@@ -92,19 +92,22 @@ export default function FeatureCards() {
                   }}
                 >
                   {/* Background Pattern - Scaled and positioned */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      left: "-560px",
-                      top: "-0.1px",
-                      width: "2560px",
-                      height: "1270px",
-                      backgroundImage: "url(/hero_background.png)",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      opacity: 1,
-                    }}
-                  />
+                  {(feature.visual === "workflow" ||
+                    feature.visual === "security") && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: "-560px",
+                        top: "-0.1px",
+                        width: "2560px",
+                        height: "1270px",
+                        backgroundImage: "url(/hero_background.png)",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        opacity: 1,
+                      }}
+                    />
+                  )}
 
                   {/* Dark radial gradient overlay */}
                   <div
@@ -186,7 +189,7 @@ export default function FeatureCards() {
                                   display: "flex",
                                   alignItems: "center",
                                   background: "white",
-                                  padding: "16px 28px",
+                                  padding: "12px 24px",
                                   borderRadius: "999px",
                                   border: "1px solid white",
                                   boxShadow:
@@ -260,67 +263,297 @@ export default function FeatureCards() {
                       style={{
                         position: "relative",
                         height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "20px",
+                        overflow: "hidden",
                       }}
                     >
+                      {/* Vertical dashed lines */}
+                      {[40, 90, 140, 190, 240, 286, 287, 340, 390, 440].map(
+                        (x, index) => (
+                          <div
+                            key={index}
+                            style={{
+                              position: "absolute",
+                              left: `${x}px`,
+                              top: "30px",
+                              width: "0px",
+                              height: "180px",
+                              borderLeft:
+                                x === 286
+                                  ? "2px solid #6938EF"
+                                  : "1px dashed rgba(105, 56, 239, 0.2)",
+                              borderStyle: x === 286 ? "solid" : "dashed",
+                            }}
+                          />
+                        )
+                      )}
+
+                      {/* Logo at top center */}
                       <div
                         style={{
+                          position: "absolute",
+                          left: "275px",
+                          top: "11.9px",
                           display: "flex",
-                          gap: "6px",
-                          alignItems: "flex-end",
+                          alignItems: "center",
+                          background: "white",
+                          padding: "4px",
+                          borderRadius: "999px",
+                          border: "2px solid #6938EF",
+                          boxShadow:
+                            "0px 0.09375px 0.1875px -0.046875px rgba(0, 0, 0, 0.08), 0px 0.1875px 4.5px 0px rgba(105, 56, 239, 0.2)",
+                          zIndex: 10,
                         }}
                       >
-                        <div
+                        <Image
+                          src="/logo-icon.svg"
+                          alt="Beezi"
+                          width={12}
+                          height={12}
                           style={{
-                            width: "64px",
-                            height: "140px",
-                            background: "rgba(105, 56, 239, 0.4)",
-                            borderRadius: "6px",
-                          }}
-                        />
-                        <div
-                          style={{
-                            width: "64px",
-                            height: "100px",
-                            background: "rgba(105, 56, 239, 0.6)",
-                            borderRadius: "6px",
-                          }}
-                        />
-                        <div
-                          style={{
-                            width: "64px",
-                            height: "120px",
-                            background: "rgba(105, 56, 239, 0.5)",
-                            borderRadius: "6px",
+                            filter: "brightness(0) saturate(100%)",
                           }}
                         />
                       </div>
+
+                      {/* Feature 1 - Top pill */}
                       <div
                         style={{
+                          position: "absolute",
+                          left: "96px",
+                          top: "41.9px",
                           display: "flex",
-                          gap: "8px",
-                          background: "white",
-                          padding: "6px 12px",
-                          borderRadius: "999px",
-                          boxShadow:
-                            "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 48px 0px rgba(105, 56, 239, 0.2)",
+                          width: "320px",
+                          height: "32px",
+                          alignItems: "center",
                         }}
                       >
-                        <span
+                        <div
                           style={{
-                            fontSize: "14px",
-                            fontWeight: 700,
-                            letterSpacing: "0.05em",
-                            textTransform: "uppercase",
-                            color: "#6938EF",
+                            background: "#6938EF",
+                            padding: "8px 24px",
+                            borderRadius: "999px 0 0 999px",
+                            width: "192px",
+                            display: "flex",
+                            alignItems: "center",
+                            height: "100%",
                           }}
                         >
-                          Cost -45%
-                        </span>
+                          <span
+                            style={{
+                              fontFamily: "Space Grotesk, sans-serif",
+                              fontWeight: 700,
+                              fontSize: "12px",
+                              lineHeight: "1em",
+                              letterSpacing: "0.05em",
+                              textTransform: "uppercase",
+                              color: "white",
+                              textShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
+                            }}
+                          >
+                            Feature 1
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            background: "#8B6EF7",
+                            backgroundImage:
+                              "repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(105, 56, 239, 0.6) 8px, rgba(105, 56, 239, 0.6) 10px)",
+                            padding: "4px",
+                            borderRadius: "0 999px 999px 0",
+                            width: "128px",
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <div
+                            style={{
+                              background: "white",
+                              border: "1px solid white",
+                              padding: "6px 10px",
+                              borderRadius: "999px",
+                              boxShadow:
+                                "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 48px 0px rgba(105, 56, 239, 0.2)",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontWeight: 700,
+                                fontSize: "12px",
+                                lineHeight: "1em",
+                                letterSpacing: "0.05em",
+                                textTransform: "uppercase",
+                                color: "#6938EF",
+                              }}
+                            >
+                              Cost -40%
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Feature 2 - Middle pill (main) */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "48px",
+                          top: "85.9px",
+                          display: "flex",
+                          width: "400px",
+                          height: "32px",
+                          alignItems: "center",
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: "#6938EF",
+                            padding: "8px 24px",
+                            borderRadius: "999px 0 0 999px",
+                            width: "240px",
+                            display: "flex",
+                            alignItems: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontFamily: "Space Grotesk, sans-serif",
+                              fontWeight: 700,
+                              fontSize: "12px",
+                              lineHeight: "1em",
+                              letterSpacing: "0.05em",
+                              textTransform: "uppercase",
+                              color: "white",
+                            }}
+                          >
+                            Feature 2
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            background: "#8B6EF7",
+                            backgroundImage:
+                              "repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(105, 56, 239, 0.6) 8px, rgba(105, 56, 239, 0.6) 10px)",
+                            padding: "4px",
+                            borderRadius: "0 999px 999px 0",
+                            width: "160px",
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <div
+                            style={{
+                              background: "white",
+                              border: "1px solid white",
+                              padding: "6px 10px",
+                              borderRadius: "999px",
+                              boxShadow:
+                                "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 48px 0px rgba(105, 56, 239, 0.2)",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontWeight: 700,
+                                fontSize: "12px",
+                                lineHeight: "1em",
+                                letterSpacing: "0.05em",
+                                textTransform: "uppercase",
+                                color: "#6938EF",
+                              }}
+                            >
+                              Cost -45%
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Feature 3 - Bottom pill */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "96px",
+                          top: "129.9px",
+                          display: "flex",
+                          width: "320px",
+                          height: "32px",
+                          alignItems: "center",
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: "#6938EF",
+                            padding: "8px 24px",
+                            borderRadius: "999px 0 0 999px",
+                            width: "192px",
+                            display: "flex",
+                            alignItems: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontFamily: "Space Grotesk, sans-serif",
+                              fontWeight: 700,
+                              fontSize: "12px",
+                              lineHeight: "1em",
+                              letterSpacing: "0.05em",
+                              textTransform: "uppercase",
+                              color: "white",
+                            }}
+                          >
+                            Feature 3
+                          </span>
+                        </div>
+                        <div
+                          style={{
+                            background: "#8B6EF7",
+                            backgroundImage:
+                              "repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(105, 56, 239, 0.6) 8px, rgba(105, 56, 239, 0.6) 10px)",
+                            padding: "4px",
+                            borderRadius: "0 999px 999px 0",
+                            width: "108px",
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                            height: "100%",
+                          }}
+                        >
+                          <div
+                            style={{
+                              background: "white",
+                              border: "1px solid white",
+                              padding: "6px 10px",
+                              borderRadius: "999px",
+                              boxShadow:
+                                "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 48px 0px rgba(105, 56, 239, 0.2)",
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontWeight: 700,
+                                fontSize: "12px",
+                                lineHeight: "1em",
+                                letterSpacing: "0.05em",
+                                textTransform: "uppercase",
+                                color: "#6938EF",
+                              }}
+                            >
+                              Cost -32%
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -338,28 +571,65 @@ export default function FeatureCards() {
                       <div
                         style={{
                           position: "relative",
-                          width: "220px",
-                          height: "220px",
+                          width: "180px",
+                          height: "180px",
                         }}
                       >
-                        <Image
-                          src="/shield-icon.svg"
-                          alt="Security Shield"
-                          fill
-                          style={{ objectFit: "contain" }}
-                        />
+                        {/* Outer shield - semi-transparent */}
+                        <svg
+                          width="120"
+                          height="137"
+                          viewBox="0 0 120 137"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{
+                            position: "absolute",
+                            left: "30px",
+                            top: "22.5px",
+                          }}
+                        >
+                          <path
+                            d="M120 20.625L60 0L0 20.625V66.7425C0 104.036 30 119.9 60 136.084C90 119.9 120 104.036 120 66.7425V20.625Z"
+                            fill="rgba(255, 255, 255, 0.4)"
+                            stroke="rgba(255, 255, 255, 0.4)"
+                            strokeWidth="1.5"
+                          />
+                        </svg>
+
+                        {/* Inner shield - solid white */}
+                        <svg
+                          width="80"
+                          height="91"
+                          viewBox="0 0 80 91"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{
+                            position: "absolute",
+                            left: "50px",
+                            top: "45px",
+                          }}
+                        >
+                          <path
+                            d="M80 13.75L40 0L0 13.75V44.495C0 69.357 20 79.933 40 90.723C60 79.933 80 69.357 80 44.495V13.75Z"
+                            fill="#FFFFFF"
+                            stroke="rgba(255, 255, 255, 0.4)"
+                            strokeWidth="1"
+                          />
+                        </svg>
+
+                        {/* Lock icon - purple */}
                         <div
                           style={{
                             position: "absolute",
-                            bottom: "16px",
-                            right: "16px",
+                            left: "77px",
+                            top: "70px",
                           }}
                         >
                           <Image
                             src="/lock-icon.svg"
                             alt="Lock"
-                            width={48}
-                            height={48}
+                            width={26}
+                            height={26}
                           />
                         </div>
                       </div>
@@ -372,94 +642,238 @@ export default function FeatureCards() {
                         position: "relative",
                         height: "100%",
                         display: "flex",
+                        flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
                         padding: "20px",
+                        gap: "20px",
                       }}
                     >
+                      {/* Simple vertical bars background */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "50%",
+                          transform: "translate(-50%, -50%)",
+                          display: "flex",
+                          gap: "16px",
+                          alignItems: "flex-end",
+                          height: "180px",
+                          opacity: 0.1,
+                        }}
+                      >
+                        {[60, 75, 85, 65, 80, 70, 85, 75, 68].map(
+                          (height, index) => (
+                            <div
+                              key={index}
+                              style={{
+                                width: "66px",
+                                height: `${height}%`,
+                                background: "#FFFFFF",
+                                borderRadius: "4px",
+                              }}
+                            />
+                          )
+                        )}
+                      </div>
+
+                      {/* Gradient overlay */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          width: "100%",
+                          height: "136px",
+                          left: "0",
+                          top: "103.9px",
+                          background:
+                            "linear-gradient(180deg, rgba(13, 8, 27, 0) 0%, #0D081B 100%)",
+                          pointerEvents: "none",
+                        }}
+                      />
+
+                      {/* Metric Cards - Full opacity, on top */}
                       <div
                         style={{
                           display: "flex",
-                          gap: "12px",
-                          alignItems: "flex-end",
-                          height: "180px",
-                          width: "240px",
+                          gap: "8px",
+                          width: "100%",
+                          maxWidth: "707px",
                         }}
                       >
+                        {/* Total Cost Card */}
                         <div
                           style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-end",
-                            gap: "6px",
                             flex: 1,
-                            height: "100%",
+                            background: "rgba(105, 56, 239, 0.2)",
+                            border: "1px solid rgba(105, 56, 239, 0.4)",
+                            borderRadius: "12px",
+                            padding: "4px",
                           }}
                         >
                           <div
                             style={{
-                              height: "60%",
-                              background: "#D9D6FE",
-                              borderRadius: "6px 6px 0 0",
+                              background: "#FFFFFF",
+                              borderRadius: "8px",
+                              padding: "16px 24px",
                             }}
-                          />
-                          <div
-                            style={{
-                              height: "40%",
-                              background: "#9B8AFB",
-                              borderRadius: "0 0 6px 6px",
-                            }}
-                          />
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px",
+                                marginBottom: "12px",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  fontFamily: "Geist, sans-serif",
+                                  fontSize: "14px",
+                                  fontWeight: 500,
+                                  lineHeight: "1.43em",
+                                  color: "#737373",
+                                }}
+                              >
+                                Total Cost
+                              </span>
+                              <span
+                                style={{
+                                  fontFamily: "Geist, sans-serif",
+                                  fontSize: "14px",
+                                  fontWeight: 500,
+                                  lineHeight: "1.43em",
+                                  color: "#16A34A",
+                                }}
+                              >
+                                +38.11%
+                              </span>
+                            </div>
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontSize: "36px",
+                                fontWeight: 700,
+                                lineHeight: "1em",
+                                color: "#0A0A0A",
+                              }}
+                            >
+                              $253.68
+                            </span>
+                          </div>
                         </div>
+
+                        {/* Beezi Completed Tasks Card */}
                         <div
                           style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-end",
-                            gap: "6px",
                             flex: 1,
-                            height: "100%",
+                            background: "rgba(105, 56, 239, 0.2)",
+                            border: "1px solid rgba(105, 56, 239, 0.4)",
+                            borderRadius: "12px",
+                            padding: "4px",
                           }}
                         >
                           <div
                             style={{
-                              height: "80%",
-                              background: "#D9D6FE",
-                              borderRadius: "6px 6px 0 0",
+                              background: "#FFFFFF",
+                              borderRadius: "8px",
+                              padding: "16px 24px",
                             }}
-                          />
-                          <div
-                            style={{
-                              height: "20%",
-                              background: "#9B8AFB",
-                              borderRadius: "0 0 6px 6px",
-                            }}
-                          />
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px",
+                                marginBottom: "12px",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  fontFamily: "Geist, sans-serif",
+                                  fontSize: "14px",
+                                  fontWeight: 500,
+                                  lineHeight: "1.43em",
+                                  color: "#737373",
+                                }}
+                              >
+                                Beezi Completed Tasks
+                              </span>
+                              <span
+                                style={{
+                                  fontFamily: "Geist, sans-serif",
+                                  fontSize: "14px",
+                                  fontWeight: 500,
+                                  lineHeight: "1.43em",
+                                  color: "#16A34A",
+                                }}
+                              >
+                                +33.2%
+                              </span>
+                            </div>
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontSize: "36px",
+                                fontWeight: 700,
+                                lineHeight: "1em",
+                                color: "#0A0A0A",
+                              }}
+                            >
+                              146
+                            </span>
+                          </div>
                         </div>
+
+                        {/* Company Adoption Rate Card */}
                         <div
                           style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-end",
-                            gap: "6px",
                             flex: 1,
-                            height: "100%",
+                            background: "rgba(105, 56, 239, 0.2)",
+                            border: "1px solid rgba(105, 56, 239, 0.4)",
+                            borderRadius: "12px",
+                            padding: "4px",
                           }}
                         >
                           <div
                             style={{
-                              height: "70%",
-                              background: "#D9D6FE",
-                              borderRadius: "6px 6px 0 0",
+                              background: "#FFFFFF",
+                              borderRadius: "8px",
+                              padding: "16px 24px",
                             }}
-                          />
-                          <div
-                            style={{
-                              height: "30%",
-                              background: "#9B8AFB",
-                              borderRadius: "0 0 6px 6px",
-                            }}
-                          />
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "8px",
+                                marginBottom: "40px",
+                              }}
+                            >
+                              <span
+                                style={{
+                                  fontFamily: "Geist, sans-serif",
+                                  fontSize: "14px",
+                                  fontWeight: 500,
+                                  lineHeight: "1.43em",
+                                  color: "#737373",
+                                }}
+                              >
+                                Company Adoption Rate
+                              </span>
+                            </div>
+                            <span
+                              style={{
+                                fontFamily: "Space Grotesk, sans-serif",
+                                fontSize: "36px",
+                                fontWeight: 700,
+                                lineHeight: "1em",
+                                color: "#0A0A0A",
+                              }}
+                            >
+                              59.11%
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
