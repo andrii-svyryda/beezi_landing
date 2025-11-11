@@ -187,169 +187,485 @@ export default function Integration() {
                 padding: "0 200px",
               }}
             >
-              <GlassCard>
+              <GlassCard className="w-full">
                 <div
                   style={{
                     width: "100%",
-                    minHeight: "400px",
-                    background:
-                      "linear-gradient(135deg, rgba(105, 56, 239, 0.05) 0%, rgba(13, 8, 27, 0.8) 100%)",
+                    background: "#0D081B",
                     borderRadius: "12px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                    gap: "40px",
-                    padding: "60px 40px",
                     position: "relative",
                     overflow: "hidden",
                   }}
                 >
-                  {/* Pattern Background */}
+                  {/* Background Image Section */}
                   <div
                     style={{
-                      position: "absolute",
-                      inset: 0,
-                      opacity: 0.03,
-                      background: `repeating-linear-gradient(
-                        0deg,
-                        rgba(255, 255, 255, 0.1) 0px,
-                        transparent 1px,
-                        transparent 40px,
-                        rgba(255, 255, 255, 0.1) 41px
-                      ),
-                      repeating-linear-gradient(
-                        90deg,
-                        rgba(255, 255, 255, 0.1) 0px,
-                        transparent 1px,
-                        transparent 40px,
-                        rgba(255, 255, 255, 0.1) 41px
-                      )`,
-                    }}
-                  />
-
-                  {/* Beezi Logo with Badge */}
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "16px",
                       position: "relative",
-                      zIndex: 1,
+                      width: "100%",
+                      height: "352px",
+                      overflow: "hidden",
                     }}
                   >
+                    {/* Background Image */}
                     <div
                       style={{
-                        background: "rgba(105, 56, 239, 0.2)",
-                        border: "1px solid rgba(105, 56, 239, 0.4)",
-                        borderRadius: "20px",
-                        padding: "8px",
-                        backdropFilter: "blur(10px)",
+                        position: "absolute",
+                        left: "-560px",
+                        top: "-0.1px",
+                        width: "2560px",
+                        height: "1270px",
                       }}
                     >
+                      {/* Top Radial Gradient */}
                       <div
                         style={{
-                          background: "rgba(255, 255, 255, 0.1)",
-                          borderRadius: "12px",
-                          padding: "12px",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
+                          position: "absolute",
+                          left: "560px",
+                          top: "0",
+                          width: "771px",
+                          height: "240px",
+                          background:
+                            "radial-gradient(circle at center top, rgba(0, 0, 0, 0.7) 0%, transparent 100%)",
                         }}
-                      >
-                        <Image
-                          src="/logo-icon.svg"
-                          alt="Beezi"
-                          width={32}
-                          height={32}
-                        />
-                      </div>
+                      />
+
+                      {/* Hero Background Image */}
+                      <Image
+                        src="/hero_background.png"
+                        alt="Background"
+                        fill
+                        style={{
+                          objectFit: "cover",
+                        }}
+                      />
+
+                      {/* Bottom Radial Gradient */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "560px",
+                          top: "0",
+                          width: "1440px",
+                          height: "1180px",
+                          background:
+                            "radial-gradient(circle at center bottom, rgba(105, 56, 239, 0.4) 0%, transparent 100%)",
+                        }}
+                      />
                     </div>
 
+                    {/* Floating Badges and Lines */}
                     <div
                       style={{
-                        background: "rgba(105, 56, 239, 0.2)",
-                        border: "1px solid rgba(105, 56, 239, 0.4)",
-                        borderRadius: "999px",
-                        padding: "12px 20px",
-                        backdropFilter: "blur(10px)",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "12px",
-                        opacity: 0.9,
+                        position: "absolute",
+                        left: "49px",
+                        top: "62px",
+                        width: "715px",
+                        height: "228px",
                       }}
                     >
-                      <span
-                        style={{
-                          fontFamily: "Geist, sans-serif",
-                          fontWeight: 400,
-                          fontSize: "14px",
-                          color: "rgba(255, 255, 255, 0.5)",
-                        }}
-                      >
-                        Communication
-                      </span>
+                      {/* Beezi Logo Badge */}
                       <div
                         style={{
+                          position: "absolute",
+                          left: "333px",
+                          top: "0",
+                          background: "rgba(105, 56, 239, 0.2)",
+                          border: "1px solid rgba(105, 56, 239, 0.4)",
+                          borderRadius: "20px",
+                          padding: "16px",
+                          backdropFilter: "blur(10px)",
                           display: "flex",
+                          alignItems: "center",
                           gap: "8px",
                         }}
                       >
-                        {integrations.slice(0, 3).map((int) => (
-                          <div
-                            key={int.name}
+                        <div
+                          style={{
+                            width: "100px",
+                            height: "100px",
+                            background: "#FFFFFF",
+                            borderRadius: "12px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            boxShadow:
+                              "0px 0.5px 1px -0.25px rgba(0, 0, 0, 0.08), 0px 1px 24px 0px rgba(105, 56, 239, 0.2)",
+                          }}
+                        >
+                          <Image
+                            src="/logo-icon.svg"
+                            alt="Beezi"
+                            width={77.78}
+                            height={77.78}
                             style={{
-                              width: "24px",
-                              height: "24px",
-                              background: "#0D081B",
-                              border: "1px solid rgba(255, 255, 255, 0.1)",
-                              borderRadius: "1900.8px",
+                              filter: "brightness(0)",
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* Communication Badge */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "293px",
+                          top: "164px",
+                          background: "rgba(105, 56, 239, 0.2)",
+                          border: "1px solid rgba(105, 56, 239, 0.4)",
+                          borderRadius: "999px",
+                          padding: "16px 20px 16px 24px",
+                          backdropFilter: "blur(10px)",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          opacity: 0.9,
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Geist Mono, monospace",
+                            fontWeight: 400,
+                            fontSize: "14px",
+                            lineHeight: "1.4285714285714286em",
+                            textTransform: "uppercase",
+                            color: "rgba(255, 255, 255, 0.5)",
+                          }}
+                        >
+                          Communication
+                        </span>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "0",
+                            width: "56px",
+                            height: "32px",
+                            position: "relative",
+                          }}
+                        >
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "0",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              padding: "4px",
+                              padding: "6px",
                             }}
                           >
                             <Image
-                              src={int.icon}
-                              alt={int.name}
-                              width={16}
-                              height={16}
-                              style={{ objectFit: "contain" }}
+                              src="/slack-color-icon.svg"
+                              alt="Slack"
+                              width={20}
+                              height={20}
                             />
                           </div>
-                        ))}
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "24px",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "6px",
+                            }}
+                          >
+                            <Image
+                              src="/teams-icon.svg"
+                              alt="Teams"
+                              width={20}
+                              height={20}
+                            />
+                          </div>
+                        </div>
                       </div>
+
+                      {/* Task Board / Project Badge */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "0",
+                          top: "34px",
+                          background: "rgba(105, 56, 239, 0.2)",
+                          border: "1px solid rgba(105, 56, 239, 0.4)",
+                          borderRadius: "999px",
+                          padding: "16px 16px 16px 20px",
+                          backdropFilter: "blur(10px)",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          opacity: 0.9,
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Geist Mono, monospace",
+                            fontWeight: 400,
+                            fontSize: "14px",
+                            lineHeight: "1.4285714285714286em",
+                            textTransform: "uppercase",
+                            color: "rgba(255, 255, 255, 0.5)",
+                          }}
+                        >
+                          Task Board / Project{" "}
+                        </span>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "0",
+                            width: "56px",
+                            height: "32px",
+                            position: "relative",
+                          }}
+                        >
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "0",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "5.87px 7.83px",
+                            }}
+                          >
+                            <Image
+                              src="/jira-large-icon.svg"
+                              alt="Jira"
+                              width={17.13}
+                              height={16.64}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "24px",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "6px 5.9px",
+                            }}
+                          >
+                            <Image
+                              src="/azure-large-icon.svg"
+                              alt="Azure DevOps"
+                              width={20}
+                              height={20}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Repository Badge */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "527px",
+                          top: "34px",
+                          background: "rgba(105, 56, 239, 0.2)",
+                          border: "1px solid rgba(105, 56, 239, 0.4)",
+                          borderRadius: "999px",
+                          padding: "16px 16px 16px 20px",
+                          backdropFilter: "blur(10px)",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "12px",
+                          opacity: 0.9,
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Geist Mono, monospace",
+                            fontWeight: 400,
+                            fontSize: "14px",
+                            lineHeight: "1.4285714285714286em",
+                            textTransform: "uppercase",
+                            color: "rgba(255, 255, 255, 0.5)",
+                          }}
+                        >
+                          Repository
+                        </span>
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "0",
+                            width: "56px",
+                            height: "32px",
+                            position: "relative",
+                          }}
+                        >
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "0",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "6px 5.9px",
+                            }}
+                          >
+                            <Image
+                              src="/github-large-icon.svg"
+                              alt="GitHub"
+                              width={20}
+                              height={19.67}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              position: "absolute",
+                              left: "24px",
+                              top: "0",
+                              width: "32px",
+                              height: "32px",
+                              background: "#FFFFFF",
+                              border: "1px solid rgba(33, 31, 17, 0.12)",
+                              borderRadius: "50%",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              padding: "6px 5.9px",
+                            }}
+                          >
+                            <Image
+                              src="/azure-large-icon.svg"
+                              alt="Azure DevOps"
+                              width={20}
+                              height={20}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Connection Lines */}
+                      {/* Horizontal line from Task Board to Beezi Logo (left to center) */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "260px",
+                          top: "66px",
+                          width: "73px",
+                          height: "1px",
+                          background: "rgba(105, 56, 239, 0.4)",
+                        }}
+                      />
+
+                      {/* Horizontal line from Beezi Logo to Repository (center to right) */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "466px",
+                          top: "66px",
+                          width: "61px",
+                          height: "1px",
+                          background: "rgba(105, 56, 239, 0.4)",
+                        }}
+                      />
+
+                      {/* Arc from Beezi Logo (top) to Communication (bottom) - left side */}
+                      <svg
+                        style={{
+                          position: "absolute",
+                          left: "271px",
+                          top: "100px",
+                          width: "63px",
+                          height: "96px",
+                        }}
+                        viewBox="0 0 63 96"
+                        fill="none"
+                      >
+                        <path
+                          d="M62.5 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H21.5"
+                          stroke="#6938EF"
+                          strokeOpacity="0.4"
+                        />
+                      </svg>
+
+                      {/* Arc from Beezi Logo (top) to Communication (bottom) - right side */}
+                      <svg
+                        style={{
+                          position: "absolute",
+                          left: "466px",
+                          top: "100px",
+                          width: "63px",
+                          height: "96px",
+                          transform: "scaleX(-1)",
+                        }}
+                        viewBox="0 0 63 96"
+                        fill="none"
+                      >
+                        <path
+                          d="M62.5 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H21.5"
+                          stroke="#6938EF"
+                          strokeOpacity="0.4"
+                        />
+                      </svg>
                     </div>
                   </div>
 
-                  {/* Button */}
+                  {/* Bottom Nav Container */}
                   <div
                     style={{
-                      background:
-                        "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%)",
-                      border:
-                        "1px solid linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 100%)",
-                      borderRadius: "12px",
-                      padding: "12px 24px",
-                      position: "relative",
-                      zIndex: 1,
+                      borderRadius: "20px",
+                      padding: "8px 12px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "6px",
+                      margin: "8px auto",
+                      width: "fit-content",
                     }}
                   >
-                    <button
+                    <div
+                      className="spinner"
                       style={{
-                        fontFamily: "Geist, sans-serif",
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        border: "2px solid rgba(255, 255, 255, 0.2)",
+                        borderTopColor: "#FFFFFF",
+                      }}
+                    />
+                    <span
+                      style={{
+                        fontFamily: "Geist Mono, monospace",
                         fontWeight: 500,
                         fontSize: "16px",
-                        lineHeight: "1.5em",
+                        lineHeight: "1em",
+                        letterSpacing: "-0.8124999701976776%",
                         color: "#FAFAFA",
-                        background: "transparent",
-                        border: "none",
-                        cursor: "pointer",
                       }}
                     >
-                      View Integration Details
-                    </button>
+                      Process steps here...
+                    </span>
                   </div>
                 </div>
               </GlassCard>
@@ -360,4 +676,3 @@ export default function Integration() {
     </section>
   );
 }
-
