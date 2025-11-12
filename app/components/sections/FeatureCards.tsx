@@ -44,19 +44,9 @@ export default function FeatureCards() {
   ];
 
   return (
-    <section
-      style={{
-        paddingTop: "96px",
-        paddingBottom: "96px",
-      }}
-    >
+    <section className="py-16 md:py-24">
       <Container>
-        <div
-          className="grid grid-cols-1 md:grid-cols-5"
-          style={{
-            gap: "12px",
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
           {features.map((feature, index) => (
             <GlassCard
               key={index}
@@ -71,25 +61,16 @@ export default function FeatureCards() {
                 border: "1px solid rgba(105, 56, 239, 0.1)",
               }}
             >
-              <div
-                style={{
-                  background: "#0D081B",
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  height: "100%",
-                }}
-              >
+              <div className="bg-[#0D081B] rounded-xl overflow-hidden h-full">
                 {/* Image Section */}
                 <div
+                  className="relative min-h-[200px] md:min-h-[240px] overflow-hidden"
                   style={{
-                    position: "relative",
-                    height: "240px",
                     background:
                       feature.visual === "workflow" ||
                       feature.visual === "analytics"
                         ? "radial-gradient(circle at 50% 0%, rgba(105, 56, 239, 0.16) 0%, rgba(105, 56, 239, 0.08) 100%)"
                         : "radial-gradient(circle at 50% 0%, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%)",
-                    overflow: "hidden",
                   }}
                 >
                   {/* Background Pattern - Scaled and positioned */}
@@ -154,8 +135,9 @@ export default function FeatureCards() {
                       `}</style>
                       <div
                         style={{
-                          position: "relative",
+                          position: "absolute",
                           height: "100%",
+                          width: "100%",
                           overflow: "hidden",
                         }}
                       >
@@ -262,9 +244,12 @@ export default function FeatureCards() {
                   {feature.visual === "cost" && (
                     <div
                       style={{
-                        position: "relative",
+                        position: "absolute",
                         height: "100%",
                         overflow: "hidden",
+                        width: "500px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
                       }}
                     >
                       {/* Vertical dashed lines */}
@@ -638,18 +623,7 @@ export default function FeatureCards() {
                   )}
 
                   {feature.visual === "analytics" && (
-                    <div
-                      style={{
-                        position: "relative",
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "20px",
-                        gap: "20px",
-                      }}
-                    >
+                    <div className="relative min-h-[200px] md:min-h-[240px] flex flex-col items-center justify-center p-4 md:p-5 gap-4 md:gap-5">
                       {/* Simple vertical bars background */}
                       <div
                         style={{
@@ -681,82 +655,45 @@ export default function FeatureCards() {
 
                       {/* Gradient overlay */}
                       <div
+                        className="absolute w-full left-0 pointer-events-none z-[1]"
                         style={{
-                          position: "absolute",
-                          width: "100%",
                           height: "136px",
-                          left: "0",
                           top: "103.9px",
                           background:
                             "linear-gradient(180deg, rgba(13, 8, 27, 0) 0%, #0D081B 100%)",
-                          pointerEvents: "none",
                         }}
                       />
 
                       {/* Metric Cards - Full opacity, on top */}
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: "8px",
-                          width: "100%",
-                          maxWidth: "707px",
-                        }}
-                      >
+                      <div className="flex flex-col md:flex-row gap-2 w-full max-w-full md:max-w-[707px] relative z-10">
                         {/* Total Cost Card */}
                         <div
+                          className="flex-1 rounded-xl p-1"
                           style={{
-                            flex: 1,
                             background: "rgba(105, 56, 239, 0.2)",
                             border: "1px solid rgba(105, 56, 239, 0.4)",
-                            borderRadius: "12px",
-                            padding: "4px",
                           }}
                         >
-                          <div
-                            style={{
-                              background: "#FFFFFF",
-                              borderRadius: "8px",
-                              padding: "16px 24px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px",
-                                marginBottom: "12px",
-                              }}
-                            >
+                          <div className="bg-white rounded-lg p-4 md:px-6">
+                            <div className="flex flex-col gap-2 mb-3">
                               <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 500,
-                                  lineHeight: "1.43em",
-                                  color: "#737373",
-                                }}
+                                className="text-xs md:text-sm font-medium text-[#737373]"
+                                style={{ fontFamily: "Geist, sans-serif" }}
                               >
                                 Total Cost
                               </span>
                               <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 500,
-                                  lineHeight: "1.43em",
-                                  color: "#16A34A",
-                                }}
+                                className="text-xs md:text-sm font-medium text-green-600"
+                                style={{ fontFamily: "Geist, sans-serif" }}
                               >
                                 +38.11%
                               </span>
                             </div>
                             <span
+                              className="text-2xl md:text-4xl font-bold text-[#0A0A0A]"
                               style={{
                                 fontFamily: "Space Grotesk, sans-serif",
-                                fontSize: "36px",
-                                fontWeight: 700,
                                 lineHeight: "1em",
-                                color: "#0A0A0A",
                               }}
                             >
                               $253.68
@@ -766,59 +703,32 @@ export default function FeatureCards() {
 
                         {/* Beezi Completed Tasks Card */}
                         <div
+                          className="flex-1 rounded-xl p-1"
                           style={{
-                            flex: 1,
                             background: "rgba(105, 56, 239, 0.2)",
                             border: "1px solid rgba(105, 56, 239, 0.4)",
-                            borderRadius: "12px",
-                            padding: "4px",
                           }}
                         >
-                          <div
-                            style={{
-                              background: "#FFFFFF",
-                              borderRadius: "8px",
-                              padding: "16px 24px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px",
-                                marginBottom: "12px",
-                              }}
-                            >
+                          <div className="bg-white rounded-lg p-4 md:px-6">
+                            <div className="flex flex-col gap-2 mb-3">
                               <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 500,
-                                  lineHeight: "1.43em",
-                                  color: "#737373",
-                                }}
+                                className="text-xs md:text-sm font-medium text-[#737373]"
+                                style={{ fontFamily: "Geist, sans-serif" }}
                               >
                                 Beezi Completed Tasks
                               </span>
                               <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 500,
-                                  lineHeight: "1.43em",
-                                  color: "#16A34A",
-                                }}
+                                className="text-xs md:text-sm font-medium text-green-600"
+                                style={{ fontFamily: "Geist, sans-serif" }}
                               >
                                 +33.2%
                               </span>
                             </div>
                             <span
+                              className="text-2xl md:text-4xl font-bold text-[#0A0A0A]"
                               style={{
                                 fontFamily: "Space Grotesk, sans-serif",
-                                fontSize: "36px",
-                                fontWeight: 700,
                                 lineHeight: "1em",
-                                color: "#0A0A0A",
                               }}
                             >
                               146
@@ -828,48 +738,26 @@ export default function FeatureCards() {
 
                         {/* Company Adoption Rate Card */}
                         <div
+                          className="flex-1 rounded-xl p-1"
                           style={{
-                            flex: 1,
                             background: "rgba(105, 56, 239, 0.2)",
                             border: "1px solid rgba(105, 56, 239, 0.4)",
-                            borderRadius: "12px",
-                            padding: "4px",
                           }}
                         >
-                          <div
-                            style={{
-                              background: "#FFFFFF",
-                              borderRadius: "8px",
-                              padding: "16px 24px",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                gap: "8px",
-                                marginBottom: "40px",
-                              }}
-                            >
+                          <div className="bg-white rounded-lg p-4 md:px-6">
+                            <div className="flex flex-col gap-2 mb-10">
                               <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 500,
-                                  lineHeight: "1.43em",
-                                  color: "#737373",
-                                }}
+                                className="text-xs md:text-sm font-medium text-[#737373]"
+                                style={{ fontFamily: "Geist, sans-serif" }}
                               >
                                 Company Adoption Rate
                               </span>
                             </div>
                             <span
+                              className="text-2xl md:text-4xl font-bold text-[#0A0A0A]"
                               style={{
                                 fontFamily: "Space Grotesk, sans-serif",
-                                fontSize: "36px",
-                                fontWeight: 700,
                                 lineHeight: "1em",
-                                color: "#0A0A0A",
                               }}
                             >
                               59.11%
@@ -882,31 +770,20 @@ export default function FeatureCards() {
                 </div>
 
                 {/* Content Section */}
-                <div
-                  style={{
-                    padding: "32px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                  }}
-                >
+                <div className="p-6 md:p-8 flex flex-col gap-2">
                   <h3
+                    className="text-2xl md:text-3xl font-bold text-[#FAFAFA]"
                     style={{
                       fontFamily: "Space Grotesk, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "30px",
                       lineHeight: "1em",
-                      color: "#FAFAFA",
                     }}
                   >
                     {feature.title}
                   </h3>
                   <p
+                    className="text-sm md:text-base leading-6 text-white/50"
                     style={{
                       fontFamily: "Geist, sans-serif",
-                      fontSize: "16px",
-                      lineHeight: "1.5em",
-                      color: "rgba(255, 255, 255, 0.5)",
                     }}
                   >
                     {feature.description}

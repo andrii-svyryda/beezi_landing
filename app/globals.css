@@ -10,6 +10,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #050011;
+  overflow-x: hidden;
 }
 
 html {
@@ -55,5 +56,12 @@ html {
   .container-responsive-padding {
     padding-left: 32px;
     padding-right: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-responsive-padding {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

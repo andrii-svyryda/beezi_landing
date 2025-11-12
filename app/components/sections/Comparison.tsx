@@ -41,359 +41,321 @@ export default function Comparison() {
   ];
 
   return (
-    <section
-      style={{
-        width: "100%",
-        padding: "112px 0",
-      }}
-    >
+    <section className="w-full py-16 md:py-28">
+      {/* Title - with container on desktop */}
       <Container>
-        <div
+        <h2
+          className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "80px",
-            width: "100%",
+            fontFamily: "Space Grotesk, sans-serif",
+            lineHeight: "1em",
+            background:
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
           }}
         >
-          {/* Title */}
-          <h2
-            style={{
-              fontFamily: "Space Grotesk, sans-serif",
-              fontWeight: 700,
-              fontSize: "48px",
-              lineHeight: "1em",
-              textAlign: "center",
-              background:
-                "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              margin: 0,
-            }}
-          >
-            Beezi compresses your dev time up to 10x
-          </h2>
+          Beezi compresses your dev time up to 10x
+        </h2>
 
-          {/* Main Card */}
-          <div
-            style={{
-              boxShadow:
-                "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 24px 0px rgba(105, 56, 239, 0.12)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              borderRadius: "12px",
-              overflow: "hidden",
-            }}
-          >
+        {/* Main content - full width on mobile, container on desktop */}
+        <div className="md:mx-auto">
+          <div className="flex flex-col gap-12 md:gap-20 w-full">
+            {/* Main Card */}
             <div
               style={{
-                background: "#0D081B",
+                boxShadow:
+                  "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 24px 0px rgba(105, 56, 239, 0.12)",
+                border: "1px solid rgba(255, 255, 255, 0.2)",
                 borderRadius: "12px",
+                overflow: "hidden",
               }}
             >
-              {/* Difficulty Levels Header */}
               <div
                 style={{
-                  display: "flex",
+                  background: "#0D081B",
+                  borderRadius: "12px",
                 }}
               >
-                {difficultyLevels.map((item, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: "10px",
-                      padding: "20px 32px",
-                      borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                      background: "rgba(255, 255, 255, 0.1)",
-                      borderRight:
-                        index === difficultyLevels.length - 1
-                          ? "none"
-                          : "1px solid rgba(255, 255, 255, 0.1)",
-                    }}
-                  >
+                {/* Difficulty Levels Header */}
+                <div className="flex flex-col md:flex-row">
+                  {difficultyLevels.map((item, index) => (
                     <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "12px",
-                        padding: "4px 12px",
-                      }}
-                    >
-                      <Image
-                        src={item.icon}
-                        alt="Complexity"
-                        width={18}
-                        height={18}
-                      />
-                      <span
-                        style={{
-                          fontFamily: "Geist, sans-serif",
-                          fontWeight: 500,
-                          fontSize: "16px",
-                          color: "#FAFAFA",
-                        }}
-                      >
-                        {item.level}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Tasks */}
-              <div
-                style={{
-                  display: "flex",
-                }}
-              >
-                {tasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className="p-4 xl:p-7"
-                    style={{
-                      flex: 1,
-                      borderRight:
-                        index === difficultyLevels.length - 1
-                          ? "none"
-                          : "1px solid rgba(255, 255, 255, 0.2)",
-                    }}
-                  >
-                    {/* Task Card */}
-                    <div
+                      key={index}
+                      className="flex-1 flex flex-col items-center gap-2.5 p-5 md:px-8 border-b md:border-b"
                       style={{
                         background: "rgba(255, 255, 255, 0.1)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        borderRadius: "10px",
-                        padding: "4px 4px 24px",
-                        height: "100%",
+                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+                        borderRight:
+                          index === difficultyLevels.length - 1
+                            ? "none"
+                            : "1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       <div
                         style={{
-                          borderRadius: "6px",
                           display: "flex",
-                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "12px",
+                          padding: "4px 12px",
+                        }}
+                      >
+                        <Image
+                          src={item.icon}
+                          alt="Complexity"
+                          width={18}
+                          height={18}
+                        />
+                        <span
+                          className="text-sm md:text-base"
+                          style={{
+                            fontFamily: "Geist, sans-serif",
+                            fontWeight: 500,
+                            color: "#FAFAFA",
+                          }}
+                        >
+                          {item.level}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Tasks */}
+                <div className="flex flex-col md:flex-row">
+                  {tasks.map((task, index) => (
+                    <div
+                      key={index}
+                      className={`p-4 xl:p-7 flex-1 ${
+                        index !== tasks.length - 1
+                          ? "border-b md:border-b-0 md:border-r"
+                          : ""
+                      }`}
+                      style={{
+                        borderColor: "rgba(255, 255, 255, 0.2)",
+                      }}
+                    >
+                      {/* Task Card */}
+                      <div
+                        style={{
+                          background: "rgba(255, 255, 255, 0.1)",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
+                          borderRadius: "10px",
+                          padding: "4px 4px 24px",
                           height: "100%",
                         }}
                       >
-                        {/* Task Title Section */}
                         <div
                           style={{
-                            background: "#0D081B",
                             borderRadius: "6px",
-                            padding: "24px",
-                            paddingBottom: "40px",
-                            marginBottom: "16px",
-                            flexGrow: 1,
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "8px",
-                              marginBottom: "12px",
-                            }}
-                          >
-                            <Image
-                              src="/alignment-left-icon.svg"
-                              alt="Task"
-                              width={32}
-                              height={32}
-                              style={{
-                                background: "rgba(255, 255, 255, 0.1)",
-                                borderRadius: "4px",
-                                padding: "4px",
-                              }}
-                            />
-                          </div>
-                          <p
-                            style={{
-                              fontFamily: "Geist, sans-serif",
-                              fontWeight: 400,
-                              fontSize: "20px",
-                              lineHeight: "1.4em",
-                              color: "#FAFAFA",
-                              margin: 0,
-                            }}
-                          >
-                            {task.title}
-                          </p>
-                        </div>
-
-                        {/* Time Comparison - Horizontal Layout */}
-                        <div
-                          style={{
                             display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            gap: "20px",
+                            flexDirection: "column",
+                            height: "100%",
                           }}
                         >
-                          {/* Normal Development */}
+                          {/* Task Title Section */}
                           <div
+                            className="p-4 md:p-6 pb-6 md:pb-10 mb-4 flex-grow"
                             style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "4px",
-                              flex: 1,
+                              background: "#0D081B",
+                              borderRadius: "6px",
                             }}
                           >
-                            <span
-                              style={{
-                                fontFamily: "Space Grotesk, sans-serif",
-                                fontWeight: 700,
-                                fontSize: "48px",
-                                lineHeight: "1.2em",
-                                color: "white",
-                              }}
-                            >
-                              {task.timeNormal}
-                              <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontWeight: 600,
-                                  fontSize: "24px",
-                                  marginLeft: "6px",
-                                  color: "rgb(148, 148, 148)",
-                                }}
-                              >
-                                {task.timeNormalUnit}
-                              </span>
-                            </span>
                             <div
                               style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: "6px",
+                                gap: "8px",
+                                marginBottom: "12px",
                               }}
                             >
-                              <span
+                              <Image
+                                src="/alignment-left-icon.svg"
+                                alt="Task"
+                                width={32}
+                                height={32}
                                 style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontWeight: 400,
-                                  fontSize: "12px",
-                                  color: "rgba(255, 255, 255, 0.6)",
+                                  background: "rgba(255, 255, 255, 0.1)",
+                                  borderRadius: "4px",
+                                  padding: "4px",
                                 }}
-                              >
-                                Development
-                              </span>
+                              />
                             </div>
+                            <p
+                              className="text-base md:text-xl"
+                              style={{
+                                fontFamily: "Geist, sans-serif",
+                                fontWeight: 400,
+                                lineHeight: "1.4em",
+                                color: "#FAFAFA",
+                                margin: 0,
+                              }}
+                            >
+                              {task.title}
+                            </p>
                           </div>
 
-                          {/* Vertical Divider */}
-                          <div
-                            style={{
-                              width: "2px",
-                              height: "40px",
-                              background: "rgba(255, 255, 255, 0.2)",
-                              borderRadius: "2px",
-                            }}
-                          />
-
-                          {/* Beezi Development */}
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              gap: "4px",
-                              flex: 1,
-                            }}
-                          >
-                            <span
-                              style={{
-                                fontFamily: "Space Grotesk, sans-serif",
-                                fontWeight: 700,
-                                fontSize: "48px",
-                                lineHeight: "1.2em",
-                                color: "white",
-                              }}
-                            >
-                              {task.timeBeezi}
-                              <span
-                                style={{
-                                  fontWeight: 600,
-                                  fontSize: "24px",
-                                  marginLeft: "6px",
-                                  color: "rgb(148, 148, 148)",
-                                }}
-                              >
-                                {task.timeBeeziUnit}
-                              </span>
-                            </span>
+                          {/* Time Comparison - Horizontal Layout */}
+                          <div className="flex justify-center items-center gap-3 md:gap-5">
+                            {/* Normal Development */}
                             <div
                               style={{
                                 display: "flex",
+                                flexDirection: "column",
                                 alignItems: "center",
-                                gap: "6px",
+                                gap: "4px",
+                                flex: 1,
                               }}
                             >
                               <span
+                                className="text-3xl md:text-5xl"
                                 style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontWeight: 500,
-                                  fontSize: "12px",
-                                  color: "rgba(255, 255, 255, 0.6)",
+                                  fontFamily: "Space Grotesk, sans-serif",
+                                  fontWeight: 700,
+                                  lineHeight: "1.2em",
+                                  color: "white",
                                 }}
                               >
-                                Development with{" "}
+                                {task.timeNormal}
                                 <span
+                                  className="text-lg md:text-2xl ml-1.5"
                                   style={{
-                                    color: "rgb(255, 255, 255)",
+                                    fontFamily: "Geist, sans-serif",
+                                    fontWeight: 600,
+                                    color: "rgb(148, 148, 148)",
                                   }}
                                 >
-                                  Beezi
+                                  {task.timeNormalUnit}
                                 </span>
                               </span>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                }}
+                              >
+                                <span
+                                  className="text-xs"
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontWeight: 400,
+                                    color: "rgba(255, 255, 255, 0.6)",
+                                  }}
+                                >
+                                  Development
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Vertical Divider */}
+                            <div
+                              className="w-0.5 h-8 md:h-10"
+                              style={{
+                                background: "rgba(255, 255, 255, 0.2)",
+                                borderRadius: "2px",
+                              }}
+                            />
+
+                            {/* Beezi Development */}
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                gap: "4px",
+                                flex: 1,
+                              }}
+                            >
+                              <span
+                                className="text-3xl md:text-5xl"
+                                style={{
+                                  fontFamily: "Space Grotesk, sans-serif",
+                                  fontWeight: 700,
+                                  lineHeight: "1.2em",
+                                  color: "white",
+                                }}
+                              >
+                                {task.timeBeezi}
+                                <span
+                                  className="text-lg md:text-2xl ml-1.5"
+                                  style={{
+                                    fontWeight: 600,
+                                    color: "rgb(148, 148, 148)",
+                                  }}
+                                >
+                                  {task.timeBeeziUnit}
+                                </span>
+                              </span>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                }}
+                              >
+                                <span
+                                  className="text-xs"
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontWeight: 500,
+                                    color: "rgba(255, 255, 255, 0.6)",
+                                  }}
+                                >
+                                  Development with{" "}
+                                  <span
+                                    style={{
+                                      color: "rgb(255, 255, 255)",
+                                    }}
+                                  >
+                                    Beezi
+                                  </span>
+                                </span>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-          {/* Book a demo Button */}
-          <div className="flex justify-center">
-            <Link href="/book-a-demo">
-              <GlassCard
-                borderRadius="12px"
-                style={{ width: "160px" }}
-                className="transition-all hover:scale-105 cursor-pointer"
-              >
-                <div
-                  className="relative"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
-                    borderRadius: "8px",
-                    padding: "12px 20px",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    textAlign: "center",
-                  }}
+            {/* Book a demo Button */}
+            <div className="flex justify-center">
+              <Link href="/book-a-demo">
+                <GlassCard
+                  borderRadius="12px"
+                  style={{ width: "160px" }}
+                  className="transition-all hover:scale-105 cursor-pointer"
                 >
-                  <span
+                  <div
+                    className="relative"
                     style={{
-                      fontSize: "16px",
-                      fontWeight: 500,
-                      lineHeight: "1.5em",
-                      color: "#6938EF",
+                      background:
+                        "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
+                      borderRadius: "8px",
+                      padding: "12px 20px",
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
                       textAlign: "center",
                     }}
                   >
-                    Book a demo
-                  </span>
-                </div>
-              </GlassCard>
-            </Link>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        lineHeight: "1.5em",
+                        color: "#6938EF",
+                        textAlign: "center",
+                      }}
+                    >
+                      Book a demo
+                    </span>
+                  </div>
+                </GlassCard>
+              </Link>
+            </div>
           </div>
         </div>
       </Container>

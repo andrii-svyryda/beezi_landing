@@ -6,7 +6,7 @@ import Container from "../Container";
 export default function Hero() {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center overflow-hidden"
+      className="relative flex flex-col items-center overflow-hidden"
       style={{
         paddingTop: "184px",
         paddingBottom: "88px",
@@ -18,7 +18,7 @@ export default function Hero() {
         style={{
           height: "calc(100% - 150px)",
           background:
-            "linear-gradient(180deg, #0A0A0A 0%, #6938EF 60%, #FFFFFF 100%)",
+            "radial-gradient(502.62% 100% at 50% 0%, #0A0A0A 40%, #6938EF 80%, #FFFFFF 100%)",
         }}
       />
 

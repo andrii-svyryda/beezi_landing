@@ -26,66 +26,31 @@ export default function Features() {
   ];
 
   return (
-    <section
-      id="features"
-      style={{
-        paddingTop: "176px",
-        paddingBottom: "88px",
-      }}
-    >
+    <section id="features" className="pt-32 md:pt-44 pb-16 md:pb-22">
       <Container>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "60px",
-          }}
-        >
+        <div className="flex flex-col items-center gap-12 md:gap-15">
           {/* Section Header */}
-          <div
-            style={{
-              maxWidth: "768px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "16px",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                width: "100%",
-                gap: "24px",
-              }}
-            >
+          <div className="max-w-3xl flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center w-full gap-6">
               <h2
+                className="text-3xl md:text-5xl font-bold text-center w-full"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "48px",
                   lineHeight: "1em",
-                  textAlign: "center",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                  width: "100%",
                 }}
               >
                 What Beezi Brings To Your Team{" "}
               </h2>
               <p
+                className="text-base md:text-lg text-center text-white/80 w-full"
                 style={{
                   fontFamily: "Geist, sans-serif",
-                  fontSize: "18px",
                   lineHeight: "1.5555em",
-                  textAlign: "center",
-                  color: "rgba(255, 255, 255, 0.8)",
-                  width: "100%",
                 }}
               >
                 Let your engineers focus on product, architecture, and velocity,
@@ -95,43 +60,18 @@ export default function Features() {
           </div>
 
           {/* Features Content */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              width: "100%",
-              gap: "48px",
-            }}
-          >
+          <div className="flex flex-col items-center w-full gap-8 md:gap-12">
             {/* Features Row */}
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                gap: "48px",
-              }}
-            >
+            <div className="flex flex-col md:flex-row w-full gap-8 md:gap-12">
               {features.map((feature, index) => (
                 <>
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "24px",
-                      flex: 1,
-                      color: "#FFFFFF",
-                    }}
-                  >
+                  <div key={index} className="flex flex-col gap-6 flex-1 text-white items-center md:items-start">
                     {/* Icon Box */}
                     <div
+                      className="rounded-xl p-3 w-fit"
                       style={{
                         background: "rgba(255, 255, 255, 0.1)",
                         border: "1px solid rgba(255, 255, 255, 0.1)",
-                        borderRadius: "12px",
-                        padding: "12px",
-                        width: "fit-content",
                       }}
                     >
                       <svg
@@ -146,35 +86,21 @@ export default function Features() {
                     </div>
 
                     {/* Content */}
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        width: "100%",
-                        gap: "12px",
-                      }}
-                    >
+                    <div className="flex flex-col items-center w-full gap-3">
                       <h3
+                        className="text-lg md:text-xl font-bold text-center md:text-left w-full"
                         style={{
                           fontFamily: "Geist, sans-serif",
-                          fontWeight: 700,
-                          fontSize: "20px",
                           lineHeight: "1em",
-                          textAlign: "left",
-                          width: "100%",
                         }}
                       >
                         {feature.title}
                       </h3>
                       <p
+                        className="text-sm text-center md:text-left text-white/50 w-full"
                         style={{
                           fontFamily: "Geist, sans-serif",
-                          fontSize: "14px",
                           lineHeight: "1.43em",
-                          textAlign: "left",
-                          color: "rgba(255, 255, 255, 0.5)",
-                          width: "100%",
                         }}
                       >
                         {feature.description}
@@ -185,9 +111,8 @@ export default function Features() {
                   {/* Separator */}
                   {index < features.length - 1 && (
                     <div
+                      className="hidden md:block w-px h-auto"
                       style={{
-                        width: "1px",
-                        height: "auto",
                         background: "rgba(255, 255, 255, 0.1)",
                       }}
                     />
@@ -197,46 +122,31 @@ export default function Features() {
             </div>
 
             {/* Actions */}
-            <div
-              style={{
-                display: "flex",
-                gap: "16px",
-                paddingTop: "16px",
-              }}
-            >
+            <div className="flex gap-4 pt-4">
               <Link href="/book-a-demo">
                 <div
+                  className="rounded-xl p-1 w-40"
                   style={{
                     background: "rgba(255, 255, 255, 0.1)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
-                    borderRadius: "12px",
-                    padding: "4px",
-                    width: "160px",
                     boxShadow:
                       "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(105, 56, 239, 0.12)",
                   }}
                 >
                   <div
+                    className="rounded-lg py-3 px-6 flex justify-center items-center cursor-pointer"
                     style={{
                       background:
                         "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
                       border:
                         "1px solid linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 100%)",
-                      borderRadius: "8px",
-                      padding: "12px 24px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      cursor: "pointer",
                     }}
                   >
                     <span
+                      className="font-medium text-base text-[#6938EF]"
                       style={{
                         fontFamily: "Geist, sans-serif",
-                        fontWeight: 500,
-                        fontSize: "16px",
                         lineHeight: "1.5em",
-                        color: "#6938EF",
                       }}
                     >
                       Book a demo

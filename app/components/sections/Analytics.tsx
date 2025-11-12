@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
@@ -16,6 +17,17 @@ import {
 } from "recharts";
 
 export default function Analytics() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
   const features = [
     {
       icon: "/dollar-icon.svg",
@@ -54,46 +66,17 @@ export default function Analytics() {
   ];
 
   return (
-    <section
-      style={{
-        width: "100%",
-        padding: "112px 0",
-      }}
-    >
+    <section className="w-full py-16 md:py-28">
       <Container>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "64px",
-            width: "100%",
-          }}
-        >
+        <div className="flex flex-col gap-12 md:gap-16 w-full">
           {/* Title Section */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "36px",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "24px",
-                alignItems: "center",
-                maxWidth: "800px",
-              }}
-            >
+          <div className="flex flex-col gap-6 md:gap-9 items-center">
+            <div className="flex flex-col gap-4 md:gap-6 items-center max-w-3xl">
               <h2
+                className="text-3xl md:text-5xl font-bold text-center"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "48px",
                   lineHeight: "1em",
-                  textAlign: "center",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                   WebkitBackgroundClip: "text",
@@ -105,12 +88,11 @@ export default function Analytics() {
                 Beezi Analytics Hub
               </h2>
               <p
+                className="text-base md:text-lg text-center"
                 style={{
                   fontFamily: "Geist, sans-serif",
                   fontWeight: 400,
-                  fontSize: "18px",
                   lineHeight: "1.5555555555555556em",
-                  textAlign: "center",
                   color: "rgba(255, 255, 255, 0.8)",
                   margin: 0,
                 }}
@@ -154,21 +136,9 @@ export default function Analytics() {
           </div>
 
           {/* Content */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
-            }}
-          >
+          <div className="flex flex-col gap-6">
             {/* Feature Cards Row */}
-            <div
-              style={{
-                display: "flex",
-                gap: "24px",
-                width: "100%",
-              }}
-            >
+            <div className="flex flex-col md:flex-row gap-6 w-full">
               {features.map((feature, index) => (
                 <div
                   key={index}
@@ -192,23 +162,16 @@ export default function Analytics() {
                         height: "100%",
                       }}
                     >
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          padding: "24px",
-                          height: "100%",
-                        }}
-                      >
+                      <div className="flex flex-col p-4 md:p-6 h-full items-center md:items-start">
                         {/* Icon */}
                         <div
+                          className="mb-4 md:mb-6"
                           style={{
                             background: "rgba(255, 255, 255, 0.1)",
                             border: "1px solid rgba(255, 255, 255, 0.1)",
                             borderRadius: "12px",
                             padding: "12px",
                             width: "fit-content",
-                            marginBottom: "24px",
                           }}
                         >
                           <Image
@@ -220,18 +183,11 @@ export default function Analytics() {
                         </div>
 
                         {/* Content */}
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "12px",
-                          }}
-                        >
+                        <div className="flex flex-col gap-3 items-center md:items-start">
                           <h3
+                            className="text-lg md:text-xl font-bold text-center md:text-left"
                             style={{
                               fontFamily: "Geist, sans-serif",
-                              fontWeight: 700,
-                              fontSize: "20px",
                               lineHeight: "1em",
                               color: "#FAFAFA",
                               margin: 0,
@@ -240,10 +196,10 @@ export default function Analytics() {
                             {feature.title}
                           </h3>
                           <p
+                            className="text-sm text-center md:text-left"
                             style={{
                               fontFamily: "Geist, sans-serif",
                               fontWeight: 400,
-                              fontSize: "14px",
                               lineHeight: "1.4285714285714286em",
                               color: "rgba(255, 255, 255, 0.5)",
                               margin: 0,
@@ -252,10 +208,9 @@ export default function Analytics() {
                             {feature.description}
                           </p>
                           <p
+                            className="text-sm font-semibold text-center md:text-left"
                             style={{
                               fontFamily: "Geist, sans-serif",
-                              fontWeight: 600,
-                              fontSize: "14px",
                               lineHeight: "1.4285714285714286em",
                               color: "#FAFAFA",
                               margin: 0,
@@ -291,17 +246,10 @@ export default function Analytics() {
                   }}
                 >
                   {/* Metrics Row */}
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: "8px",
-                      padding: "32px 32px 0px",
-                    }}
-                  >
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-2 p-4 md:p-8 md:pb-0">
                     {/* Total Cost */}
                     <div
                       style={{
-                        flex: 1,
                         background: "rgba(105, 56, 239, 0.2)",
                         border: "1px solid rgba(105, 56, 239, 0.4)",
                         borderRadius: "20px",
@@ -368,7 +316,6 @@ export default function Analytics() {
                     {/* Time Saved */}
                     <div
                       style={{
-                        flex: 1,
                         background: "rgba(105, 56, 239, 0.2)",
                         border: "1px solid rgba(105, 56, 239, 0.4)",
                         borderRadius: "20px",
@@ -435,7 +382,6 @@ export default function Analytics() {
                     {/* AI Completed Tasks */}
                     <div
                       style={{
-                        flex: 1,
                         background: "rgba(105, 56, 239, 0.2)",
                         border: "1px solid rgba(105, 56, 239, 0.4)",
                         borderRadius: "20px",
@@ -502,7 +448,6 @@ export default function Analytics() {
                     {/* Company Adoption Rate */}
                     <div
                       style={{
-                        flex: 1,
                         background: "rgba(105, 56, 239, 0.2)",
                         border: "1px solid rgba(105, 56, 239, 0.4)",
                         borderRadius: "20px",
@@ -556,14 +501,11 @@ export default function Analytics() {
 
                   {/* Chart */}
                   <div
-                    style={{
-                      padding: "32px",
-                      height: "400px",
-                    }}
+                    className="p-4 md:p-8 h-80 md:h-96"
                   >
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
-                        data={chartData}
+                        data={isMobile ? chartData.slice(-2) : chartData}
                         margin={{
                           top: 20,
                           right: 30,

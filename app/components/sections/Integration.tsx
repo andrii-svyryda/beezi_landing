@@ -32,39 +32,16 @@ export default function Integration() {
   ];
 
   return (
-    <section
-      style={{
-        width: "100%",
-        padding: "120px 0",
-      }}
-    >
+    <section className="w-full py-16 md:py-28 lg:py-30">
       <Container>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "80px",
-            width: "100%",
-          }}
-        >
+        <div className="flex flex-col items-center gap-12 md:gap-20 w-full">
           {/* Title Section */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "24px",
-              alignItems: "center",
-              maxWidth: "800px",
-            }}
-          >
+          <div className="flex flex-col gap-4 md:gap-6 items-center max-w-3xl">
             <h2
+              className="text-3xl md:text-5xl font-bold text-center"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                fontWeight: 700,
-                fontSize: "48px",
                 lineHeight: "1em",
-                textAlign: "center",
                 background:
                   "linear-gradient(180deg, #FAFAFA 0%, rgba(255, 255, 255, 0.8) 100%)",
                 WebkitBackgroundClip: "text",
@@ -76,12 +53,11 @@ export default function Integration() {
               Seamless Integration
             </h2>
             <p
+              className="text-base md:text-lg text-center"
               style={{
                 fontFamily: "Geist, sans-serif",
                 fontWeight: 400,
-                fontSize: "18px",
                 lineHeight: "1.5555555555555556em",
-                textAlign: "center",
                 color: "rgba(255, 255, 255, 0.8)",
                 margin: 0,
               }}
@@ -101,48 +77,21 @@ export default function Integration() {
             }}
           >
             {/* Integration Items Row */}
-            <div
-              style={{
-                display: "flex",
-                gap: "24px",
-                width: "100%",
-                marginBottom: "40px",
-              }}
-            >
+            <div className="flex flex-col md:flex-row gap-6 md:gap-6 w-full mb-8 md:mb-10">
               {integrations.map((integration, index) => (
                 <div
                   key={integration.name}
-                  style={{
-                    display: "flex",
-                    gap: "24px",
-                    flex: 1,
-                  }}
+                  className="flex flex-col md:flex-row gap-6 flex-1"
                 >
                   {/* Integration Item */}
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "16px",
-                      flex: 1,
-                    }}
-                  >
+                  <div className="flex flex-col gap-4 flex-1">
                     {/* Content */}
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: "12px",
-                      }}
-                    >
+                    <div className="flex flex-col items-center gap-3">
                       <h3
+                        className="text-lg md:text-xl font-bold text-center"
                         style={{
                           fontFamily: "Geist, sans-serif",
-                          fontWeight: 700,
-                          fontSize: "20px",
                           lineHeight: "1em",
-                          textAlign: "center",
                           color: "#FAFAFA",
                           margin: 0,
                         }}
@@ -150,12 +99,11 @@ export default function Integration() {
                         {integration.name}
                       </h3>
                       <p
+                        className="text-sm text-center"
                         style={{
                           fontFamily: "Geist, sans-serif",
                           fontWeight: 400,
-                          fontSize: "14px",
                           lineHeight: "1.4285714285714286em",
-                          textAlign: "center",
                           color: "rgba(255, 255, 255, 0.5)",
                           margin: 0,
                         }}
@@ -168,10 +116,9 @@ export default function Integration() {
                   {/* Separator Line (except after last item) */}
                   {index < integrations.length - 1 && (
                     <div
+                      className="hidden md:block w-px flex-shrink-0"
                       style={{
-                        width: "1px",
                         background: "rgba(255, 255, 255, 0.1)",
-                        flexShrink: 0,
                       }}
                     />
                   )}
@@ -179,17 +126,18 @@ export default function Integration() {
               ))}
             </div>
 
-            {/* Integration Preview Card */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "0",
-                width: "916px",
-                margin: "0 auto",
-              }}
-            >
-              <GlassCard className="w-full">
+            {/* Integration Preview Card - Scrollable on mobile */}
+            <div className="w-full overflow-x-auto md:overflow-x-visible">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "0",
+                  width: "916px",
+                  margin: "0 auto",
+                }}
+              >
+                <GlassCard className="w-full">
                 <div
                   style={{
                     width: "100%",
@@ -671,27 +619,18 @@ export default function Integration() {
                   </div>
                 </div>
               </GlassCard>
+              </div>
             </div>
 
             {/* Bottom Text and CTA - Outside the card */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "60px",
-                marginTop: "20px",
-              }}
-            >
+            <div className="flex flex-col items-center gap-10 md:gap-15 mt-5">
               <p
+                className="text-sm uppercase text-center"
                 style={{
                   fontFamily: "Geist Mono, monospace",
-                  fontSize: "14px",
                   fontWeight: 400,
                   lineHeight: "1.4285714285714286em",
-                  textTransform: "uppercase",
                   color: "rgba(255, 255, 255, 0.5)",
-                  textAlign: "center",
                   margin: 0,
                 }}
               >

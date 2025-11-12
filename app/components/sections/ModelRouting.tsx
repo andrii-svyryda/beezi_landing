@@ -4,12 +4,7 @@ import Image from "next/image";
 
 export default function ModelRouting() {
   return (
-    <section
-      style={{
-        paddingTop: "112px",
-        paddingBottom: "112px",
-      }}
-    >
+    <section className="pt-12 pb-16 md:pt-28 md:pb-28">
       <Container>
         <div
           style={{
@@ -21,36 +16,26 @@ export default function ModelRouting() {
         >
           {/* Main Card */}
           <GlassCard
-            padding="8px 8px 22px 8px"
+            padding="8px 8px 8px 8px"
             style={{
               boxShadow:
                 "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 24px 0px rgba(105, 56, 239, 0.12)",
             }}
           >
             <div
+              className="p-6 md:p-12 lg:p-16"
               style={{
                 background: "#0D081B",
                 borderRadius: "12px",
-                padding: "64px 48px",
               }}
             >
               {/* Section Title */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "24px",
-                  marginBottom: "48px",
-                }}
-              >
+              <div className="flex flex-col items-center gap-4 md:gap-6 mb-8 md:mb-12">
                 <h2
+                  className="text-3xl md:text-5xl font-bold text-center"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
-                    fontWeight: 700,
-                    fontSize: "48px",
                     lineHeight: "1em",
-                    textAlign: "center",
                     background:
                       "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                     WebkitBackgroundClip: "text",
@@ -61,13 +46,11 @@ export default function ModelRouting() {
                   Smart Model Routing
                 </h2>
                 <p
+                  className="text-base md:text-lg text-center max-w-xl"
                   style={{
                     fontFamily: "Geist, sans-serif",
-                    fontSize: "18px",
                     lineHeight: "1.5555em",
-                    textAlign: "center",
                     color: "rgba(255, 255, 255, 0.8)",
-                    maxWidth: "600px",
                   }}
                 >
                   Chooses the right model for each task — balancing reasoning
@@ -77,15 +60,7 @@ export default function ModelRouting() {
               </div>
 
               {/* Model Logos Row */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "20px",
-                  width: "100%",
-                }}
-              >
+              <div className="flex flex-col md:flex-row justify-center items-center gap-5 w-full">
                 {/* Anthropic/Claude Logo Card */}
                 <div
                   style={{
@@ -234,23 +209,14 @@ export default function ModelRouting() {
 
               {/* Separator Line */}
               <div
+                className="w-full h-px mt-8 md:mt-12"
                 style={{
-                  width: "100%",
-                  height: "1px",
                   background: "rgba(255, 255, 255, 0.1)",
-                  marginTop: "48px",
                 }}
               />
 
               {/* Feature Items */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: "24px",
-                  marginTop: "48px",
-                  width: "100%",
-                }}
-              >
+              <div className="flex flex-col md:flex-row gap-6 mt-8 md:mt-12 w-full">
                 {/* Feature 1 */}
                 <div
                   style={{
@@ -294,10 +260,9 @@ export default function ModelRouting() {
                     }}
                   >
                     <h3
+                      className="text-lg md:text-xl font-bold"
                       style={{
                         fontFamily: "Geist, sans-serif",
-                        fontWeight: 700,
-                        fontSize: "20px",
                         lineHeight: "1em",
                         color: "#FAFAFA",
                         margin: 0,
@@ -306,10 +271,10 @@ export default function ModelRouting() {
                       Optimized Model Selection
                     </h3>
                     <p
+                      className="text-sm"
                       style={{
                         fontFamily: "Geist, sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
                         lineHeight: "1.4285714285714286em",
                         color: "rgba(255, 255, 255, 0.5)",
                         margin: 0,
@@ -364,10 +329,9 @@ export default function ModelRouting() {
                     }}
                   >
                     <h3
+                      className="text-lg md:text-xl font-bold"
                       style={{
                         fontFamily: "Geist, sans-serif",
-                        fontWeight: 700,
-                        fontSize: "20px",
                         lineHeight: "1em",
                         color: "#FAFAFA",
                         margin: 0,
@@ -376,10 +340,10 @@ export default function ModelRouting() {
                       Adaptive Model Routing
                     </h3>
                     <p
+                      className="text-sm"
                       style={{
                         fontFamily: "Geist, sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
                         lineHeight: "1.4285714285714286em",
                         color: "rgba(255, 255, 255, 0.5)",
                         margin: 0,
@@ -434,10 +398,9 @@ export default function ModelRouting() {
                     }}
                   >
                     <h3
+                      className="text-lg md:text-xl font-bold"
                       style={{
                         fontFamily: "Geist, sans-serif",
-                        fontWeight: 700,
-                        fontSize: "20px",
                         lineHeight: "1em",
                         color: "#FAFAFA",
                         margin: 0,
@@ -446,10 +409,10 @@ export default function ModelRouting() {
                       Cost-Aware Model Control
                     </h3>
                     <p
+                      className="text-sm"
                       style={{
                         fontFamily: "Geist, sans-serif",
                         fontWeight: 400,
-                        fontSize: "14px",
                         lineHeight: "1.4285714285714286em",
                         color: "rgba(255, 255, 255, 0.5)",
                         margin: 0,
