@@ -5,9 +5,9 @@ export default function Founder() {
   return (
     <section className="w-full py-28">
       <Container>
-        <div className="flex items-stretch gap-12 w-full">
+        <div className="flex flex-col md:flex-row items-stretch gap-12 w-full">
           {/* Left Side - Heading and Text */}
-          <div className="flex flex-col gap-6 flex-1">
+          <div className="flex flex-col gap-6 flex-1 text-center md:text-left">
             <h2
               className="text-5xl font-bold leading-normal"
               style={{

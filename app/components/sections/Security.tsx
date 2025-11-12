@@ -27,9 +27,9 @@ export default function Security() {
 
           {/* Content */}
           <div className="w-full flex flex-col items-center gap-12 bg-white/[0.02] border border-white/10 rounded-xl p-0 overflow-hidden">
-            <div className="flex w-full">
+            <div className="flex flex-col md:flex-row w-full">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-stretch flex-1">
+                <div key={index} className="flex flex-col md:flex-row md:items-stretch flex-1">
                   {/* Column */}
                   <div className="flex-1 flex flex-col items-center gap-4 py-9 px-6">
                     <Image
@@ -48,7 +48,7 @@ export default function Security() {
 
                   {/* Divider (except after last item) */}
                   {index < features.length - 1 && (
-                    <div className="w-px bg-white/10 self-stretch" />
+                    <div className="h-px md:h-auto md:w-px bg-white/10 md:self-stretch" />
                   )}
                 </div>
               ))}

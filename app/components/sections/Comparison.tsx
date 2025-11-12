@@ -1,3 +1,4 @@
+"use client";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
@@ -83,14 +84,14 @@ export default function Comparison() {
                   {difficultyLevels.map((item, index) => (
                     <div
                       key={index}
-                      className="flex-1 flex flex-col items-center gap-2.5 p-5 md:px-8 border-b md:border-b"
+                      className={`flex-1 flex flex-col items-center gap-2.5 p-5 md:px-8 border-b ${
+                        index !== difficultyLevels.length - 1
+                          ? "md:border-r"
+                          : ""
+                      }`}
                       style={{
                         background: "rgba(255, 255, 255, 0.1)",
-                        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-                        borderRight:
-                          index === difficultyLevels.length - 1
-                            ? "none"
-                            : "1px solid rgba(255, 255, 255, 0.1)",
+                        borderColor: "rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       <div
@@ -129,12 +130,9 @@ export default function Comparison() {
                       key={index}
                       className={`p-4 xl:p-7 flex-1 ${
                         index !== tasks.length - 1
-                          ? "border-b md:border-b-0 md:border-r"
+                          ? "border-b md:border-b-0 md:border-r border-white/20"
                           : ""
                       }`}
-                      style={{
-                        borderColor: "rgba(255, 255, 255, 0.2)",
-                      }}
                     >
                       {/* Task Card */}
                       <div
