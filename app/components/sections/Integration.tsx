@@ -97,7 +97,6 @@ export default function Integration() {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "40px",
               width: "100%",
             }}
           >
@@ -107,6 +106,7 @@ export default function Integration() {
                 display: "flex",
                 gap: "24px",
                 width: "100%",
+                marginBottom: "40px",
               }}
             >
               {integrations.map((integration, index) => (
@@ -667,6 +667,63 @@ export default function Integration() {
                       Process steps here...
                     </span>
                   </div>
+                </div>
+              </GlassCard>
+            </div>
+
+            {/* Bottom Text and CTA - Outside the card */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "60px",
+                marginTop: "20px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Geist Mono, monospace",
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  lineHeight: "1.4285714285714286em",
+                  textTransform: "uppercase",
+                  color: "rgba(255, 255, 255, 0.5)",
+                  textAlign: "center",
+                  margin: 0,
+                }}
+              >
+                Other integrations will be available soon...
+              </p>
+
+              {/* Book a demo Button */}
+              <GlassCard
+                borderRadius="12px"
+                style={{ width: "160px" }}
+                className="transition-all hover:scale-105 cursor-pointer"
+              >
+                <div
+                  className="relative"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
+                    borderRadius: "8px",
+                    padding: "12px 20px",
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    textAlign: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      lineHeight: "1.5em",
+                      color: "#6938EF",
+                      textAlign: "center",
+                    }}
+                  >
+                    Book a demo
+                  </span>
                 </div>
               </GlassCard>
             </div>

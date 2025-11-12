@@ -21,7 +21,7 @@ export default function ModelRouting() {
         >
           {/* Main Card */}
           <GlassCard
-            padding="8px"
+            padding="8px 8px 22px 8px"
             style={{
               boxShadow:
                 "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 24px 0px rgba(105, 56, 239, 0.12)",
@@ -82,7 +82,7 @@ export default function ModelRouting() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  gap: "40px",
+                  gap: "20px",
                   width: "100%",
                 }}
               >
@@ -130,7 +130,7 @@ export default function ModelRouting() {
                 {/* Purple Slash Separator */}
                 <div
                   style={{
-                    width: "2px",
+                    width: "1px",
                     height: "24px",
                     background: "#6938EF",
                     transform: "rotate(45deg)",
@@ -182,7 +182,7 @@ export default function ModelRouting() {
                 {/* Purple Slash Separator */}
                 <div
                   style={{
-                    width: "2px",
+                    width: "1px",
                     height: "24px",
                     background: "#6938EF",
                     transform: "rotate(45deg)",

@@ -5,6 +5,9 @@ import FeatureCards from "./components/sections/FeatureCards";
 import Features from "./components/sections/Features";
 import ModelRouting from "./components/sections/ModelRouting";
 import Integration from "./components/sections/Integration";
+import Timeline from "./components/sections/Timeline";
+import Analytics from "./components/sections/Analytics";
+import Comparison from "./components/sections/Comparison";
 import Demo from "./components/sections/Demo";
 import Benefits from "./components/sections/Benefits";
 import Testimonials from "./components/sections/Testimonials";
@@ -23,6 +26,9 @@ export default function Home() {
         <Demo />
         <ModelRouting />
         <Integration />
+        <Timeline />
+        <Analytics />
+        <Comparison />
         <Benefits />
         <Testimonials />
         <CTA />
