@@ -46,7 +46,7 @@ export default function Comparison() {
       {/* Title - with container on desktop */}
       <Container>
         <h2
-          className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20"
+          className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20 max-w-[798px] mx-auto"
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             lineHeight: "1em",

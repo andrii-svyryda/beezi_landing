@@ -41,7 +41,7 @@ export default function Integration() {
               className="text-3xl md:text-5xl font-bold text-center"
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
-                lineHeight: "1em",
+                lineHeight: "1.2em",
                 background:
                   "linear-gradient(180deg, #FAFAFA 0%, rgba(255, 255, 255, 0.8) 100%)",
                 WebkitBackgroundClip: "text",
@@ -57,7 +57,7 @@ export default function Integration() {
               style={{
                 fontFamily: "Geist, sans-serif",
                 fontWeight: 400,
-                lineHeight: "1.5555555555555556em",
+                lineHeight: "1.5em",
                 color: "rgba(255, 255, 255, 0.8)",
                 margin: 0,
               }}

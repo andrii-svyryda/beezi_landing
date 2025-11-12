@@ -17,6 +17,7 @@ export default function Founder() {
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                lineHeight: "1.1em",
               }}
             >
               Made by engineers,

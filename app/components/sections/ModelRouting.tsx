@@ -30,12 +30,12 @@ export default function ModelRouting() {
               }}
             >
               {/* Section Title */}
-              <div className="flex flex-col items-center gap-4 md:gap-6 mb-8 md:mb-12">
+              <div className="flex flex-col items-center gap-2 md:gap-6 mb-8 md:mb-12">
                 <h2
                   className="text-3xl md:text-5xl font-bold text-center"
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
-                    lineHeight: "1em",
+                    lineHeight: "1.2em",
                     background:
                       "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                     WebkitBackgroundClip: "text",

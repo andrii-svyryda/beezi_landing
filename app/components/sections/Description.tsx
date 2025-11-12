@@ -22,7 +22,8 @@ export default function Description() {
               className="text-center font-bold leading-none"
               style={{
                 fontSize: "48px",
-                lineHeight: "1em",
+                lineHeight: "1.4em",
+                fontFamily: "Space Grotesk, sans-serif",
                 background:
                   "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                 WebkitBackgroundClip: "text",

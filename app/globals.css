@@ -13,6 +13,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #050011;
   overflow-x: hidden;
+  font-family: "Geist";
 }
 
 html {

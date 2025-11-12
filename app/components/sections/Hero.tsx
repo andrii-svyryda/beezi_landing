@@ -49,9 +49,10 @@ export default function Hero() {
             >
               {/* Heading */}
               <h1
-                className="md:text-7xl text-5xl text-center font-bold leading-none"
+                className="md:text-7xl text-5xl text-center font-bold"
                 style={{
                   lineHeight: "1em",
+                  fontFamily: "Geist",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                   WebkitBackgroundClip: "text",

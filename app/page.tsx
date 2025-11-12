@@ -16,6 +16,7 @@ import Founder from "./components/sections/Founder";
 import Partners from "./components/sections/Partners";
 import CTA from "./components/sections/CTA";
 import Footer from "./components/sections/Footer";
+import "./globals.css";
 
 export default function Home() {
   return (

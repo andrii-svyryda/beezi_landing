@@ -76,7 +76,7 @@ export default function Analytics() {
                 className="text-3xl md:text-5xl font-bold text-center"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
-                  lineHeight: "1em",
+                  lineHeight: "1.2em",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
                   WebkitBackgroundClip: "text",
