@@ -35,12 +35,56 @@ export default function Timeline() {
     <section className="w-full py-16 md:py-28">
       <Container>
         <div className="flex flex-col md:flex-row gap-8 md:gap-20 w-full">
-          {/* Left wrapper for desktop to keep title and items together */}
-          <div className="flex flex-col gap-8 md:gap-15 flex-1 contents md:flex">
-            {/* Title Section - Order 1 on mobile, stays with left on desktop */}
-            <div className="flex flex-col gap-4 md:gap-6">
+          {/* Title Section - Order 1 on mobile */}
+          <div className="flex flex-col gap-4 md:gap-6 md:hidden">
+            <h2
+              className="text-3xl font-bold text-center"
+              style={{
+                fontFamily: "Space Grotesk, sans-serif",
+                lineHeight: "1em",
+                background:
+                  "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                margin: 0,
+              }}
+            >
+              From Setup to Shipping in 20 Minutes
+            </h2>
+            <p
+              className="text-base text-center"
+              style={{
+                fontFamily: "Geist, sans-serif",
+                fontWeight: 400,
+                lineHeight: "1.5555555555555556em",
+                color: "rgba(255, 255, 255, 0.8)",
+                margin: 0,
+              }}
+            >
+              Beezi integrates fast, fits naturally into your workflow, and
+              starts delivering value right away — no disruption, no long
+              onboarding, no retraining needed.
+            </p>
+          </div>
+
+          {/* Gray Rectangle - Order 2 on mobile */}
+          <div
+            className="w-full md:w-[616px] h-[400px] md:h-[616px] md:order-last"
+            style={{
+              background: "rgba(255, 255, 255, 0.1)",
+              borderRadius: "20px",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              flexShrink: 0,
+            }}
+          />
+
+          {/* Left wrapper for desktop - contains title and items */}
+          <div className="flex flex-col gap-8 md:gap-15 flex-1">
+            {/* Title Section for desktop only */}
+            <div className="hidden md:flex flex-col gap-4 md:gap-6">
               <h2
-                className="text-3xl md:text-5xl font-bold text-center md:text-left"
+                className="text-5xl font-bold text-left"
                 style={{
                   fontFamily: "Space Grotesk, sans-serif",
                   lineHeight: "1em",
@@ -55,7 +99,7 @@ export default function Timeline() {
                 From Setup to Shipping in 20 Minutes
               </h2>
               <p
-                className="text-base md:text-lg text-center md:text-left"
+                className="text-lg text-left"
                 style={{
                   fontFamily: "Geist, sans-serif",
                   fontWeight: 400,
@@ -69,17 +113,6 @@ export default function Timeline() {
                 onboarding, no retraining needed.
               </p>
             </div>
-
-            {/* Gray Rectangle - Order 2 on mobile (between title and items) */}
-            <div
-              className="w-full md:w-[616px] h-[400px] md:h-[616px] md:order-last"
-              style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                borderRadius: "20px",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                flexShrink: 0,
-              }}
-            />
 
             {/* Timeline Items - Order 3 on mobile */}
             <div className="flex flex-col gap-4">

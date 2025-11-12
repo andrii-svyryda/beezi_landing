@@ -7,7 +7,8 @@ export default function Features() {
       title: "Intelligent Code Generation",
       description:
         "Turn plain language into production-ready code. Build features, modules, or refactor legacy code tailored to your style. Initiated Learning from Your Codebase",
-      iconPath: "M2 1.5L10 1.5L18 1.5L18 9.5L18 17.5L10 21L2 17.5L2 9.5L2 1.5Z M8 13.5L8 9.5L12 9.5L12 13.5L8 13.5Z M6 8L6 4L10 4L10 8L6 8Z M12 8L12 4L16 4L16 8L12 8Z",
+      iconPath:
+        "M2 1.5L10 1.5L18 1.5L18 9.5L18 17.5L10 21L2 17.5L2 9.5L2 1.5Z M8 13.5L8 9.5L12 9.5L12 13.5L8 13.5Z M6 8L6 4L10 4L10 8L6 8Z M12 8L12 4L16 4L16 8L12 8Z",
     },
     {
       title: "Initiated Learning from Your Codebase",
@@ -65,7 +66,10 @@ export default function Features() {
             <div className="flex flex-col md:flex-row w-full gap-8 md:gap-12">
               {features.map((feature, index) => (
                 <>
-                  <div key={index} className="flex flex-col gap-6 flex-1 text-white items-center md:items-start">
+                  <div
+                    key={index}
+                    className="flex flex-col gap-6 flex-1 text-white items-center md:items-start"
+                  >
                     {/* Icon Box */}
                     <div
                       className="rounded-xl p-3 w-fit"
@@ -123,9 +127,9 @@ export default function Features() {
 
             {/* Actions */}
             <div className="flex gap-4 pt-4">
-              <Link href="/book-a-demo">
+              <Link href="/book-a-demo" className="w-full md:w-[160px]">
                 <div
-                  className="rounded-xl p-1 w-40"
+                  className="rounded-xl p-1 w-full md:w-[160px]"
                   style={{
                     background: "rgba(255, 255, 255, 0.1)",
                     border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -161,4 +165,3 @@ export default function Features() {
     </section>
   );
 }
-

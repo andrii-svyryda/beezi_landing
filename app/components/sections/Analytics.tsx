@@ -68,7 +68,7 @@ export default function Analytics() {
   return (
     <section className="w-full py-16 md:py-28">
       <Container>
-        <div className="flex flex-col gap-12 md:gap-16 w-full">
+        <div className="flex flex-col gap-6 md:gap-16 w-full">
           {/* Title Section */}
           <div className="flex flex-col gap-6 md:gap-9 items-center">
             <div className="flex flex-col gap-4 md:gap-6 items-center max-w-3xl">
@@ -102,11 +102,10 @@ export default function Analytics() {
             </div>
 
             {/* Book a demo Button */}
-            <Link href="/book-a-demo">
+            <Link href="/book-a-demo" className="w-full md:w-[160px]">
               <GlassCard
                 borderRadius="12px"
-                style={{ width: "160px" }}
-                className="transition-all hover:scale-105 cursor-pointer"
+                className="transition-all hover:scale-105 cursor-pointer w-full md:w-[160px]"
               >
                 <div
                   className="relative"
@@ -500,9 +499,7 @@ export default function Analytics() {
                   </div>
 
                   {/* Chart */}
-                  <div
-                    className="p-4 md:p-8 h-80 md:h-96"
-                  >
+                  <div className="p-4 md:p-8 h-80 md:h-96">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
                         data={isMobile ? chartData.slice(-2) : chartData}

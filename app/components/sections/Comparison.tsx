@@ -322,11 +322,10 @@ export default function Comparison() {
             </div>
             {/* Book a demo Button */}
             <div className="flex justify-center">
-              <Link href="/book-a-demo">
+              <Link href="/book-a-demo" className="w-full md:w-[160px]">
                 <GlassCard
                   borderRadius="12px"
-                  style={{ width: "160px" }}
-                  className="transition-all hover:scale-105 cursor-pointer"
+                  className="transition-all hover:scale-105 cursor-pointer w-full md:w-[160px]"
                 >
                   <div
                     className="relative"

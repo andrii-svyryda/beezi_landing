@@ -65,12 +65,12 @@ export default function CTA() {
               />
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col items-center w-full gap-8 py-16 px-12">
+              <div className="relative z-10 flex flex-col items-center w-full gap-8 py-16 px-3 md:px-12">
                 {/* Section Title */}
                 <div className="w-full max-w-[768px] flex flex-col items-center gap-4">
                   <div className="flex flex-col items-center w-full gap-6">
                     <h2
-                      className="text-5xl font-bold text-center leading-normal w-full"
+                      className="md:text-5xl text-4xl font-bold text-center leading-normal w-full"
                       style={{
                         fontFamily: "Space Grotesk, sans-serif",
                         background:

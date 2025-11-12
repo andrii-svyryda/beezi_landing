@@ -46,9 +46,8 @@ export default function Hero() {
             <div className="flex flex-col" style={{ gap: "24px" }}>
               {/* Heading */}
               <h1
-                className="text-center font-bold leading-none"
+                className="md:text-7xl text-5xl text-center font-bold leading-none"
                 style={{
-                  fontSize: "72px",
                   lineHeight: "1em",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",

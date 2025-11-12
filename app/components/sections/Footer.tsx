@@ -16,16 +16,16 @@ export default function Footer() {
                 height={164}
                 style={{ width: "480px", height: "164px" }}
               />
-              <p className="text-sm text-white/80 leading-normal">
+              <p className="text-sm text-white/80 leading-normal text-center md:text-left">
                 Delegate the tedious work, accelerate delivery, improve code
                 quality, and unlock measurable savings
               </p>
             </div>
 
             {/* Contact Info */}
-            <div className="flex items-center gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
               {/* Links */}
-              <div className="flex gap-12">
+              <div className="flex flex-col md:flex-row gap-6 md:gap-12">
                 {/* Email */}
                 <a
                   href="mailto:hello@beezi.ai"
@@ -67,14 +67,14 @@ export default function Footer() {
           <div className="w-full h-px bg-white/12" />
 
           {/* Bottom Row */}
-          <div className="flex justify-between items-center w-full gap-6">
+          <div className="flex flex-col md:flex-row md:justify-between items-center w-full gap-6">
             {/* Copyright */}
-            <p className="text-sm text-[#FAFAFA] leading-normal">
+            <p className="text-sm text-[#FAFAFA] leading-normal text-center md:text-left">
               Copyright © 2025 beezi.ai. All rights reserved.
             </p>
 
             {/* Footer Links */}
-            <div className="flex gap-6">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
               <a
                 href="#"
                 className="text-sm text-[#FAFAFA] leading-normal underline hover:opacity-80 transition-opacity"
@@ -102,4 +102,3 @@ export default function Footer() {
     </footer>
   );
 }
-
