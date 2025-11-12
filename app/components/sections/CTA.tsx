@@ -186,13 +186,12 @@ export default function CTA() {
                     {/* Submit Button */}
                     <div className="flex flex-col items-center w-full gap-2 pt-4">
                       <div
-                        className="p-1 rounded-xl"
+                        className="p-1 rounded-xl w-full md:w-[160px]"
                         style={{
                           background: "rgba(255, 255, 255, 0.1)",
                           border: "1px solid rgba(255, 255, 255, 0.1)",
                           boxShadow:
                             "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(105, 56, 239, 0.12)",
-                          width: "160px",
                         }}
                       >
                         <button

@@ -126,7 +126,7 @@ export default function Features() {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex justify-center gap-4 pt-4 w-full">
               <Link href="/book-a-demo" className="w-full md:w-[160px]">
                 <div
                   className="rounded-xl p-1 w-full md:w-[160px]"

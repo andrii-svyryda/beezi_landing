@@ -31,7 +31,7 @@ export default function Hero() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: 0.5,
+          opacity: 0.8,
         }}
       />
 
@@ -43,7 +43,10 @@ export default function Hero() {
         >
           {/* Text Content */}
           <div className="flex flex-col items-center" style={{ gap: "40px" }}>
-            <div className="flex flex-col" style={{ gap: "24px" }}>
+            <div
+              className="flex flex-col max-w-[668px]"
+              style={{ gap: "24px" }}
+            >
               {/* Heading */}
               <h1
                 className="md:text-7xl text-5xl text-center font-bold leading-none"

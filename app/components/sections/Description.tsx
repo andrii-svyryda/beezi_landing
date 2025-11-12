@@ -2,12 +2,7 @@ import Container from "../Container";
 
 export default function Description() {
   return (
-    <section
-      style={{
-        paddingTop: "96px",
-        paddingBottom: "96px",
-      }}
-    >
+    <section className="pb-8 md:pb-24 md:pt-24">
       <Container>
         <div
           className="flex flex-col items-center"
@@ -54,4 +49,3 @@ export default function Description() {
     </section>
   );
 }
-

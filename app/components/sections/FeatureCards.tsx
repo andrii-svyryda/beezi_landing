@@ -44,7 +44,7 @@ export default function FeatureCards() {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="pt-16 md:py-24">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
           {features.map((feature, index) => (

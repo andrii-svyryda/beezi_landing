@@ -33,10 +33,7 @@ export default function BookADemo() {
       <Navbar hideBookButton={true} />
 
       {/* Header Section */}
-      <section
-        className="w-full flex flex-col items-center"
-        style={{ padding: "184px 64px 88px" }}
-      >
+      <section className="w-full flex flex-col items-center md:px-16 pt-48 pb-24">
         <Container>
           <div className="flex flex-col items-center gap-20">
             <div className="flex flex-col items-center gap-6 w-full max-w-[620px]">
@@ -65,7 +62,7 @@ export default function BookADemo() {
       </section>
 
       {/* Form Section */}
-      <section className="w-full" style={{ padding: "0px 64px" }}>
+      <section className="w-full md:px-16">
         <Container maxWidth="904px">
           <div className="flex flex-col items-center w-full gap-20">
             <div className="flex items-stretch gap-4 w-full">
@@ -80,7 +77,7 @@ export default function BookADemo() {
                 }}
               >
                 {/* Card */}
-                <div className="flex flex-col items-center w-full rounded-xl py-16 px-16 bg-[#0D081B]">
+                <div className="flex flex-col items-center w-full rounded-xl md:py-16 md:px-16 py-8 px-4 bg-[#0D081B]">
                   {/* Content */}
                   <div className="flex flex-col items-center w-full gap-8">
                     {/* Section Title */}

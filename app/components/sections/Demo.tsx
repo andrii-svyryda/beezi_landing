@@ -308,7 +308,7 @@ export default function Demo() {
                   </GlassCard>
 
                   {/* Description - below image on mobile */}
-                  <div className="md:hidden mt-6">
+                  <div className="md:hidden mt-4 md:mt-6">
                     <GlassCard padding="8px">
                       <div
                         className="flex items-center gap-3 p-4 rounded-xl"

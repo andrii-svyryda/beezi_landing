@@ -3,7 +3,7 @@ import Container from "../Container";
 
 export default function Founder() {
   return (
-    <section className="w-full py-28">
+    <section className="w-full pt-28 pb-0 md:pb-28">
       <Container>
         <div className="flex flex-col md:flex-row items-stretch gap-12 w-full">
           {/* Left Side - Heading and Text */}

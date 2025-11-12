@@ -50,14 +50,11 @@ export default function Comparison() {
           style={{
             fontFamily: "Space Grotesk, sans-serif",
             lineHeight: "1em",
-            background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "white",
           }}
         >
-          Beezi compresses your dev time up to 10x
+          Beezi compresses your dev time up to{" "}
+          <span className="text-[#6938EF]">10x</span>
         </h2>
 
         {/* Main content - full width on mobile, container on desktop */}

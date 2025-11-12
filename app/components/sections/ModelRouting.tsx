@@ -23,7 +23,7 @@ export default function ModelRouting() {
             }}
           >
             <div
-              className="p-6 md:p-12 lg:p-16"
+              className="py-16 p-4 md:p-12 lg:p-16"
               style={{
                 background: "#0D081B",
                 borderRadius: "12px",

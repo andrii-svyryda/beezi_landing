@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-white/12" />
+          <div className="w-full h-[1px] bg-gray-50/20" />
 
           {/* Bottom Row */}
           <div className="flex flex-col md:flex-row md:justify-between items-center w-full gap-6">
