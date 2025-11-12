@@ -4,6 +4,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Beezi - Landing Page',
   description: 'Welcome to Beezi',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({

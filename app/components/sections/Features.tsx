@@ -1,4 +1,5 @@
 import Container from "../Container";
+import Link from "next/link";
 
 export default function Features() {
   const features = [
@@ -203,44 +204,46 @@ export default function Features() {
                 paddingTop: "16px",
               }}
             >
-              <div
-                style={{
-                  background: "rgba(255, 255, 255, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderRadius: "12px",
-                  padding: "4px",
-                  width: "160px",
-                  boxShadow:
-                    "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(105, 56, 239, 0.12)",
-                }}
-              >
+              <Link href="/book-a-demo">
                 <div
                   style={{
-                    background:
-                      "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
-                    border:
-                      "1px solid linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 100%)",
-                    borderRadius: "8px",
-                    padding: "12px 24px",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    cursor: "pointer",
+                    background: "rgba(255, 255, 255, 0.1)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    borderRadius: "12px",
+                    padding: "4px",
+                    width: "160px",
+                    boxShadow:
+                      "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(105, 56, 239, 0.12)",
                   }}
                 >
-                  <span
+                  <div
                     style={{
-                      fontFamily: "Geist, sans-serif",
-                      fontWeight: 500,
-                      fontSize: "16px",
-                      lineHeight: "1.5em",
-                      color: "#6938EF",
+                      background:
+                        "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
+                      border:
+                        "1px solid linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 100%)",
+                      borderRadius: "8px",
+                      padding: "12px 24px",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      cursor: "pointer",
                     }}
                   >
-                    Book a demo
-                  </span>
+                    <span
+                      style={{
+                        fontFamily: "Geist, sans-serif",
+                        fontWeight: 500,
+                        fontSize: "16px",
+                        lineHeight: "1.5em",
+                        color: "#6938EF",
+                      }}
+                    >
+                      Book a demo
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

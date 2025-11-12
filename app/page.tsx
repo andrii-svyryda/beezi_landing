@@ -8,9 +8,12 @@ import Integration from "./components/sections/Integration";
 import Timeline from "./components/sections/Timeline";
 import Analytics from "./components/sections/Analytics";
 import Comparison from "./components/sections/Comparison";
+import Security from "./components/sections/Security";
 import Demo from "./components/sections/Demo";
 import Benefits from "./components/sections/Benefits";
 import Testimonials from "./components/sections/Testimonials";
+import Founder from "./components/sections/Founder";
+import Partners from "./components/sections/Partners";
 import CTA from "./components/sections/CTA";
 import Footer from "./components/sections/Footer";
 
@@ -29,8 +32,9 @@ export default function Home() {
         <Timeline />
         <Analytics />
         <Comparison />
-        <Benefits />
-        <Testimonials />
+        <Security />
+        <Founder />
+        <Partners />
         <CTA />
       </main>
       <Footer />

@@ -9,7 +9,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #0A0A0A;
+  background: #050011;
 }
 
 html {
@@ -45,3 +45,15 @@ html {
   animation: spin 1s linear infinite;
 }
 
+/* Container responsive padding */
+.container-responsive-padding {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
+@media (max-width: 1200px) {
+  .container-responsive-padding {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}

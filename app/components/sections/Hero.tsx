@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import GlassCard from "../GlassCard";
 import Container from "../Container";
 
@@ -75,35 +76,37 @@ export default function Hero() {
 
             {/* Button */}
             <div className="flex" style={{ paddingTop: "16px" }}>
-              <GlassCard
-                borderRadius="12px"
-                style={{ width: "160px" }}
-                className="transition-all hover:scale-105 cursor-pointer"
-              >
-                <div
-                  className="relative"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
-                    borderRadius: "8px",
-                    padding: "12px 20px",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
-                    textAlign: "center",
-                  }}
+              <Link href="/book-a-demo">
+                <GlassCard
+                  borderRadius="12px"
+                  style={{ width: "160px" }}
+                  className="transition-all hover:scale-105 cursor-pointer"
                 >
-                  <span
+                  <div
+                    className="relative"
                     style={{
-                      fontSize: "16px",
-                      fontWeight: 500,
-                      lineHeight: "1.5em",
-                      color: "#6938EF",
+                      background:
+                        "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
+                      borderRadius: "8px",
+                      padding: "12px 20px",
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
                       textAlign: "center",
                     }}
                   >
-                    Book a demo
-                  </span>
-                </div>
-              </GlassCard>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        fontWeight: 500,
+                        lineHeight: "1.5em",
+                        color: "#6938EF",
+                        textAlign: "center",
+                      }}
+                    >
+                      Book a demo
+                    </span>
+                  </div>
+                </GlassCard>
+              </Link>
             </div>
           </div>
 

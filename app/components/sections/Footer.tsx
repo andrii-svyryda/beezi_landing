@@ -1,63 +1,101 @@
 import Container from "../Container";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12">
+    <footer className="w-full py-20">
       <Container>
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Beezi
+        <div className="flex flex-col items-center gap-12 w-full">
+          {/* Top Section - Logo and Tagline */}
+          <div className="flex flex-col items-center gap-12 w-full">
+            <div className="flex flex-col items-center gap-3">
+              <Image
+                src="/beezi-logo-footer.svg"
+                alt="Beezi Logo"
+                width={480}
+                height={164}
+                style={{ width: "480px", height: "164px" }}
+              />
+              <p className="text-sm text-white/80 leading-normal">
+                Delegate the tedious work, accelerate delivery, improve code
+                quality, and unlock measurable savings
+              </p>
             </div>
-            <p className="text-sm text-gray-400">
-              Your AI teammate for seamless development
+
+            {/* Contact Info */}
+            <div className="flex items-center gap-8">
+              {/* Links */}
+              <div className="flex gap-12">
+                {/* Email */}
+                <a
+                  href="mailto:hello@beezi.ai"
+                  className="flex items-center gap-3 hover:opacity-100 transition-opacity"
+                >
+                  <Image
+                    src="/email-icon.svg"
+                    alt="Email"
+                    width={28}
+                    height={28}
+                    className="opacity-80"
+                  />
+                  <span className="text-2xl font-medium text-[#FAFAFA] leading-none">
+                    hello@beezi.ai
+                  </span>
+                </a>
+
+                {/* Phone */}
+                <a
+                  href="tel:+18325776946"
+                  className="flex items-center gap-3 hover:opacity-100 transition-opacity"
+                >
+                  <Image
+                    src="/phone-icon.svg"
+                    alt="Phone"
+                    width={28}
+                    height={28}
+                    className="opacity-80"
+                  />
+                  <span className="text-2xl font-medium text-[#FAFAFA] leading-none">
+                    +1-832-577-6946
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-white/12" />
+
+          {/* Bottom Row */}
+          <div className="flex justify-between items-center w-full gap-6">
+            {/* Copyright */}
+            <p className="text-sm text-[#FAFAFA] leading-normal">
+              Copyright © 2025 beezi.ai. All rights reserved.
             </p>
-          </div>
-          
-          {/* Product */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Product</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Demo</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Integrations</a></li>
-            </ul>
-          </div>
-          
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold text-white mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Compliance</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-gray-400">
-            © 2025 Beezi. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-white transition-colors">GitHub</a>
+
+            {/* Footer Links */}
+            <div className="flex gap-6">
+              <a
+                href="#"
+                className="text-sm text-[#FAFAFA] leading-normal underline hover:opacity-80 transition-opacity"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="https://beezi.ai/terms-and-conditions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#FAFAFA] leading-normal underline hover:opacity-80 transition-opacity"
+              >
+                Terms and Conditions
+              </a>
+              <a
+                href="#"
+                className="text-sm text-[#FAFAFA] leading-normal underline hover:opacity-80 transition-opacity"
+              >
+                Manage Cookie Settings
+              </a>
+            </div>
           </div>
         </div>
       </Container>

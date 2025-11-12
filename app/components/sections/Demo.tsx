@@ -21,7 +21,29 @@ export default function Demo() {
   const handleTabClick = (tabId: number) => {
     setActiveTab(tabId);
     setManuallySelected(true);
-    
+
+    // Scroll to the position where this tab would be active
+    if (sectionRef.current) {
+      const section = sectionRef.current;
+      const sectionRect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const sectionHeight = section.offsetHeight;
+
+      // Calculate scroll progress needed for this tab (target middle of tab range)
+      const scrollProgress = (tabId + 0.5) / tabs.length;
+
+      // Calculate the scroll position relative to the section
+      const scrollableHeight = sectionHeight - windowHeight;
+      const targetScrollTop =
+        section.offsetTop + scrollProgress * scrollableHeight;
+
+      // Smooth scroll to the target position
+      window.scrollTo({
+        top: targetScrollTop,
+        behavior: "instant",
+      });
+    }
+
     // Reset manual selection after a short delay to re-enable scroll behavior
     setTimeout(() => {
       setManuallySelected(false);
@@ -52,7 +74,8 @@ export default function Demo() {
         }
 
         // Section is "stuck" - calculate scroll progress
-        const scrollProgress = Math.abs(rect.top) / (rect.height - windowHeight);
+        const scrollProgress =
+          Math.abs(rect.top) / (rect.height - windowHeight);
         const newTab = Math.min(
           Math.floor(scrollProgress * tabs.length),
           tabs.length - 1
@@ -209,4 +232,3 @@ export default function Demo() {
     </section>
   );
 }
-

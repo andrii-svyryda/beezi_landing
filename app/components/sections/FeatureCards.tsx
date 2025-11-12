@@ -76,6 +76,7 @@ export default function FeatureCards() {
                   background: "#0D081B",
                   borderRadius: "12px",
                   overflow: "hidden",
+                  height: "100%",
                 }}
               >
                 {/* Image Section */}

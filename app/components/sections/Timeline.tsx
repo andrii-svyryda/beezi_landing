@@ -36,7 +36,6 @@ export default function Timeline() {
       style={{
         width: "100%",
         padding: "112px 0",
-        background: "#0D081B",
       }}
     >
       <Container>
@@ -203,15 +202,33 @@ export default function Timeline() {
                         style={{
                           borderRadius: "12px",
                           opacity: 0.6,
+                          padding: "12px 0",
                         }}
                       >
                         <div
                           style={{
                             display: "flex",
-                            justifyContent: "center",
+                            gap: "16px",
                             alignItems: "center",
                           }}
                         >
+                          {/* Icon */}
+                          <div
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              flexShrink: 0,
+                            }}
+                          >
+                            <Image
+                              src={item.icon}
+                              alt={item.title}
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+
+                          {/* Title */}
                           <h3
                             style={{
                               fontFamily: "Geist, sans-serif",
