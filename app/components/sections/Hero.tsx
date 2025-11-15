@@ -1,9 +1,60 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import GlassCard from "../GlassCard";
 import Container from "../Container";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const phrases = [
+    "AI teammate",
+    "AI adoption partner",
+    "AI team optimizer",
+    "AI productivity driver",
+    "AI efficiency tracker",
+  ];
+
+  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = phrases[currentPhraseIndex];
+    const typingSpeed = isDeleting ? 50 : 100;
+    const pauseDuration = 3000; // 2 seconds pause
+
+    if (isPaused) {
+      const pauseTimer = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, pauseDuration);
+      return () => clearTimeout(pauseTimer);
+    }
+
+    if (!isDeleting && displayedText === currentPhrase) {
+      setIsPaused(true);
+      return;
+    }
+
+    if (isDeleting && displayedText === "") {
+      setIsDeleting(false);
+      setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      if (isDeleting) {
+        setDisplayedText(currentPhrase.substring(0, displayedText.length - 1));
+      } else {
+        setDisplayedText(currentPhrase.substring(0, displayedText.length + 1));
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, isPaused, currentPhraseIndex, phrases]);
+
   return (
     <section
       className="relative flex flex-col items-center overflow-hidden"
@@ -42,9 +93,12 @@ export default function Hero() {
           style={{ gap: "80px" }}
         >
           {/* Text Content */}
-          <div className="flex flex-col items-center" style={{ gap: "40px" }}>
+          <div
+            className="w-full flex flex-col items-center"
+            style={{ gap: "40px" }}
+          >
             <div
-              className="flex flex-col max-w-[668px]"
+              className="w-full flex flex-col items-center"
               style={{ gap: "24px" }}
             >
               {/* Heading */}
@@ -60,12 +114,25 @@ export default function Hero() {
                   backgroundClip: "text",
                 }}
               >
-                An AI teammate that feels native
+                An {displayedText}
+                <span
+                  className="inline-block animate-pulse"
+                  style={{
+                    width: "4px",
+                    height: "0.8em",
+                    marginLeft: "4px",
+                    background:
+                      "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
+                    verticalAlign: "middle",
+                  }}
+                />
+                <br />
+                that feels native
               </h1>
 
               {/* Subtitle */}
               <p
-                className="text-center"
+                className="text-center max-w-[668px]"
                 style={{
                   fontSize: "18px",
                   lineHeight: "1.5555em",

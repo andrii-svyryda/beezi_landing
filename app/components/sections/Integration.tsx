@@ -2,6 +2,8 @@ import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
 import Link from "next/link";
+import PulseAnimation from "../PulseAnimation";
+import { IntegrationPulseAnimation } from "../IntegrationPulseAnimation";
 
 export default function Integration() {
   const integrations = [
@@ -210,7 +212,7 @@ export default function Integration() {
                           left: "49px",
                           top: "62px",
                           width: "715px",
-                          height: "228px",
+                          height: "230px",
                         }}
                       >
                         {/* Beezi Logo Badge */}
@@ -227,6 +229,7 @@ export default function Integration() {
                             display: "flex",
                             alignItems: "center",
                             gap: "8px",
+                            zIndex: 2,
                           }}
                         >
                           <div
@@ -258,7 +261,7 @@ export default function Integration() {
                         <div
                           style={{
                             position: "absolute",
-                            left: "293px",
+                            left: "287px",
                             top: "164px",
                             background: "rgba(105, 56, 239, 0.2)",
                             border: "1px solid rgba(105, 56, 239, 0.4)",
@@ -269,6 +272,7 @@ export default function Integration() {
                             alignItems: "center",
                             gap: "12px",
                             opacity: 0.9,
+                            zIndex: 2,
                           }}
                         >
                           <span
@@ -356,6 +360,7 @@ export default function Integration() {
                             alignItems: "center",
                             gap: "12px",
                             opacity: 0.9,
+                            zIndex: 2,
                           }}
                         >
                           <span
@@ -443,6 +448,7 @@ export default function Integration() {
                             alignItems: "center",
                             gap: "12px",
                             opacity: 0.9,
+                            zIndex: 2,
                           }}
                         >
                           <span
@@ -520,11 +526,12 @@ export default function Integration() {
                         <div
                           style={{
                             position: "absolute",
-                            left: "260px",
+                            left: "273px",
                             top: "66px",
-                            width: "73px",
+                            width: "60px",
                             height: "1px",
                             background: "rgba(105, 56, 239, 0.4)",
+                            zIndex: 2,
                           }}
                         />
 
@@ -537,6 +544,7 @@ export default function Integration() {
                             width: "61px",
                             height: "1px",
                             background: "rgba(105, 56, 239, 0.4)",
+                            zIndex: 2,
                           }}
                         />
 
@@ -548,12 +556,13 @@ export default function Integration() {
                             top: "100px",
                             width: "63px",
                             height: "96px",
+                            zIndex: 2,
                           }}
                           viewBox="0 0 63 96"
                           fill="none"
                         >
                           <path
-                            d="M62.5 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H21.5"
+                            d="M62.4 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H16.3"
                             stroke="#6938EF"
                             strokeOpacity="0.4"
                           />
@@ -568,16 +577,20 @@ export default function Integration() {
                             width: "63px",
                             height: "96px",
                             transform: "scaleX(-1)",
+                            zIndex: 1,
                           }}
                           viewBox="0 0 63 96"
                           fill="none"
                         >
                           <path
-                            d="M62.5 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H21.5"
+                            d="M62.5 0.5H12.5C5.87258 0.5 0.5 5.87258 0.5 12.5V83.5C0.5 90.1274 5.87258 95.5 12.5 95.5H19.1"
                             stroke="#6938EF"
                             strokeOpacity="0.4"
                           />
                         </svg>
+                        <div className="w-full h-full absolute z-[3]">
+                          <IntegrationPulseAnimation />
+                        </div>
                       </div>
                     </div>
 

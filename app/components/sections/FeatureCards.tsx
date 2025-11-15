@@ -3,13 +3,16 @@
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
+import CountUp from "react-countup";
 
 export default function FeatureCards() {
   // Configurable integrations list
   const integrations = [
-    { icon: "/jira-icon.svg", alt: "Jira", width: 52, height: 22 },
-    { icon: "/slack-icon.svg", alt: "Slack", width: 86, height: 22 },
-    { icon: "/github-icon.svg", alt: "GitHub", width: 90, height: 22 },
+    { icon: "/jira-icon.svg", alt: "Jira", width: 38, height: 16 },
+    { icon: "/slack-icon.svg", alt: "Slack", width: 63, height: 16 },
+    { icon: "/github-icon.svg", alt: "GitHub", width: 65, height: 16 },
+    { icon: "/azure-icon.svg", alt: "Azure", width: 55, height: 16 },
+    { icon: "/teams-feature-icon.svg", alt: "Teams", width: 17, height: 16 },
   ];
 
   const features = [
@@ -130,7 +133,7 @@ export default function FeatureCards() {
                           }
                         }
                         .scroll-container {
-                          animation: scroll-left 20s linear infinite;
+                          animation: scroll-left 45s linear infinite;
                         }
                       `}</style>
                       <div
@@ -151,10 +154,12 @@ export default function FeatureCards() {
                             alignItems: "center",
                             gap: "24px",
                             width: "max-content",
+                            transform: "translateY(-50%)",
                           }}
                         >
                           {/* Duplicate integrations for seamless loop */}
                           {[
+                            ...integrations,
                             ...integrations,
                             ...integrations,
                             ...integrations,
@@ -172,7 +177,7 @@ export default function FeatureCards() {
                                   display: "flex",
                                   alignItems: "center",
                                   background: "white",
-                                  padding: "12px 24px",
+                                  padding: "12px 20px",
                                   borderRadius: "999px",
                                   border: "1px solid white",
                                   boxShadow:
@@ -696,7 +701,15 @@ export default function FeatureCards() {
                                 lineHeight: "1em",
                               }}
                             >
-                              $253.68
+                              $
+                              <CountUp
+                                end={253.68}
+                                decimals={2}
+                                duration={2.5}
+                                enableScrollSpy
+                                scrollSpyOnce
+                                start={0}
+                              />
                             </span>
                           </div>
                         </div>
@@ -731,7 +744,13 @@ export default function FeatureCards() {
                                 lineHeight: "1em",
                               }}
                             >
-                              146
+                              <CountUp
+                                end={146}
+                                duration={2.5}
+                                enableScrollSpy
+                                scrollSpyOnce
+                                start={0}
+                              />
                             </span>
                           </div>
                         </div>
@@ -760,7 +779,14 @@ export default function FeatureCards() {
                                 lineHeight: "1em",
                               }}
                             >
-                              59.11%
+                              <CountUp
+                                end={59.11}
+                                duration={2.5}
+                                enableScrollSpy
+                                scrollSpyOnce
+                                start={0}
+                              />
+                              %
                             </span>
                           </div>
                         </div>

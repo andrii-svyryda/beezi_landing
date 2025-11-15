@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
@@ -18,6 +18,25 @@ import {
 
 export default function Analytics() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isChartVisible, setIsChartVisible] = useState(false);
+  const chartRef = useCallback((node: HTMLDivElement) => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isChartVisible) {
+            setIsChartVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    if (node) {
+      observer.observe(node);
+    }
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -28,6 +47,7 @@ export default function Analytics() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
   const features = [
     {
       icon: "/dollar-icon.svg",
@@ -64,6 +84,21 @@ export default function Analytics() {
     { month: "Sep", nonAI: 12, aiBeezi: 11 },
     { month: "Oct", nonAI: 4, aiBeezi: 14 },
   ];
+
+  const emptyChartData = [
+    { month: "Jan", nonAI: 0, aiBeezi: 0 },
+    { month: "Feb", nonAI: 0, aiBeezi: 0 },
+    { month: "Mar", nonAI: 0, aiBeezi: 0 },
+    { month: "Apr", nonAI: 0, aiBeezi: 0 },
+    { month: "May", nonAI: 0, aiBeezi: 0 },
+    { month: "Jun", nonAI: 0, aiBeezi: 0 },
+    { month: "Jul", nonAI: 0, aiBeezi: 0 },
+    { month: "Aug", nonAI: 0, aiBeezi: 0 },
+    { month: "Sep", nonAI: 0, aiBeezi: 0 },
+    { month: "Oct", nonAI: 0, aiBeezi: 0 },
+  ];
+
+  const currentChartData = isChartVisible ? chartData : emptyChartData;
 
   return (
     <section className="w-full py-16 md:py-28">
@@ -499,10 +534,14 @@ export default function Analytics() {
                   </div>
 
                   {/* Chart */}
-                  <div className="p-4 md:p-8 h-80 md:h-96">
+                  <div ref={chartRef} className="p-4 md:p-8 h-80 md:h-96">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart
-                        data={isMobile ? chartData.slice(-2) : chartData}
+                        data={
+                          isMobile
+                            ? currentChartData.slice(-2)
+                            : currentChartData
+                        }
                         margin={{
                           top: 20,
                           right: 30,
@@ -570,6 +609,9 @@ export default function Analytics() {
                           radius={[4, 4, 0, 0]}
                           name="Non-AI Tasks"
                           maxBarSize={40}
+                          // isAnimationActive={isChartVisible}
+                          // animationBegin={0}
+                          // animationDuration={1000}
                         />
                         <Bar
                           dataKey="aiBeezi"
@@ -577,6 +619,9 @@ export default function Analytics() {
                           radius={[4, 4, 0, 0]}
                           name="AI Beezi Tasks"
                           maxBarSize={40}
+                          // isAnimationActive={isChartVisible}
+                          // animationBegin={0}
+                          // animationDuration={1000}
                         />
                       </BarChart>
                     </ResponsiveContainer>
