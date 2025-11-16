@@ -115,17 +115,6 @@ export default function Hero() {
                 }}
               >
                 An {displayedText}
-                <span
-                  className="inline-block animate-pulse"
-                  style={{
-                    width: "4px",
-                    height: "0.8em",
-                    marginLeft: "4px",
-                    background:
-                      "linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, #FAFAFA 100%)",
-                    verticalAlign: "middle",
-                  }}
-                />
                 <br />
                 that feels native
               </h1>
