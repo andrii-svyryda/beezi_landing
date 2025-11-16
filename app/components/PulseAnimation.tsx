@@ -29,6 +29,7 @@ interface PulseAnimationProps {
   pulseColor?: string;
   lineColor?: string;
   className?: string;
+  onPositionChange?: (position: number, totalLength: number) => void;
 }
 
 export default function PulseAnimation({
@@ -40,6 +41,7 @@ export default function PulseAnimation({
   pulseColor = "#6938EF",
   lineColor = "rgba(105, 56, 239, 0.2)",
   className = "",
+  onPositionChange,
 }: PulseAnimationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number>();
@@ -211,6 +213,11 @@ export default function PulseAnimation({
         pulsePositionRef.current = -pulseLength;
       }
 
+      // Notify position change
+      if (onPositionChange) {
+        onPositionChange(pulsePositionRef.current, pathLength);
+      }
+
       // Draw pulse with gradient trail (1 pixel wide, fading back)
       // Draw from back to front so the brightest part is on top
       for (let i = pulseLength; i >= 0; i--) {
@@ -234,7 +241,16 @@ export default function PulseAnimation({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [path, width, height, pulseSpeed, pulseLength, pulseColor, lineColor]);
+  }, [
+    path,
+    width,
+    height,
+    pulseSpeed,
+    pulseLength,
+    pulseColor,
+    lineColor,
+    onPositionChange,
+  ]);
 
   return (
     <canvas

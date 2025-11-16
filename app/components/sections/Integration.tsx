@@ -1,11 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
 import Link from "next/link";
 import PulseAnimation from "../PulseAnimation";
 import { IntegrationPulseAnimation } from "../IntegrationPulseAnimation";
+import AnimatedString from "../AnimatedString";
 
 export default function Integration() {
+  const [currentStatus, setCurrentStatus] = useState("Defining tasks");
+
   const integrations = [
     {
       name: "Jira",
@@ -589,7 +595,9 @@ export default function Integration() {
                           />
                         </svg>
                         <div className="w-full h-full absolute z-[3]">
-                          <IntegrationPulseAnimation />
+                          <IntegrationPulseAnimation
+                            onStatusChange={setCurrentStatus}
+                          />
                         </div>
                       </div>
                     </div>
@@ -617,7 +625,8 @@ export default function Integration() {
                           borderTopColor: "#FFFFFF",
                         }}
                       />
-                      <span
+                      <AnimatedString
+                        value={currentStatus}
                         style={{
                           fontFamily: "Geist Mono, monospace",
                           fontWeight: 500,
@@ -625,10 +634,12 @@ export default function Integration() {
                           lineHeight: "1em",
                           letterSpacing: "-0.8124999701976776%",
                           color: "#FAFAFA",
+                          minWidth: "200px",
+                          display: "inline-block",
                         }}
-                      >
-                        Process steps here...
-                      </span>
+                        eraseSpeed={20}
+                        writeSpeed={30}
+                      />
                     </div>
                   </div>
                 </GlassCard>

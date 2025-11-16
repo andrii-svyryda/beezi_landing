@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useCallback } from "react";
 import PulseAnimation from "./PulseAnimation";
 
 interface ObjectDimensions {
@@ -106,12 +109,12 @@ const leftMiddle = (object: ObjectDimensions) => ({
   y: object.top + object.height / 2,
 });
 
-const leftTopCroner = (object: ObjectDimensions) => ({
+const leftTopCorner = (object: ObjectDimensions) => ({
   x: object.left,
   y: object.top,
 });
 
-const rightTopCroner = (object: ObjectDimensions) => ({
+const rightTopCorner = (object: ObjectDimensions) => ({
   x: object.left + object.width - 1,
   y: object.top,
 });
@@ -130,51 +133,160 @@ const allignY = (
   return [...points1, { x: points2[0].x, y: points1[1].y }, ...points2];
 };
 
-export const IntegrationPulseAnimation = () => {
-  const path = [
-    ...leftTopBorder(taskBoardProjectDimensions),
-    ...rightTopBorder(taskBoardProjectDimensions),
-    ...rightBottomBorder(taskBoardProjectDimensions),
-    ...leftBottomBorder(taskBoardProjectDimensions),
-    ...leftTopBorder(taskBoardProjectDimensions),
-    ...rightTopBorder(taskBoardProjectDimensions),
-    { x: taskBeeziJoint.left + taskBeeziJoint.width, y: taskBeeziJoint.top },
+interface IntegrationPulseAnimationProps {
+  onStatusChange?: (status: string) => void;
+}
 
-    leftMiddle(beeziLogoDimensions),
+export const IntegrationPulseAnimation = ({
+  onStatusChange,
+}: IntegrationPulseAnimationProps) => {
+  const [currentStatus, setCurrentStatus] = useState("Defining tasks");
 
-    ...leftTopBorder(beeziLogoDimensions),
-    ...rightTopBorder(beeziLogoDimensions),
-
-    leftTopCroner(communicationBeeziJoint2),
-    ...rightTopBorder(communicationBeeziJoint2),
-    ...allignY(
-      rightBottomBorder(communicationBeeziJoint2),
-      rightBottomBorder(communicationDimensions)
-    ),
-    ...leftBottomBorder(communicationDimensions),
-    ...leftTopBorder(communicationDimensions),
-    ...rightTopBorder(communicationDimensions),
-    ...rightBottomBorder(communicationDimensions),
-    ...allignX(
-      leftBottomBorder(communicationDimensions),
-      leftBottomBorder(communicationBeeziJoint1)
-    ),
-    ...leftTopBorder(communicationBeeziJoint1),
-    rightTopCroner(communicationBeeziJoint1),
-    ...leftTopBorder(beeziLogoDimensions),
-    ...rightTopBorder(beeziLogoDimensions),
-    ...rightBottomBorder(beeziLogoDimensions),
-    ...leftBottomBorder(beeziLogoDimensions),
-    ...leftTopBorder(beeziLogoDimensions),
-    ...rightTopBorder(beeziLogoDimensions),
-    leftTopCroner(beezyRepoJoint),
-    ...leftTopBorder(repositoryDimensions),
-    ...rightTopBorder(repositoryDimensions),
-    ...rightBottomBorder(repositoryDimensions),
-    ...leftBottomBorder(repositoryDimensions),
-    ...leftTopBorder(repositoryDimensions),
-    ...rightTopBorder(repositoryDimensions),
+  // Build the path segments with their start indices
+  const pathSegments = [
+    {
+      name: "taskBoard",
+      points: [
+        ...leftTopBorder(taskBoardProjectDimensions),
+        ...rightTopBorder(taskBoardProjectDimensions),
+        ...rightBottomBorder(taskBoardProjectDimensions),
+        ...leftBottomBorder(taskBoardProjectDimensions),
+        ...leftTopBorder(taskBoardProjectDimensions),
+        ...rightTopBorder(taskBoardProjectDimensions),
+      ],
+      status: "Defining tasks",
+    },
+    {
+      name: "beeziProcessing",
+      points: [
+        {
+          x: taskBeeziJoint.left + taskBeeziJoint.width,
+          y: taskBeeziJoint.top,
+        },
+        leftMiddle(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        leftTopCorner(communicationBeeziJoint2),
+        ...rightTopBorder(communicationBeeziJoint2),
+      ],
+      status: "Processing ticket",
+    },
+    {
+      name: "communication",
+      points: [
+        ...allignY(
+          rightBottomBorder(communicationBeeziJoint2),
+          rightBottomBorder(communicationDimensions)
+        ),
+        ...leftBottomBorder(communicationDimensions),
+        ...leftTopBorder(communicationDimensions),
+        ...rightTopBorder(communicationDimensions),
+        ...rightBottomBorder(communicationDimensions),
+        ...allignX(
+          leftBottomBorder(communicationDimensions),
+          leftBottomBorder(communicationBeeziJoint1)
+        ),
+        ...leftTopBorder(communicationBeeziJoint1),
+        rightTopCorner(communicationBeeziJoint1),
+      ],
+      status: "Discussing requirements",
+    },
+    {
+      name: "beeziImplementing",
+      points: [
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        leftTopCorner(beezyRepoJoint),
+        rightTopCorner(beezyRepoJoint),
+        ...leftTopBorder(repositoryDimensions),
+      ],
+      status: "Implementing solution",
+    },
+    {
+      name: "repository",
+      points: [
+        ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+      ],
+      status: "Committing to repository",
+    },
   ];
+
+  // Flatten all points into single path
+  const path = pathSegments.flatMap((segment) => segment.points);
+
+  // Calculate cumulative lengths for each segment
+  const calculateSegmentLengths = () => {
+    const lengths: { start: number; end: number; status: string }[] = [];
+    let currentLength = 0;
+
+    pathSegments.forEach((segment) => {
+      const segmentStart = currentLength;
+
+      // Calculate length of this segment
+      for (let i = 1; i < segment.points.length; i++) {
+        const p1 = segment.points[i - 1];
+        const p2 = segment.points[i];
+        const dx = p2.x - p1.x;
+        const dy = p2.y - p1.y;
+
+        if (dx !== 0 && dy !== 0) {
+          // Arc segment
+          const radius = Math.abs(dx);
+          currentLength += (Math.PI / 2) * radius;
+        } else {
+          // Line segment
+          currentLength += Math.sqrt(dx * dx + dy * dy);
+        }
+      }
+
+      lengths.push({
+        start: segmentStart,
+        end: currentLength,
+        status: segment.status,
+      });
+    });
+
+    return lengths;
+  };
+
+  const segmentLengths = calculateSegmentLengths();
+
+  const handlePositionChange = useCallback(
+    (position: number, totalLength: number) => {
+      // Normalize position to be within 0 to totalLength
+      const normalizedPosition =
+        ((position % totalLength) + totalLength) % totalLength;
+
+      // Find which segment we're in
+      for (const segment of segmentLengths) {
+        if (
+          normalizedPosition >= segment.start &&
+          normalizedPosition < segment.end
+        ) {
+          if (currentStatus !== segment.status) {
+            setCurrentStatus(segment.status);
+            if (onStatusChange) {
+              onStatusChange(segment.status);
+            }
+          }
+          break;
+        }
+      }
+    },
+    [currentStatus, segmentLengths, onStatusChange]
+  );
 
   return (
     <div>
@@ -186,6 +298,7 @@ export const IntegrationPulseAnimation = () => {
         pulseLength={23}
         pulseColor="#FFFFFF"
         lineColor="transparent"
+        onPositionChange={handlePositionChange}
       />
     </div>
   );
