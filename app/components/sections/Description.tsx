@@ -31,7 +31,7 @@ export default function Description() {
                 backgroundClip: "text",
               }}
             >
-              Forget code-only agents
+              Forget Code-Only Agents
             </h2>
             <p
               className="text-center"

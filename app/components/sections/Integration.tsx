@@ -720,30 +720,23 @@ export default function Integration() {
                         width: "fit-content",
                       }}
                     >
-                      <div
-                        className="spinner"
-                        style={{
-                          width: "16px",
-                          height: "16px",
-                          borderRadius: "50%",
-                          border: "2px solid rgba(255, 255, 255, 0.2)",
-                          borderTopColor: "#FFFFFF",
-                        }}
-                      />
                       <AnimatedString
                         value={currentStatus}
                         style={{
                           fontFamily: "Geist Mono, monospace",
                           fontWeight: 500,
                           fontSize: "16px",
+                          minHeight: "32px",
                           lineHeight: "1em",
                           letterSpacing: "-0.8124999701976776%",
                           color: "#FAFAFA",
                           minWidth: "200px",
                           display: "inline-block",
+                          textAlign: "center",
+                          alignContent: "center",
                         }}
-                        eraseSpeed={20}
-                        writeSpeed={30}
+                        eraseSpeed={10}
+                        writeSpeed={20}
                       />
                     </div>
                   </div>

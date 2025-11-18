@@ -57,7 +57,7 @@ export default function AnimatedString({
 
   return (
     <span className={className} style={style}>
-      {displayedText}
+      {displayedText?.length ? displayedText : " "}
     </span>
   );
 }

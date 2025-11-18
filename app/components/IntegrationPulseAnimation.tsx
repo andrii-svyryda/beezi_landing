@@ -145,20 +145,10 @@ export const IntegrationPulseAnimation = ({
   // Build the path segments with their start indices
   const pathSegments = [
     {
-      name: "taskBoard",
-      points: [
-        ...leftTopBorder(taskBoardProjectDimensions),
-        ...rightTopBorder(taskBoardProjectDimensions),
-        ...rightBottomBorder(taskBoardProjectDimensions),
-        ...leftBottomBorder(taskBoardProjectDimensions),
-        ...leftTopBorder(taskBoardProjectDimensions),
-        ...rightTopBorder(taskBoardProjectDimensions),
-      ],
-      status: "Defining tasks",
-    },
-    {
       name: "beeziProcessing",
       points: [
+        ...leftTopBorder(taskBoardProjectDimensions),
+        ...rightTopBorder(taskBoardProjectDimensions),
         {
           x: taskBeeziJoint.left + taskBeeziJoint.width,
           y: taskBeeziJoint.top,
@@ -170,13 +160,39 @@ export const IntegrationPulseAnimation = ({
         ...leftBottomBorder(beeziLogoDimensions),
         ...leftTopBorder(beeziLogoDimensions),
         ...rightTopBorder(beeziLogoDimensions),
-        leftTopCorner(communicationBeeziJoint2),
-        ...rightTopBorder(communicationBeeziJoint2),
       ],
-      status: "Processing ticket",
+      status:
+        "Beezi responds to a project task and automatically scores the task description.",
     },
     {
       name: "communication",
+      points: [
+        leftTopCorner(communicationBeeziJoint2),
+        ...rightTopBorder(communicationBeeziJoint2),
+        ...allignY(
+          rightBottomBorder(communicationBeeziJoint2),
+          rightBottomBorder(communicationDimensions)
+        ),
+        // ...leftBottomBorder(communicationDimensions),
+        // ...leftTopBorder(communicationDimensions),
+        // ...rightTopBorder(communicationDimensions),
+        // ...rightBottomBorder(communicationDimensions),
+        ...allignX(
+          leftBottomBorder(communicationDimensions),
+          leftBottomBorder(communicationBeeziJoint1)
+        ),
+        ...leftTopBorder(communicationBeeziJoint1),
+        rightTopCorner(communicationBeeziJoint1),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        leftTopCorner(communicationBeeziJoint2),
+        ...rightTopBorder(communicationBeeziJoint2),
+      ],
+      status:
+        "Beezi collaborates via messengers if clarification is needed and generates an implementation plan.",
+    },
+    {
+      name: "beeziImplementing",
       points: [
         ...allignY(
           rightBottomBorder(communicationBeeziJoint2),
@@ -193,7 +209,8 @@ export const IntegrationPulseAnimation = ({
         ...leftTopBorder(communicationBeeziJoint1),
         rightTopCorner(communicationBeeziJoint1),
       ],
-      status: "Discussing requirements",
+      status:
+        "The developer reviews and approves the implementation plan in Messenger.",
     },
     {
       name: "beeziImplementing",
@@ -207,19 +224,50 @@ export const IntegrationPulseAnimation = ({
         leftTopCorner(beezyRepoJoint),
         rightTopCorner(beezyRepoJoint),
         ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
       ],
-      status: "Implementing solution",
+      status:
+        "Beezi triggers the LLM provider to generate the code and creates a Pull Request in the repository.",
     },
     {
       name: "repository",
       points: [
-        ...rightTopBorder(repositoryDimensions),
         ...rightBottomBorder(repositoryDimensions),
         ...leftBottomBorder(repositoryDimensions),
         ...leftTopBorder(repositoryDimensions),
         ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        rightTopCorner(beezyRepoJoint),
+        leftTopCorner(beezyRepoJoint),
+        ...rightBottomBorder(beeziLogoDimensions),
       ],
-      status: "Committing to repository",
+      status: "The team reviews and comments on the Pull Request.",
+    },
+    {
+      name: "repository",
+      points: [
+        ...leftBottomBorder(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        leftTopCorner(beezyRepoJoint),
+        rightTopCorner(beezyRepoJoint),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+      ],
+      status: "Beezi updates or resolves comments if requested.",
+    },
+    {
+      name: "repository",
+      points: [
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+      ],
+      status: "The developer approves and merges the Pull Request.",
     },
   ];
 
@@ -294,7 +342,7 @@ export const IntegrationPulseAnimation = ({
         path={path}
         width={boxWidth}
         height={boxHeight}
-        pulseSpeed={1.3}
+        pulseSpeed={0.8}
         pulseLength={23}
         pulseColor="#FFFFFF"
         lineColor="transparent"

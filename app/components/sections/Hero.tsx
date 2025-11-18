@@ -8,11 +8,11 @@ import { useState, useEffect } from "react";
 
 export default function Hero() {
   const phrases = [
-    "AI teammate",
-    "AI adoption partner",
-    "AI team optimizer",
-    "AI productivity driver",
-    "AI efficiency tracker",
+    "AI Teammate",
+    "AI Adoption Partner",
+    "AI Team Optimizer",
+    "AI Productivity Driver",
+    "AI Efficiency Tracker",
   ];
 
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -103,7 +103,7 @@ export default function Hero() {
             >
               {/* Heading */}
               <h1
-                className="md:text-7xl text-5xl text-center font-bold"
+                className="md:text-7xl text-5xl text-center font-bold min-h-[196px] md:min-h-0"
                 style={{
                   lineHeight: "1em",
                   fontFamily: "Geist",
@@ -116,7 +116,7 @@ export default function Hero() {
               >
                 An {displayedText}
                 <br />
-                that feels native
+                That Feels Native
               </h1>
 
               {/* Subtitle */}
@@ -134,12 +134,14 @@ export default function Hero() {
             </div>
 
             {/* Button */}
-            <div className="flex" style={{ paddingTop: "16px" }}>
-              <Link href="/book-a-demo">
+            <div
+              className="flex w-full md:w-[160px]"
+              style={{ paddingTop: "16px" }}
+            >
+              <Link href="/book-a-demo" className="w-full">
                 <GlassCard
                   borderRadius="12px"
-                  style={{ width: "160px" }}
-                  className="transition-all hover:scale-105 cursor-pointer"
+                  className="transition-all hover:scale-105 cursor-pointer w-full"
                 >
                   <div
                     className="relative"

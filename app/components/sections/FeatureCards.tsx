@@ -679,8 +679,8 @@ export default function FeatureCards() {
                             border: "1px solid rgba(105, 56, 239, 0.4)",
                           }}
                         >
-                          <div className="bg-white rounded-lg p-4 md:px-6">
-                            <div className="flex flex-col gap-2 mb-3">
+                          <div className="bg-white rounded-lg p-4 md:px-6 h-full flex flex-col justify-between flex-grow">
+                            <div className="flex flex-col gap-2 mb-3 flex-grow justify-between">
                               <span
                                 className="text-xs md:text-sm font-medium text-[#737373]"
                                 style={{ fontFamily: "Geist, sans-serif" }}
@@ -722,8 +722,8 @@ export default function FeatureCards() {
                             border: "1px solid rgba(105, 56, 239, 0.4)",
                           }}
                         >
-                          <div className="bg-white rounded-lg p-4 md:px-6">
-                            <div className="flex flex-col gap-2 mb-3">
+                          <div className="bg-white rounded-lg p-4 md:px-6 h-full flex flex-col justify-between flex-grow">
+                            <div className="flex flex-col gap-2 mb-3 flex-grow justify-between">
                               <span
                                 className="text-xs md:text-sm font-medium text-[#737373]"
                                 style={{ fontFamily: "Geist, sans-serif" }}
@@ -763,8 +763,8 @@ export default function FeatureCards() {
                             border: "1px solid rgba(105, 56, 239, 0.4)",
                           }}
                         >
-                          <div className="bg-white rounded-lg p-4 md:px-6">
-                            <div className="flex flex-col gap-2 mb-10">
+                          <div className="bg-white rounded-lg p-4 md:px-6 h-full flex flex-col justify-between flex-grow">
+                            <div className="flex flex-col gap-2 mb-10 flex-grow justify-between">
                               <span
                                 className="text-xs md:text-sm font-medium text-[#737373]"
                                 style={{ fontFamily: "Geist, sans-serif" }}

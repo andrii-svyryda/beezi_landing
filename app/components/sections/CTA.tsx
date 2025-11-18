@@ -2,7 +2,8 @@
 
 import Container from "../Container";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import SubmitButton from "../SubmitButton";
 
 export default function CTA() {
   const [formData, setFormData] = useState({
@@ -12,10 +13,69 @@ export default function CTA() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [buttonState, setButtonState] = useState<
+    "default" | "loading" | "disabled" | "success" | "error"
+  >("disabled");
+
+  // Email validation regex
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Validate form and update button state
+  useEffect(() => {
+    const isFormValid =
+      formData.name.trim().length > 0 &&
+      formData.email.trim().length > 0 &&
+      isValidEmail(formData.email);
+
+    // Only update if not in loading, success, or error state
+    if (
+      buttonState !== "loading" &&
+      buttonState !== "success" &&
+      buttonState !== "error"
+    ) {
+      setButtonState(isFormValid ? "default" : "disabled");
+    }
+  }, [formData, buttonState]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+
+    // Validate required fields
+    if (!formData.name.trim() || !formData.email.trim()) {
+      setButtonState("error");
+      setTimeout(() => setButtonState("default"), 3000);
+      return;
+    }
+
+    setButtonState("loading");
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Handle form submission
+      console.log("Form submitted:", formData);
+
+      setButtonState("success");
+
+      // Reset form after success
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          message: "",
+        });
+        setButtonState("default");
+      }, 3000);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setButtonState("error");
+      setTimeout(() => setButtonState("default"), 3000);
+    }
   };
 
   const handleChange = (
@@ -124,7 +184,7 @@ export default function CTA() {
                           htmlFor="email"
                           className="text-sm font-medium text-white/60"
                         >
-                          Work email
+                          Business email
                         </label>
                         <div className="flex flex-col w-full gap-2">
                           <input
@@ -185,28 +245,7 @@ export default function CTA() {
 
                     {/* Submit Button */}
                     <div className="flex flex-col items-center w-full gap-2 pt-4">
-                      <div
-                        className="p-1 rounded-xl w-full md:w-[160px]"
-                        style={{
-                          background: "rgba(255, 255, 255, 0.1)",
-                          border: "1px solid rgba(255, 255, 255, 0.1)",
-                          boxShadow:
-                            "0px 1px 2px -0.5px rgba(0, 0, 0, 0.08), 0px 2px 8px 0px rgba(105, 56, 239, 0.12)",
-                        }}
-                      >
-                        <button
-                          type="submit"
-                          className="flex items-center justify-center w-full gap-2 py-3 px-6 rounded-lg text-base font-medium"
-                          style={{
-                            background:
-                              "linear-gradient(180deg, rgba(105, 56, 239, 0.3) 0%, rgba(105, 56, 239, 0.1) 100%), #FFFFFF",
-                            border: "1px solid rgba(255, 255, 255, 0.8)",
-                            color: "#6938EF",
-                          }}
-                        >
-                          Submit
-                        </button>
-                      </div>
+                      <SubmitButton state={buttonState} width="hug" />
                     </div>
                   </form>
 

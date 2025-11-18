@@ -53,7 +53,7 @@ export default function Comparison() {
             color: "white",
           }}
         >
-          Beezi compresses your dev time up to{" "}
+          Beezi Compresses Your Dev Time Up to{" "}
           <span className="text-[#6938EF]">10x</span>
         </h2>
 

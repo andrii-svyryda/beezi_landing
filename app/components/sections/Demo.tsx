@@ -10,6 +10,7 @@ export default function Demo() {
   const sectionRef = useRef<HTMLElement>(null);
   const [manuallySelected, setManuallySelected] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const tabs = [
     {
@@ -90,7 +91,14 @@ export default function Demo() {
   }, []);
 
   const handleTabClick = (tabId: number) => {
-    setActiveTab(tabId);
+    if (tabId === activeTab) return;
+
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      setActiveTab(tabId);
+      setIsTransitioning(false);
+    }, 150);
 
     // Only do scroll behavior on desktop
     if (!isMobile) {
@@ -160,7 +168,11 @@ export default function Demo() {
         );
 
         if (newTab !== activeTab) {
+          setIsTransitioning(true);
           setActiveTab(newTab);
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 300);
         }
       }
     };
@@ -202,11 +214,11 @@ export default function Demo() {
                   backgroundClip: "text",
                 }}
               >
-                Smart ticket system
+                Smart Ticket System
               </h2>
 
               {/* Screenshot with tabs */}
-              <div className="flex flex-col gap-6 md:gap-0 w-full max-w-[1440px]">
+              <div className="flex flex-col gap-3 md:gap-0 w-full max-w-[1440px]">
                 {/* Tabs - above image on mobile, overlapping on desktop */}
                 <div
                   className="flex justify-center md:relative md:-mb-6"
@@ -245,11 +257,13 @@ export default function Demo() {
                 </div>
 
                 {/* Blue background container with pattern */}
-                <GlassCard>
+                <GlassCard padding={"8px"}>
                   <div
                     className="rounded-xl overflow-hidden"
                     style={{
                       background: tabs[activeTab].background,
+                      transition:
+                        "background 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   >
                     <div
@@ -258,53 +272,60 @@ export default function Demo() {
                         backgroundImage: `url(/smart_system_background_pattern.svg)`,
                         backgroundRepeat: "repeat",
                         backgroundSize: "auto",
-                        paddingLeft: isMobile ? "24px" : "24px",
-                        paddingTop: isMobile ? "24px" : "32px",
-                        paddingBottom: isMobile ? "24px" : "0",
-                        paddingRight: 0,
+                        paddingLeft: isMobile ? "16px" : "24px",
+                        paddingTop: isMobile ? "16px" : "32px",
+                        paddingBottom: isMobile ? "16px" : "0",
+                        paddingRight: isMobile ? "16px" : "0",
                       }}
                     >
                       {/* Black fade-in overlay at the bottom */}
 
                       {/* Screenshot with description - overflowing container */}
                       <div
-                        className="relative"
+                        className="relative h-[160px] md:h-[680px]"
                         style={{
                           zIndex: 0,
-                          height: 680,
                         }}
                       >
+                        {!isMobile && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              bottom: 0,
+                              left: -24,
+                              right: 0,
+                              height: "350px",
+                              background:
+                                "linear-gradient(180deg, rgba(5, 0, 17, 0) 0%, rgba(5, 0, 17, 1) 90%)",
+                              pointerEvents: "none",
+                              zIndex: 1,
+                            }}
+                          />
+                        )}
                         <div
                           style={{
-                            position: "absolute",
-                            bottom: 0,
-                            left: -24,
-                            right: 0,
-                            height: "350px",
-                            background:
-                              "linear-gradient(180deg, rgba(5, 0, 17, 0) 0%, rgba(5, 0, 17, 1) 90%)",
-                            pointerEvents: "none",
-                            zIndex: 1,
-                          }}
-                        />
-                        <div
-                          style={{
-                            padding: "24px",
-                            borderRadius: "24px",
+                            padding: isMobile ? "6px" : "24px",
+                            borderRadius: isMobile ? "12px" : "24px",
                             border: "1px solid rgba(255, 255, 255, 0.5)",
                             background: "rgba(255, 255, 255, 0.01)",
                             backdropFilter: "blur(2px)",
                             WebkitBackdropFilter: "blur(2px)",
-                            // overflow: "hidden",
                             position: "absolute",
-                            left: tabs[activeTab].left,
-                            top: tabs[activeTab].top,
-                            width: tabs[activeTab].width + 48,
+                            left: isMobile ? 0 : tabs[activeTab].left,
+                            top: isMobile ? 0 : tabs[activeTab].top,
+                            width: isMobile
+                              ? "100%"
+                              : tabs[activeTab].width + 48,
+                            opacity: isTransitioning ? 0 : 1,
+                            transform: isTransitioning
+                              ? "translateY(20px) scale(0.95)"
+                              : "translateY(0) scale(1)",
+                            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
                           <div
                             style={{
-                              borderRadius: "12px",
+                              borderRadius: isMobile ? "0" : "12px",
                               overflow: "hidden",
                               position: "relative",
                             }}
@@ -336,6 +357,12 @@ export default function Demo() {
                               background: "rgba(255, 255, 255, 0.1)",
                               backdropFilter: "blur(20px)",
                               WebkitBackdropFilter: "blur(20px)",
+                              opacity: isTransitioning ? 0 : 1,
+                              transform: isTransitioning
+                                ? "translateY(30px) scale(0.93)"
+                                : "translateY(0) scale(1)",
+                              transition:
+                                "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
                             <Image
@@ -355,10 +382,14 @@ export default function Demo() {
                         <div
                           className="hidden md:block absolute bottom-4 left-1/2"
                           style={{
-                            transform: "translateX(-50%)",
+                            transform: isTransitioning
+                              ? "translateX(-50%) translateY(20px)"
+                              : "translateX(-50%) translateY(0)",
                             maxWidth: "600px",
                             width: "calc(100% - 64px)",
                             zIndex: 2,
+                            opacity: isTransitioning ? 0 : 1,
+                            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
                           <GlassCard padding="8px">
@@ -414,65 +445,74 @@ export default function Demo() {
                             </div>
                           </GlassCard>
                         </div>
-                        {/* Description - below image on mobile */}
-                        <div className="md:hidden mt-4 z-2">
-                          <GlassCard padding="8px">
-                            <div
-                              className="flex items-center gap-3 p-4 rounded-xl"
-                              style={{
-                                background: "rgba(13, 8, 27, 1)",
-                              }}
-                            >
-                              {/* Icon */}
-                              <div
-                                className="flex items-center justify-center px-3 py-1.5 rounded-full"
-                                style={{
-                                  background: "rgba(105, 56, 239, 0.2)",
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontFamily: "Geist, sans-serif",
-                                    fontSize: "14px",
-                                    fontWeight: 600,
-                                    color: "#FAFAFA",
-                                  }}
-                                >
-                                  /
-                                </span>
-                              </div>
-
-                              {/* Content */}
-                              <div className="flex flex-col gap-1 flex-1">
-                                <h4
-                                  style={{
-                                    fontFamily: "Geist, sans-serif",
-                                    fontSize: "18px",
-                                    fontWeight: 700,
-                                    lineHeight: "1em",
-                                    color: "#FAFAFA",
-                                  }}
-                                >
-                                  {tabs[activeTab].label}
-                                </h4>
-                                <p
-                                  style={{
-                                    fontFamily: "Geist, sans-serif",
-                                    fontSize: "14px",
-                                    lineHeight: "1.43em",
-                                    color: "rgba(255, 255, 255, 0.5)",
-                                  }}
-                                >
-                                  {tabs[activeTab].description}
-                                </p>
-                              </div>
-                            </div>
-                          </GlassCard>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </GlassCard>
+                {/* Description - below image on mobile */}
+                <div
+                  className="md:hidden md:mt-4 z-2"
+                  style={{
+                    opacity: isTransitioning ? 0 : 1,
+                    transform: isTransitioning
+                      ? "translateY(10px)"
+                      : "translateY(0)",
+                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                >
+                  <GlassCard padding="8px">
+                    <div
+                      className="flex items-center gap-3 p-4 rounded-xl"
+                      style={{
+                        background: "rgba(13, 8, 27, 1)",
+                      }}
+                    >
+                      {/* Icon */}
+                      <div
+                        className="flex items-center justify-center px-3 py-1.5 rounded-full"
+                        style={{
+                          background: "rgba(105, 56, 239, 0.2)",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontFamily: "Geist, sans-serif",
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            color: "#FAFAFA",
+                          }}
+                        >
+                          /
+                        </span>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex flex-col gap-1 flex-1">
+                        <h4
+                          style={{
+                            fontFamily: "Geist, sans-serif",
+                            fontSize: "18px",
+                            fontWeight: 700,
+                            lineHeight: "1em",
+                            color: "#FAFAFA",
+                          }}
+                        >
+                          {tabs[activeTab].label}
+                        </h4>
+                        <p
+                          style={{
+                            fontFamily: "Geist, sans-serif",
+                            fontSize: "14px",
+                            lineHeight: "1.43em",
+                            color: "rgba(255, 255, 255, 0.5)",
+                          }}
+                        >
+                          {tabs[activeTab].description}
+                        </p>
+                      </div>
+                    </div>
+                  </GlassCard>
+                </div>
               </div>
             </div>
           </div>

@@ -20,9 +20,9 @@ export default function Founder() {
                 lineHeight: "1.1em",
               }}
             >
-              Made by engineers,
+              Made by Engineers,
               <br />
-              for engineers
+              for Engineers
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
               Beezi started as a part of our digital transformation at Honeycomb

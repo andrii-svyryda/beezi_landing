@@ -72,12 +72,17 @@ export default function Timeline() {
           <div
             className="w-full md:w-[616px] h-[400px] md:h-[616px] md:order-last"
             style={{
-              background: "rgba(255, 255, 255, 0.1)",
               borderRadius: "20px",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
               flexShrink: 0,
             }}
-          />
+          >
+            <Image
+              src="/setup-shipping-image.svg"
+              alt="Timeline"
+              width={616}
+              height={616}
+            />
+          </div>
 
           {/* Left wrapper for desktop - contains title and items */}
           <div className="flex flex-col gap-8 md:gap-15 flex-1">
@@ -202,7 +207,7 @@ export default function Timeline() {
                   return (
                     <div
                       key={index}
-                      className="rounded-xl opacity-60 py-3 pl-6"
+                      className="rounded-xl opacity-60 py-3 pl-6 md:pl-8"
                     >
                       <div className="flex gap-4 items-center">
                         {/* Icon */}

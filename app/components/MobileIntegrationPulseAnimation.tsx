@@ -147,7 +147,7 @@ export const MobileIntegrationPulseAnimation = ({
     borderRadius: 16,
   };
 
-  const pathSegments = [
+  const pathSegments1 = [
     {
       name: "taskBoard",
       points: [
@@ -225,6 +225,122 @@ export const MobileIntegrationPulseAnimation = ({
     },
   ];
 
+  const pathSegments = [
+    {
+      name: "beeziProcessing",
+      points: [
+        ...leftTopBorder(taskBoardProjectDimensions),
+        ...rightTopBorder(taskBoardProjectDimensions),
+        leftTopCorner(taskBeeziJoint),
+        ...rightTopBorder(taskBeeziJoint),
+        rightBottomCorner(taskBeeziJoint),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+      ],
+      status:
+        "Beezi responds to a project task and automatically scores the task description.",
+    },
+    {
+      name: "communication",
+      points: [
+        rightTopCorner(communicationBeeziJoint),
+        leftTopCorner(communicationBeeziJoint),
+        ...rightBottomBorder(communicationDimensions),
+        ...leftBottomBorder(communicationDimensions),
+        ...leftTopBorder(communicationDimensions),
+        ...rightTopBorder(communicationDimensions),
+        leftTopCorner(communicationBeeziJoint),
+        rightTopCorner(communicationBeeziJoint),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+      ],
+      status:
+        "Beezi collaborates via messengers if clarification is needed and generates an implementation plan.",
+    },
+    {
+      name: "beeziImplementing",
+      points: [
+        rightTopCorner(communicationBeeziJoint),
+        leftTopCorner(communicationBeeziJoint),
+        ...rightBottomBorder(communicationDimensions),
+        ...leftBottomBorder(communicationDimensions),
+        ...leftTopBorder(communicationDimensions),
+        ...rightTopBorder(communicationDimensions),
+        ...rightBottomBorder(communicationDimensions),
+        ...leftBottomBorder(communicationDimensions),
+        ...leftTopBorder(communicationDimensions),
+        ...rightTopBorder(communicationDimensions),
+      ],
+      status:
+        "The developer reviews and approves the implementation plan in Messenger.",
+    },
+    {
+      name: "beeziImplementing",
+      points: [
+        leftTopCorner(communicationBeeziJoint),
+        rightTopCorner(communicationBeeziJoint),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        rightTopCorner(beezyRepoJoint),
+        ...rightBottomBorder(beezyRepoJoint),
+        leftBottomCorner(beezyRepoJoint),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+      ],
+      status:
+        "Beezi triggers the LLM provider to generate the code and creates a Pull Request in the repository.",
+    },
+    {
+      name: "repository",
+      points: [
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+        leftBottomCorner(beezyRepoJoint),
+        rightBottomCorner(beezyRepoJoint),
+      ],
+      status: "The team reviews and comments on the Pull Request.",
+    },
+    {
+      name: "repository",
+      points: [
+        rightTopCorner(beezyRepoJoint),
+        ...leftBottomBorder(beeziLogoDimensions),
+        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        rightTopCorner(beezyRepoJoint),
+        ...rightBottomBorder(beezyRepoJoint),
+        leftBottomCorner(beezyRepoJoint),
+      ],
+      status: "Beezi updates or resolves comments if requested.",
+    },
+    {
+      name: "repository",
+      points: [
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
+        ...rightTopBorder(repositoryDimensions),
+      ],
+      status: "The developer approves and merges the Pull Request.",
+    },
+  ];
   // Flatten all points into single path
   const path = pathSegments.flatMap((segment) => segment.points);
 
@@ -329,7 +445,7 @@ export const MobileIntegrationPulseAnimation = ({
         path={path}
         width={boxWidth}
         height={boxHeight}
-        pulseSpeed={1.3}
+        pulseSpeed={0.8}
         pulseLength={23}
         pulseColor="#FFFFFF"
         lineColor="transparent"
