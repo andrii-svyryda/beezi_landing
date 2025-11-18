@@ -12,67 +12,27 @@ interface ObjectDimensions {
 }
 
 const taskBoardProjectDimensions: ObjectDimensions = {
-  width: 1 + 20 + 236 + 16 + 1,
-  height: 1 + 16 + 32 + 16 + 1,
+  width: 160,
+  height: 96,
   left: 0,
-  top: 34,
-  borderRadius: 32,
-};
-
-const taskBeeziJoint: ObjectDimensions = {
-  height: 1,
-  width: 60,
-  left: 273,
-  top: 66,
-  borderRadius: 1,
-};
-
-const beezyRepoJoint: ObjectDimensions = {
-  height: 1,
-  width: 61,
-  left: 466,
-  top: 66,
-  borderRadius: 1,
-};
-
-const beeziLogoDimensions: ObjectDimensions = {
-  width: 1 + 16 + 100 + 16 + 1,
-  height: 1 + 16 + 100 + 16 + 1,
-  left: 333,
   top: 0,
-  borderRadius: 20,
+  borderRadius: 16,
 };
 
 const communicationDimensions: ObjectDimensions = {
-  width: 1 + 24 + 177 + 20 + 1,
-  height: 1 + 16 + 32 + 16 + 1,
-  left: 287,
-  top: 164,
-  borderRadius: 32,
+  width: 160,
+  height: 96,
+  left: 0,
+  top: 96 + 16,
+  borderRadius: 16,
 };
 
 const repositoryDimensions: ObjectDimensions = {
-  width: 152 + 20 + 16 + 1 + 1,
-  height: 1 + 16 + 32 + 16 + 1,
-  left: 527,
-  top: 34,
-  borderRadius: 32,
-};
-
-const communicationBeeziJoint1: ObjectDimensions = {
-  width: 63,
+  width: 160,
   height: 96,
-  left: 271,
-  top: 100,
-  borderRadius: 12,
-};
-
-const communicationBeeziJoint2 = {
-  width: 63,
-  height: 96,
-  left: 466,
-  top: 100,
-  borderRadius: 12,
+  left: 0,
+  top: 96 + 16 + 96 + 16,
+  borderRadius: 16,
 };
 
 const boxHeight = 730;
@@ -114,9 +74,19 @@ const leftTopCorner = (object: ObjectDimensions) => ({
   y: object.top,
 });
 
+const leftBottomCorner = (object: ObjectDimensions) => ({
+  x: object.left,
+  y: object.top + object.height - 1,
+});
+
 const rightTopCorner = (object: ObjectDimensions) => ({
   x: object.left + object.width - 1,
   y: object.top,
+});
+
+const rightBottomCorner = (object: ObjectDimensions) => ({
+  x: object.left + object.width - 1,
+  y: object.top + object.height - 1,
 });
 
 const allignX = (
@@ -137,12 +107,46 @@ interface IntegrationPulseAnimationProps {
   onStatusChange?: (status: string) => void;
 }
 
-export const IntegrationPulseAnimation = ({
+export const MobileIntegrationPulseAnimation = ({
   onStatusChange,
 }: IntegrationPulseAnimationProps) => {
   const [currentStatus, setCurrentStatus] = useState("Defining tasks");
 
-  // Build the path segments with their start indices
+  const containerWidth = screen.width - (16 + 16 + 5) * 2;
+  const distanceBetweenSections = containerWidth - 96 - 160;
+
+  const beeziLogoDimensions: ObjectDimensions = {
+    width: 96,
+    height: 96,
+    left: 160 + distanceBetweenSections,
+    top: 112,
+    borderRadius: 20,
+  };
+
+  const taskBeeziJoint: ObjectDimensions = {
+    height: 48 + 16 + 1,
+    width: 48 + distanceBetweenSections + 1,
+    left: 159,
+    top: 48,
+    borderRadius: 12,
+  };
+
+  const beezyRepoJoint: ObjectDimensions = {
+    height: 48 + 16 + 2,
+    width: 48 + distanceBetweenSections + 2,
+    left: 159,
+    top: 96 + 16 + 96 - 1,
+    borderRadius: 12,
+  };
+
+  const communicationBeeziJoint: ObjectDimensions = {
+    width: distanceBetweenSections + 2,
+    height: 1,
+    left: 159,
+    top: 96 + 16 + 48,
+    borderRadius: 16,
+  };
+
   const pathSegments = [
     {
       name: "taskBoard",
@@ -153,45 +157,40 @@ export const IntegrationPulseAnimation = ({
         ...leftBottomBorder(taskBoardProjectDimensions),
         ...leftTopBorder(taskBoardProjectDimensions),
         ...rightTopBorder(taskBoardProjectDimensions),
+        leftTopCorner(taskBeeziJoint),
       ],
       status: "Defining tasks",
     },
     {
       name: "beeziProcessing",
       points: [
-        {
-          x: taskBeeziJoint.left + taskBeeziJoint.width,
-          y: taskBeeziJoint.top,
-        },
-        leftMiddle(beeziLogoDimensions),
-        ...leftTopBorder(beeziLogoDimensions),
+        ...rightTopBorder(taskBeeziJoint),
+        rightBottomCorner(taskBeeziJoint),
         ...rightTopBorder(beeziLogoDimensions),
         ...rightBottomBorder(beeziLogoDimensions),
         ...leftBottomBorder(beeziLogoDimensions),
         ...leftTopBorder(beeziLogoDimensions),
         ...rightTopBorder(beeziLogoDimensions),
-        leftTopCorner(communicationBeeziJoint2),
-        ...rightTopBorder(communicationBeeziJoint2),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
+        rightTopCorner(communicationBeeziJoint),
+        leftTopCorner(communicationBeeziJoint),
       ],
       status: "Processing ticket",
     },
     {
       name: "communication",
       points: [
-        ...allignY(
-          rightBottomBorder(communicationBeeziJoint2),
-          rightBottomBorder(communicationDimensions)
-        ),
+        ...rightBottomBorder(communicationDimensions),
         ...leftBottomBorder(communicationDimensions),
         ...leftTopBorder(communicationDimensions),
         ...rightTopBorder(communicationDimensions),
         ...rightBottomBorder(communicationDimensions),
-        ...allignX(
-          leftBottomBorder(communicationDimensions),
-          leftBottomBorder(communicationBeeziJoint1)
-        ),
-        ...leftTopBorder(communicationBeeziJoint1),
-        rightTopCorner(communicationBeeziJoint1),
+        ...leftBottomBorder(communicationDimensions),
+        ...leftTopBorder(communicationDimensions),
+        ...rightTopBorder(communicationDimensions),
+        leftTopCorner(communicationBeeziJoint),
+        rightTopCorner(communicationBeeziJoint),
       ],
       status: "Discussing requirements",
     },
@@ -204,20 +203,23 @@ export const IntegrationPulseAnimation = ({
         ...leftBottomBorder(beeziLogoDimensions),
         ...leftTopBorder(beeziLogoDimensions),
         ...rightTopBorder(beeziLogoDimensions),
-        leftTopCorner(beezyRepoJoint),
+        ...rightBottomBorder(beeziLogoDimensions),
         rightTopCorner(beezyRepoJoint),
-        ...leftTopBorder(repositoryDimensions),
+        ...rightBottomBorder(beezyRepoJoint),
+        leftBottomCorner(beezyRepoJoint),
       ],
       status: "Implementing solution",
     },
     {
       name: "repository",
       points: [
-        ...rightTopBorder(repositoryDimensions),
         ...rightBottomBorder(repositoryDimensions),
         ...leftBottomBorder(repositoryDimensions),
         ...leftTopBorder(repositoryDimensions),
         ...rightTopBorder(repositoryDimensions),
+        ...rightBottomBorder(repositoryDimensions),
+        ...leftBottomBorder(repositoryDimensions),
+        ...leftTopBorder(repositoryDimensions),
       ],
       status: "Committing to repository",
     },
@@ -290,6 +292,39 @@ export const IntegrationPulseAnimation = ({
 
   return (
     <div>
+      <div
+        style={{
+          position: "absolute",
+          left: "160px",
+          top: "48px",
+          width: `${distanceBetweenSections}px`,
+          height: "1px",
+          background: "rgba(105, 56, 239, 0.4)",
+          zIndex: 2,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: "160px",
+          top: `${communicationBeeziJoint.top}px`,
+          width: `${distanceBetweenSections}px`,
+          height: "1px",
+          background: "rgba(105, 56, 239, 0.4)",
+          zIndex: 2,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: "160px",
+          bottom: "48px",
+          width: `${distanceBetweenSections}px`,
+          height: "1px",
+          background: "rgba(105, 56, 239, 0.4)",
+          zIndex: 2,
+        }}
+      />
       <PulseAnimation
         path={path}
         width={boxWidth}

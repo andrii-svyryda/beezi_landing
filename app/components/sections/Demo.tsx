@@ -15,36 +15,66 @@ export default function Demo() {
     {
       id: 0,
       label: "Ticket",
-      image: "/admin_view.png",
+      image: "/ticket_system/first.svg",
       description: "Created in Jira and automatically lands in the backlog.",
+      width: 1262,
+      top: -57,
+      left: 108,
+      background: "rgba(25, 104, 219, 0.3)",
     },
     {
       id: 1,
       label: "Score",
-      image: "/admin_view.png",
+      image: "/ticket_system/second.svg",
       description:
-        "Beezi analyzes complexity and provides an estimated difficulty score.",
+        "AI scores the task description — clear ones move on, unclear ones get flagged.",
+      width: 1519,
+      top: 16,
+      left: 56,
+      background:
+        "linear-gradient(287.15deg, #110C26 50%, rgba(105, 56, 239, 0.4) 100%)",
     },
     {
       id: 2,
       label: "Clarify",
-      image: "/admin_view.png",
+      image: "/ticket_system/third.svg",
       description:
-        "AI reviews requirements and asks clarifying questions if needed.",
+        "If details are missing, a short chat helps fill the gaps until everything’s clear.",
+      width: 817,
+      top: 0,
+      left: 0,
+      background: "linear-gradient(73.33deg, #110C26 30.21%, #401F46 98.53%)",
+      additionalImage: "/ticket_system/third_additional.svg",
+      additionalImageWidth: 580,
+      additionalImageLeft: 636,
+      additionalImageTop: 108,
+      additionalImageBorder: true,
     },
     {
       id: 3,
       label: "Plan",
-      image: "/admin_view.png",
+      image: "/ticket_system/fourth.svg",
       description:
-        "Creates a detailed implementation plan with step-by-step approach.",
+        "A README-style implementation plan is generated and refined through quick dialogue.",
+      width: 927,
+      left: 124,
+      top: 0,
+      background: "linear-gradient(270deg, #110C26 48.38%, #401F46 100%)",
+      additionalImage: "/ticket_system/fourth_additional.svg",
+      additionalImageWidth: 860,
+      additionalImageLeft: 176,
+      additionalImageTop: 279,
     },
     {
       id: 4,
       label: "PR",
-      image: "/admin_view.png",
+      image: "/ticket_system/fifth.svg",
       description:
-        "Generates code and submits a pull request ready for review.",
+        "Code is produced in minutes and pushed as a Pull Request, ready for review and comments.",
+      width: 997,
+      top: 0,
+      left: 100,
+      background: "rgba(17, 12, 38, 1)",
     },
   ];
 
@@ -159,7 +189,7 @@ export default function Demo() {
         <Container>
           <div className="flex flex-col items-center gap-12 md:gap-20">
             {/* Section Title */}
-            <div className="flex flex-col items-center w-full gap-8 md:gap-12">
+            <div className="flex flex-col items-center w-full gap-6 md:gap-8">
               <h2
                 className="text-3xl md:text-5xl font-bold text-center"
                 style={{
@@ -176,7 +206,7 @@ export default function Demo() {
               </h2>
 
               {/* Screenshot with tabs */}
-              <div className="flex flex-col gap-6 md:gap-0 w-full max-w-[1200px]">
+              <div className="flex flex-col gap-6 md:gap-0 w-full max-w-[1440px]">
                 {/* Tabs - above image on mobile, overlapping on desktop */}
                 <div
                   className="flex justify-center md:relative md:-mb-6"
@@ -214,155 +244,235 @@ export default function Demo() {
                   </div>
                 </div>
 
-                {/* Screenshot with description */}
-                <div className="relative w-full">
-                  <GlassCard
-                    padding="8px"
+                {/* Blue background container with pattern */}
+                <GlassCard>
+                  <div
+                    className="rounded-xl overflow-hidden"
                     style={{
-                      width: "100%",
-                      boxShadow:
-                        "0px 4px 12px rgba(0, 0, 0, 0.1), 0px 8px 32px rgba(105, 56, 239, 0.2)",
+                      background: tabs[activeTab].background,
                     }}
                   >
                     <div
+                      className="relative w-full rounded-xl overflow-hidden"
                       style={{
-                        borderRadius: "12px",
-                        overflow: "hidden",
-                        position: "relative",
+                        backgroundImage: `url(/smart_system_background_pattern.svg)`,
+                        backgroundRepeat: "repeat",
+                        backgroundSize: "auto",
+                        paddingLeft: isMobile ? "24px" : "24px",
+                        paddingTop: isMobile ? "24px" : "32px",
+                        paddingBottom: isMobile ? "24px" : "0",
+                        paddingRight: 0,
                       }}
                     >
-                      <Image
-                        src={tabs[activeTab].image}
-                        alt={tabs[activeTab].label}
-                        width={1440}
-                        height={900}
-                        className="w-full h-auto"
-                        style={{
-                          transition: "opacity 0.3s ease",
-                        }}
-                      />
+                      {/* Black fade-in overlay at the bottom */}
 
-                      {/* Description - at bottom on desktop */}
+                      {/* Screenshot with description - overflowing container */}
                       <div
-                        className="hidden md:block absolute bottom-8 left-1/2"
+                        className="relative"
                         style={{
-                          transform: "translateX(-50%)",
-                          maxWidth: "600px",
-                          width: "calc(100% - 64px)",
+                          zIndex: 0,
+                          height: 680,
                         }}
                       >
-                        <GlassCard padding="4px">
-                          <div
-                            className="flex items-center gap-3 p-4 rounded-xl"
-                            style={{
-                              background: "rgba(13, 8, 27, 1)",
-                            }}
-                          >
-                            {/* Icon */}
-                            <div
-                              className="flex items-center justify-center px-3 py-1.5 rounded-full"
-                              style={{
-                                background: "rgba(105, 56, 239, 0.2)",
-                              }}
-                            >
-                              <span
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  fontWeight: 600,
-                                  color: "#FAFAFA",
-                                }}
-                              >
-                                /
-                              </span>
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex flex-col gap-1 flex-1">
-                              <h4
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "18px",
-                                  fontWeight: 700,
-                                  lineHeight: "1em",
-                                  color: "#FAFAFA",
-                                }}
-                              >
-                                {tabs[activeTab].label}
-                              </h4>
-                              <p
-                                style={{
-                                  fontFamily: "Geist, sans-serif",
-                                  fontSize: "14px",
-                                  lineHeight: "1.43em",
-                                  color: "rgba(255, 255, 255, 0.5)",
-                                }}
-                              >
-                                {tabs[activeTab].description}
-                              </p>
-                            </div>
-                          </div>
-                        </GlassCard>
-                      </div>
-                    </div>
-                  </GlassCard>
-
-                  {/* Description - below image on mobile */}
-                  <div className="md:hidden mt-4 md:mt-6">
-                    <GlassCard padding="8px">
-                      <div
-                        className="flex items-center gap-3 p-4 rounded-xl"
-                        style={{
-                          background: "rgba(13, 8, 27, 1)",
-                        }}
-                      >
-                        {/* Icon */}
                         <div
-                          className="flex items-center justify-center px-3 py-1.5 rounded-full"
                           style={{
-                            background: "rgba(105, 56, 239, 0.2)",
+                            position: "absolute",
+                            bottom: 0,
+                            left: -24,
+                            right: 0,
+                            height: "350px",
+                            background:
+                              "linear-gradient(180deg, rgba(5, 0, 17, 0) 0%, rgba(5, 0, 17, 1) 90%)",
+                            pointerEvents: "none",
+                            zIndex: 1,
+                          }}
+                        />
+                        <div
+                          style={{
+                            padding: "24px",
+                            borderRadius: "24px",
+                            border: "1px solid rgba(255, 255, 255, 0.5)",
+                            background: "rgba(255, 255, 255, 0.01)",
+                            backdropFilter: "blur(2px)",
+                            WebkitBackdropFilter: "blur(2px)",
+                            // overflow: "hidden",
+                            position: "absolute",
+                            left: tabs[activeTab].left,
+                            top: tabs[activeTab].top,
+                            width: tabs[activeTab].width + 48,
                           }}
                         >
-                          <span
+                          <div
                             style={{
-                              fontFamily: "Geist, sans-serif",
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              color: "#FAFAFA",
+                              borderRadius: "12px",
+                              overflow: "hidden",
+                              position: "relative",
                             }}
                           >
-                            /
-                          </span>
+                            <Image
+                              src={tabs[activeTab].image}
+                              alt={tabs[activeTab].label}
+                              width={1440}
+                              height={900}
+                              className="w-full h-auto"
+                              style={{
+                                transition: "opacity 0.3s ease",
+                              }}
+                            />
+                          </div>
                         </div>
+                        {!!tabs[activeTab].additionalImage && (
+                          <div
+                            style={{
+                              borderRadius: "12px",
+                              position: "absolute",
+                              left:
+                                tabs[activeTab].additionalImageLeft +
+                                tabs[activeTab].left,
+                              top:
+                                tabs[activeTab].additionalImageTop +
+                                tabs[activeTab].top,
+                              width: tabs[activeTab].additionalImageWidth,
+                              background: "rgba(255, 255, 255, 0.1)",
+                              backdropFilter: "blur(20px)",
+                              WebkitBackdropFilter: "blur(20px)",
+                            }}
+                          >
+                            <Image
+                              src={tabs[activeTab].additionalImage}
+                              alt={tabs[activeTab].label}
+                              width={1440}
+                              height={900}
+                              className="w-full h-auto"
+                              style={{
+                                transition: "opacity 0.3s ease",
+                              }}
+                            />
+                          </div>
+                        )}
 
-                        {/* Content */}
-                        <div className="flex flex-col gap-1 flex-1">
-                          <h4
-                            style={{
-                              fontFamily: "Geist, sans-serif",
-                              fontSize: "18px",
-                              fontWeight: 700,
-                              lineHeight: "1em",
-                              color: "#FAFAFA",
-                            }}
-                          >
-                            {tabs[activeTab].label}
-                          </h4>
-                          <p
-                            style={{
-                              fontFamily: "Geist, sans-serif",
-                              fontSize: "14px",
-                              lineHeight: "1.43em",
-                              color: "rgba(255, 255, 255, 0.5)",
-                            }}
-                          >
-                            {tabs[activeTab].description}
-                          </p>
+                        {/* Description - at bottom on desktop */}
+                        <div
+                          className="hidden md:block absolute bottom-4 left-1/2"
+                          style={{
+                            transform: "translateX(-50%)",
+                            maxWidth: "600px",
+                            width: "calc(100% - 64px)",
+                            zIndex: 2,
+                          }}
+                        >
+                          <GlassCard padding="8px">
+                            <div
+                              className="flex items-center gap-3 p-8 rounded-xl"
+                              style={{
+                                background: "rgba(13, 8, 27, 1)",
+                              }}
+                            >
+                              {/* Icon */}
+                              <div
+                                className="flex items-center justify-center px-3 py-1.5 rounded-full"
+                                style={{
+                                  background: "rgba(105, 56, 239, 0.2)",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "14px",
+                                    fontWeight: 600,
+                                    color: "#FAFAFA",
+                                  }}
+                                >
+                                  /
+                                </span>
+                              </div>
+
+                              {/* Content */}
+                              <div className="flex flex-col gap-1 flex-1">
+                                <h4
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "18px",
+                                    fontWeight: 700,
+                                    lineHeight: "1em",
+                                    color: "#FAFAFA",
+                                  }}
+                                >
+                                  {tabs[activeTab].label}
+                                </h4>
+                                <p
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "14px",
+                                    lineHeight: "1.43em",
+                                    color: "rgba(255, 255, 255, 0.5)",
+                                  }}
+                                >
+                                  {tabs[activeTab].description}
+                                </p>
+                              </div>
+                            </div>
+                          </GlassCard>
+                        </div>
+                        {/* Description - below image on mobile */}
+                        <div className="md:hidden mt-4 z-2">
+                          <GlassCard padding="8px">
+                            <div
+                              className="flex items-center gap-3 p-4 rounded-xl"
+                              style={{
+                                background: "rgba(13, 8, 27, 1)",
+                              }}
+                            >
+                              {/* Icon */}
+                              <div
+                                className="flex items-center justify-center px-3 py-1.5 rounded-full"
+                                style={{
+                                  background: "rgba(105, 56, 239, 0.2)",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "14px",
+                                    fontWeight: 600,
+                                    color: "#FAFAFA",
+                                  }}
+                                >
+                                  /
+                                </span>
+                              </div>
+
+                              {/* Content */}
+                              <div className="flex flex-col gap-1 flex-1">
+                                <h4
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "18px",
+                                    fontWeight: 700,
+                                    lineHeight: "1em",
+                                    color: "#FAFAFA",
+                                  }}
+                                >
+                                  {tabs[activeTab].label}
+                                </h4>
+                                <p
+                                  style={{
+                                    fontFamily: "Geist, sans-serif",
+                                    fontSize: "14px",
+                                    lineHeight: "1.43em",
+                                    color: "rgba(255, 255, 255, 0.5)",
+                                  }}
+                                >
+                                  {tabs[activeTab].description}
+                                </p>
+                              </div>
+                            </div>
+                          </GlassCard>
                         </div>
                       </div>
-                    </GlassCard>
+                    </div>
                   </div>
-                </div>
+                </GlassCard>
               </div>
             </div>
           </div>

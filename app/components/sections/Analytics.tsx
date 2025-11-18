@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useCallback } from "react";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
@@ -15,9 +15,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useIsMobile } from "@/app/hooks/useIsMobile";
 
 export default function Analytics() {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const [isChartVisible, setIsChartVisible] = useState(false);
   const chartRef = useCallback((node: HTMLDivElement) => {
     const observer = new IntersectionObserver(
@@ -36,16 +37,6 @@ export default function Analytics() {
     if (node) {
       observer.observe(node);
     }
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const features = [
