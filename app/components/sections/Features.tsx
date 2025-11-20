@@ -6,14 +6,14 @@ export default function Features() {
     {
       title: "Intelligent Code Generation",
       description:
-        "Turn plain language into production-ready code. Build features, modules, or refactor legacy code tailored to your style. Initiated Learning from Your Codebase",
+        "Turn plain language into production-ready code. Build features, modules, or refactor legacy code tailored to your style.",
       iconPath:
         "M2 1.5L10 1.5L18 1.5L18 9.5L18 17.5L10 21L2 17.5L2 9.5L2 1.5Z M8 13.5L8 9.5L12 9.5L12 13.5L8 13.5Z M6 8L6 4L10 4L10 8L6 8Z M12 8L12 4L16 4L16 8L12 8Z",
     },
     {
       title: "Initiated Learning from Your Codebase",
       description:
-        "The AI teammate studies your existing code, style, and patterns from day one. It knows what you need and delivers results that look and feel like they were written by your team.",
+        "Beezi studies your existing code, style, and patterns from day one. It knows what you need and delivers results that look and feel like they were written by your team.",
       iconPath:
         "M4 2L4 4L2 4L2 12L2 18L4 20L16 20L18 18L18 12L18 4L16 4L16 2L4 2Z M6 6L14 6L14 8L6 8L6 6Z M6 10L14 10L14 12L6 12L6 10Z M6 14L14 14L14 16L6 16L6 14Z",
     },
@@ -45,7 +45,7 @@ export default function Features() {
                   backgroundClip: "text",
                 }}
               >
-                What Beezi Brings To Your Team{" "}
+                What Beezi Brings to Your Team{" "}
               </h2>
               <p
                 className="text-base md:text-lg text-center text-white/80 w-full"
@@ -55,7 +55,7 @@ export default function Features() {
                 }}
               >
                 Let your engineers focus on product, architecture, and velocity,
-                while Beezi handles the manual dev work behind the scenes.
+                while Beezi handles the manual work behind the scenes.
               </p>
             </div>
           </div>

@@ -25,13 +25,10 @@ export default function Founder() {
               for Engineers
             </h2>
             <p className="text-lg text-white/80 leading-relaxed">
-              Beezi started as a part of our digital transformation at Honeycomb
-              Software.
-              <br />
-              <br />
-              We built it to solve our own pain: too much repetitive coding, too
-              many backlogs, and not enough time for the work that really
-              matters.
+              Beezi started as part of our digital transformation at Honeycomb
+              Software. We built it to solve our own pain: too much repetitive
+              coding, too many tasks in the backlog, and not enough time for the
+              work that really matters.
             </p>
           </div>
 
@@ -67,8 +64,8 @@ export default function Founder() {
                     fontWeight: 400,
                   }}
                 >
-                  Our clients now can ship code so fast, the only bottleneck is
-                  how quickly marketing can write the tweet.
+                  Our clients can now ship code so fast that the only bottleneck
+                  left is how quickly marketing can write a tweet.
                 </p>
 
                 {/* Avatar */}

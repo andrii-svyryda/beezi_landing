@@ -11,8 +11,8 @@ export default function FeatureCards() {
     { icon: "/jira-icon.svg", alt: "Jira", width: 38, height: 16 },
     { icon: "/slack-icon.svg", alt: "Slack", width: 63, height: 16 },
     { icon: "/github-icon.svg", alt: "GitHub", width: 65, height: 16 },
-    { icon: "/azure-icon.svg", alt: "Azure", width: 55, height: 16 },
-    { icon: "/teams-feature-icon.svg", alt: "Teams", width: 17, height: 16 },
+    { icon: "/azure-icon.svg", alt: "Azure", width: 107, height: 20 },
+    { icon: "/teams-feature-icon.svg", alt: "Teams", width: 58, height: 17 },
   ];
 
   const features = [
@@ -26,7 +26,7 @@ export default function FeatureCards() {
     {
       title: "Cut cost per feature by 45%.",
       description:
-        "Save from day one with optimized prompting, model routing, and shorter development cycles.",
+        "Start saving from day one with optimized prompting, model routing, and shorter development cycles.",
       visual: "cost",
       width: "standard",
     },
@@ -707,7 +707,6 @@ export default function FeatureCards() {
                                 decimals={2}
                                 duration={2.5}
                                 enableScrollSpy
-                                scrollSpyOnce
                                 start={0}
                               />
                             </span>
@@ -748,7 +747,6 @@ export default function FeatureCards() {
                                 end={146}
                                 duration={2.5}
                                 enableScrollSpy
-                                scrollSpyOnce
                                 start={0}
                               />
                             </span>
@@ -783,7 +781,6 @@ export default function FeatureCards() {
                                 end={59.11}
                                 duration={2.5}
                                 enableScrollSpy
-                                scrollSpyOnce
                                 start={0}
                               />
                               %

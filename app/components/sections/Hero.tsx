@@ -22,7 +22,7 @@ export default function Hero() {
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
+    const typingSpeed = isDeleting ? 30 : 50;
     const pauseDuration = 3000; // 2 seconds pause
 
     if (isPaused) {
@@ -115,6 +115,17 @@ export default function Hero() {
                 }}
               >
                 An {displayedText}
+                <span
+                  className="inline-block"
+                  style={{
+                    width: "3px",
+                    height: "1em",
+                    marginLeft: "4px",
+                    borderRight: "3px solid rgba(255, 255, 255, 0.8)",
+                    verticalAlign: "top",
+                    animation: "blink 1s step-end infinite",
+                  }}
+                ></span>
                 <br />
                 That Feels Native
               </h1>

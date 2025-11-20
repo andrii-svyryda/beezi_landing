@@ -11,13 +11,16 @@ export default function Demo() {
   const [manuallySelected, setManuallySelected] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const lastScrollY = useRef(0);
+  const lastScrollDirection = useRef<"up" | "down">("down");
 
   const tabs = [
     {
       id: 0,
       label: "Ticket",
       image: "/ticket_system/first.svg",
-      description: "Created in Jira and automatically lands in the backlog.",
+      description:
+        "Created in your project management tool and automatically added to your backlog",
       width: 1262,
       top: -57,
       left: 108,
@@ -140,12 +143,45 @@ export default function Demo() {
     const handleScroll = () => {
       if (!sectionRef.current) return;
 
+      // Track scroll direction
+      const currentScrollY = window.scrollY;
+      const direction = currentScrollY > lastScrollY.current ? "down" : "up";
+      const directionChanged = direction !== lastScrollDirection.current;
+
+      lastScrollY.current = currentScrollY;
+      lastScrollDirection.current = direction;
+
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
+      const isSectionStuck = rect.top <= 0 && rect.bottom >= windowHeight;
+
+      // If scrolling up and in section (not at step 1), jump to step 1 and scroll to top
+      if (direction === "up" && isSectionStuck && activeTab === 4) {
+        setIsTransitioning(true);
+        setActiveTab(0);
+
+        // Scroll to the top of the section
+        window.scrollTo({
+          top: section.offsetTop + 400,
+          behavior: "instant",
+        });
+
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 300);
+        return;
+      }
+
+      // If scrolling up and at first tab, allow scroll-through
+      if (direction === "up" && activeTab === 0 && rect.top >= 0) {
+        // Allow natural scrolling up past the section
+        return;
+      }
+
       // Check if section is in viewport
-      if (rect.top <= 0 && rect.bottom >= windowHeight) {
+      if (isSectionStuck) {
         // Don't auto-switch if manually selected
         if (manuallySelected) {
           // Allow scrolling out of section if at boundaries
@@ -159,6 +195,7 @@ export default function Demo() {
           }
         }
 
+        // Only progress through steps when scrolling down
         // Section is "stuck" - calculate scroll progress
         const scrollProgress =
           Math.abs(rect.top) / (rect.height - windowHeight);
@@ -399,25 +436,6 @@ export default function Demo() {
                                 background: "rgba(13, 8, 27, 1)",
                               }}
                             >
-                              {/* Icon */}
-                              <div
-                                className="flex items-center justify-center px-3 py-1.5 rounded-full"
-                                style={{
-                                  background: "rgba(105, 56, 239, 0.2)",
-                                }}
-                              >
-                                <span
-                                  style={{
-                                    fontFamily: "Geist, sans-serif",
-                                    fontSize: "14px",
-                                    fontWeight: 600,
-                                    color: "#FAFAFA",
-                                  }}
-                                >
-                                  /
-                                </span>
-                              </div>
-
                               {/* Content */}
                               <div className="flex flex-col gap-1 flex-1">
                                 <h4

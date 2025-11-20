@@ -54,8 +54,8 @@ export default function ModelRouting() {
                   }}
                 >
                   Chooses the right model for each task — balancing reasoning
-                  depth, speed, and cost efficiency. Manual override included
-                  for full control.
+                  depth, speed, and cost efficiency. Manual override is
+                  available for full control.
                 </p>
               </div>
 

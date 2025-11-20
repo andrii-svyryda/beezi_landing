@@ -17,7 +17,11 @@ import {
 import { MobileIntegrationPulseAnimation } from "../MobileIntegrationPulseAnimation";
 
 export default function Integration() {
-  const [currentStatus, setCurrentStatus] = useState("Defining tasks");
+  const [currentStatus, setCurrentStatus] = useState({
+    stepNumber: 1,
+    status:
+      "Beezi responds to a project task and automatically scores the task description.",
+  });
   const isMobile = useIsMobile();
 
   const integrations = [
@@ -42,7 +46,7 @@ export default function Integration() {
     {
       name: "Azure DevOps",
       description:
-        "Beezi syncs seamlessly with Azure DevOps — analyzing work items, clarifying requirements, and generating clean pull requests directly in your pipelines.",
+        "Connect to your Azure Boards and Repos  so you can work with tickets, branches, and PRs.",
       icon: "/azure-devops-icon.svg",
     },
   ];
@@ -710,18 +714,86 @@ export default function Integration() {
                     {/* Bottom Nav Container */}
                     <div
                       style={{
-                        borderRadius: "20px",
-                        padding: "8px 12px",
                         display: "flex",
+                        flexDirection: "column",
                         alignItems: "center",
-                        justifyContent: "center",
-                        gap: "6px",
-                        margin: "8px auto",
+                        gap: "8px",
+                        margin: "12px auto",
                         width: "fit-content",
                       }}
                     >
+                      {/* Step Indicator from Figma */}
+                      <div
+                        style={{
+                          background: "rgba(255, 255, 255, 0.04)",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
+                          borderRadius: "8px",
+                          padding: "4px 8px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "4px",
+                        }}
+                      >
+                        {/* Animated Circle Indicator */}
+                        <div
+                          style={{
+                            width: "16px",
+                            height: "16px",
+                            position: "relative",
+                            borderRadius: "999px",
+                          }}
+                        >
+                          {/* Rotating gradient border */}
+                          <div
+                            className="step-loader-spin"
+                            style={{
+                              position: "absolute",
+                              top: "2px",
+                              left: "2px",
+                              width: "12px",
+                              height: "12px",
+                              borderRadius: "50%",
+                              background:
+                                "conic-gradient(from 0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%)",
+                              WebkitMask:
+                                "radial-gradient(circle, transparent 4px, black 4.5px)",
+                              mask: "radial-gradient(circle, transparent 4px, black 4.5px)",
+                            }}
+                          />
+                        </div>
+                        <style jsx>{`
+                          @keyframes step-loader-spin {
+                            from {
+                              transform: rotate(0deg);
+                            }
+                            to {
+                              transform: rotate(360deg);
+                            }
+                          }
+                          .step-loader-spin {
+                            animation: step-loader-spin 1.5s linear infinite;
+                          }
+                        `}</style>
+
+                        {/* Step Text */}
+                        <span
+                          style={{
+                            fontFamily: "Geist Mono, monospace",
+                            fontWeight: 500,
+                            fontSize: "14px",
+                            lineHeight: "1.4285em",
+                            color: "#FFFFFF",
+                            textAlign: "center",
+                          }}
+                        >
+                          STEP {currentStatus.stepNumber}
+                        </span>
+                      </div>
+
+                      {/* Animated Status Text */}
                       <AnimatedString
-                        value={currentStatus}
+                        value={currentStatus.status}
                         style={{
                           fontFamily: "Geist Mono, monospace",
                           fontWeight: 500,

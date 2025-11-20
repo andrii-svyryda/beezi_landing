@@ -24,8 +24,10 @@ export default function Analytics() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isChartVisible) {
+          if (entry.isIntersecting) {
             setIsChartVisible(true);
+          } else {
+            setIsChartVisible(false);
           }
         });
       },
@@ -37,6 +39,12 @@ export default function Analytics() {
     if (node) {
       observer.observe(node);
     }
+
+    return () => {
+      if (node) {
+        observer.unobserve(node);
+      }
+    };
   }, []);
 
   const features = [
@@ -44,14 +52,14 @@ export default function Analytics() {
       icon: "/dollar-icon.svg",
       title: "Financial Control",
       description:
-        "Track token spend, task costs, and budget efficiency across teams and time.",
-      cta: "→ Get full visibility into AI ROI.",
+        "Track token spend, task costs, and budget efficiency across teams and over time.",
+      cta: "→ Get full visibility into your AI ROI.",
     },
     {
       icon: "/chart-icon.svg",
       title: "Performance Insights",
       description:
-        "See cost and results by person, team, project, or timeline.",
+        "See cost and results by person, team, project, or time period.",
       cta: "→ Get clear visibility into performance at every level.",
     },
     {
@@ -59,34 +67,34 @@ export default function Analytics() {
       title: "AI Adoption Tracking",
       description:
         "Monitor adoption rates per user/team and benchmark against company averages.",
-      cta: "→ Check how deeply AI is embedded into engineering workflows",
+      cta: "→ Check how deeply AI is embedded into engineering workflows.",
     },
   ];
 
   const chartData = [
-    { month: "Jan", nonAI: 5, aiBeezi: 7 },
-    { month: "Feb", nonAI: 6, aiBeezi: 10 },
-    { month: "Mar", nonAI: 5, aiBeezi: 13 },
-    { month: "Apr", nonAI: 14, aiBeezi: 8 },
-    { month: "May", nonAI: 4, aiBeezi: 16 },
-    { month: "Jun", nonAI: 5, aiBeezi: 12 },
-    { month: "Jul", nonAI: 11, aiBeezi: 9 },
-    { month: "Aug", nonAI: 6, aiBeezi: 11 },
-    { month: "Sep", nonAI: 12, aiBeezi: 11 },
-    { month: "Oct", nonAI: 4, aiBeezi: 14 },
+    { month: "Mon, Oct 20", nonAI: 5, aiBeezi: 7 },
+    { month: "Tue Oct 21", nonAI: 6, aiBeezi: 10 },
+    { month: "Wed Oct 22", nonAI: 5, aiBeezi: 13 },
+    { month: "Thu Oct 23", nonAI: 14, aiBeezi: 8 },
+    { month: "Fri Oct 24", nonAI: 4, aiBeezi: 16 },
+    { month: "Mon Oct 27", nonAI: 5, aiBeezi: 12 },
+    { month: "Tue Oct 28", nonAI: 11, aiBeezi: 9 },
+    { month: "Wed Oct 29", nonAI: 6, aiBeezi: 11 },
+    { month: "Thu Oct 30", nonAI: 12, aiBeezi: 11 },
+    { month: "Fri Oct 31", nonAI: 4, aiBeezi: 14 },
   ];
 
   const emptyChartData = [
-    { month: "Jan", nonAI: 0, aiBeezi: 0 },
-    { month: "Feb", nonAI: 0, aiBeezi: 0 },
-    { month: "Mar", nonAI: 0, aiBeezi: 0 },
-    { month: "Apr", nonAI: 0, aiBeezi: 0 },
-    { month: "May", nonAI: 0, aiBeezi: 0 },
-    { month: "Jun", nonAI: 0, aiBeezi: 0 },
-    { month: "Jul", nonAI: 0, aiBeezi: 0 },
-    { month: "Aug", nonAI: 0, aiBeezi: 0 },
-    { month: "Sep", nonAI: 0, aiBeezi: 0 },
-    { month: "Oct", nonAI: 0, aiBeezi: 0 },
+    { month: "Mon, Oct 20", nonAI: 0, aiBeezi: 0 },
+    { month: "Tue, Oct 21", nonAI: 0, aiBeezi: 0 },
+    { month: "Wed, Oct 22", nonAI: 0, aiBeezi: 0 },
+    { month: "Thu, Oct 23", nonAI: 0, aiBeezi: 0 },
+    { month: "Fri, Oct 24", nonAI: 0, aiBeezi: 0 },
+    { month: "Mon, Oct 27", nonAI: 0, aiBeezi: 0 },
+    { month: "Tue, Oct 28", nonAI: 0, aiBeezi: 0 },
+    { month: "Wed, Oct 29", nonAI: 0, aiBeezi: 0 },
+    { month: "Thu, Oct 30", nonAI: 0, aiBeezi: 0 },
+    { month: "Fri, Oct 31", nonAI: 0, aiBeezi: 0 },
   ];
 
   const currentChartData = isChartVisible ? chartData : emptyChartData;
@@ -525,8 +533,16 @@ export default function Analytics() {
                   </div>
 
                   {/* Chart */}
-                  <div ref={chartRef} className="p-4 md:p-8 h-80 md:h-96">
-                    <ResponsiveContainer width="100%" height="100%">
+                  <div
+                    ref={chartRef}
+                    className="p-4 md:p-8 h-80 md:h-96 [&_*]:outline-none"
+                    style={{ outline: "none" }}
+                  >
+                    <ResponsiveContainer
+                      width="100%"
+                      height="100%"
+                      style={{ outline: "none" }}
+                    >
                       <BarChart
                         data={
                           isMobile
@@ -541,6 +557,7 @@ export default function Analytics() {
                         }}
                         barGap={4}
                         barCategoryGap="20%"
+                        style={{ outline: "none" }}
                       >
                         <CartesianGrid
                           strokeDasharray="0"
@@ -577,6 +594,9 @@ export default function Analytics() {
                             fontFamily: "Geist, sans-serif",
                           }}
                           cursor={{ fill: "rgba(105, 56, 239, 0.1)" }}
+                          position={{ y: 0 }}
+                          allowEscapeViewBox={{ x: false, y: true }}
+                          animationDuration={0}
                         />
                         <Legend
                           wrapperStyle={{
@@ -600,9 +620,9 @@ export default function Analytics() {
                           radius={[4, 4, 0, 0]}
                           name="Non-AI Tasks"
                           maxBarSize={40}
-                          // isAnimationActive={isChartVisible}
-                          // animationBegin={0}
-                          // animationDuration={1000}
+                          isAnimationActive={isChartVisible}
+                          animationBegin={0}
+                          animationDuration={1000}
                         />
                         <Bar
                           dataKey="aiBeezi"
@@ -610,9 +630,9 @@ export default function Analytics() {
                           radius={[4, 4, 0, 0]}
                           name="AI Beezi Tasks"
                           maxBarSize={40}
-                          // isAnimationActive={isChartVisible}
-                          // animationBegin={0}
-                          // animationDuration={1000}
+                          isAnimationActive={isChartVisible}
+                          animationBegin={0}
+                          animationDuration={1000}
                         />
                       </BarChart>
                     </ResponsiveContainer>

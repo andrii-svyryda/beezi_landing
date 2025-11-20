@@ -22,6 +22,8 @@ export default function AnimatedString({
 
   // Animate text change: erase then write
   useEffect(() => {
+    setDisplayedText(value);
+    return;
     if (value === previousValue.current) return;
 
     const oldText = previousValue.current;

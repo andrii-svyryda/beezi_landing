@@ -8,12 +8,12 @@ export default function Comparison() {
   const tasks = [
     {
       title:
-        "Adjust the primary color palette and branding styles in the application's CSS",
+        "Adjust the primary color palette and brand styles in the application's CSS",
       timeNormal: "~4",
       timeNormalUnit: "h",
       timeBeezi: "~20",
       timeBeeziUnit: "min",
-      difficulty: "Easy-level",
+      difficulty: "Easy level",
     },
     {
       title:
@@ -22,23 +22,23 @@ export default function Comparison() {
       timeNormalUnit: "h",
       timeBeezi: "~3",
       timeBeeziUnit: "h",
-      difficulty: "Medium-level",
+      difficulty: "Medium level",
     },
     {
       title:
         "Refactor the core application architecture to support a new microservices pattern",
       timeNormal: "~20",
       timeNormalUnit: "h",
-      timeBeezi: "~6",
+      timeBeezi: "<8",
       timeBeeziUnit: "h",
-      difficulty: "Hard-level",
+      difficulty: "Hard level",
     },
   ];
 
   const difficultyLevels = [
-    { level: "Easy-level", icon: "/easy-level-icon.svg" },
-    { level: "Medium-level", icon: "/medium-level-icon.svg" },
-    { level: "Hard-level", icon: "/hard-level-icon.svg" },
+    { level: "Easy level", icon: "/easy-level-icon.svg" },
+    { level: "Medium level", icon: "/medium-level-icon.svg" },
+    { level: "Hard level", icon: "/hard-level-icon.svg" },
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function Comparison() {
             color: "white",
           }}
         >
-          Beezi Compresses Your Dev Time Up to{" "}
+          Beezi Compresses Your Dev Time by Up to{" "}
           <span className="text-[#6938EF]">10x</span>
         </h2>
 

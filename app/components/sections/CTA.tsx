@@ -143,7 +143,7 @@ export default function CTA() {
                       Ready to make AI adoption simple?
                     </h2>
                     <p className="text-lg text-white/80 text-center w-full">
-                      Your team gonna love it!
+                      Your team is going to love it!
                     </p>
                   </div>
                 </div>
