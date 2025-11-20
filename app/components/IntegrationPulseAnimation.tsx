@@ -215,6 +215,8 @@ export const IntegrationPulseAnimation = ({
         ...leftBottomBorder(beeziLogoDimensions),
         ...leftTopBorder(beeziLogoDimensions),
         ...rightTopBorder(beeziLogoDimensions),
+        ...rightBottomBorder(beeziLogoDimensions),
+        ...leftBottomBorder(beeziLogoDimensions),
         rightTopCorner(communicationBeeziJoint1),
         leftTopCorner(communicationBeeziJoint1),
       ],
@@ -262,6 +264,8 @@ export const IntegrationPulseAnimation = ({
         ...leftTopBorder(beeziLogoDimensions),
         ...rightTopBorder(beeziLogoDimensions),
         leftTopCorner(beezyRepoJoint),
+        rightTopCorner(beezyRepoJoint),
+        ...leftTopBorder(repositoryDimensions),
       ],
       status:
         "Beezi triggers the LLM provider to generate the code and creates a Pull Request in the repository.",
@@ -270,8 +274,6 @@ export const IntegrationPulseAnimation = ({
     {
       name: "repository",
       points: [
-        rightTopCorner(beezyRepoJoint),
-        ...leftTopBorder(repositoryDimensions),
         ...rightTopBorder(repositoryDimensions),
         ...rightBottomBorder(repositoryDimensions),
         ...leftBottomBorder(repositoryDimensions),
