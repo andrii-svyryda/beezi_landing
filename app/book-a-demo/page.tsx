@@ -54,11 +54,31 @@ export default function BookADemo() {
     setButtonState("loading");
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const apiUrl = process.env.NEXT_PUBLIC_BOOK_DEMO_API_URL;
 
-      // Handle form submission
-      console.log("Form submitted:", formData);
+      if (!apiUrl) {
+        console.error("API URL not configured");
+        setButtonState("error");
+        setTimeout(() => setButtonState("default"), 3000);
+        return;
+      }
+
+      // Send POST request to API
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Handle successful response
+      const result = await response.json();
+      console.log("Form submitted successfully:", result);
 
       setButtonState("success");
 

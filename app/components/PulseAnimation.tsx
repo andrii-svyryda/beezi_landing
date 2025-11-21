@@ -30,6 +30,7 @@ interface PulseAnimationProps {
   lineColor?: string;
   className?: string;
   onPositionChange?: (position: number, totalLength: number) => void;
+  isActive?: boolean;
 }
 
 export default function PulseAnimation({
@@ -42,6 +43,7 @@ export default function PulseAnimation({
   lineColor = "rgba(105, 56, 239, 0.2)",
   className = "",
   onPositionChange,
+  isActive = true,
 }: PulseAnimationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number>();
@@ -207,27 +209,30 @@ export default function PulseAnimation({
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Update pulse position
-      pulsePositionRef.current += pulseSpeed;
-      if (pulsePositionRef.current > pathLength + pulseLength) {
-        pulsePositionRef.current = -pulseLength;
-      }
+      // Only update pulse position if active
+      if (isActive) {
+        // Update pulse position
+        pulsePositionRef.current += pulseSpeed;
+        if (pulsePositionRef.current > pathLength + pulseLength) {
+          pulsePositionRef.current = -pulseLength;
+        }
 
-      // Notify position change
-      if (onPositionChange) {
-        onPositionChange(pulsePositionRef.current, pathLength);
-      }
+        // Notify position change
+        if (onPositionChange) {
+          onPositionChange(pulsePositionRef.current, pathLength);
+        }
 
-      // Draw pulse with gradient trail (1 pixel wide, fading back)
-      // Draw from back to front so the brightest part is on top
-      for (let i = pulseLength; i >= 0; i--) {
-        const distance = pulsePositionRef.current - i;
-        const point = getPointAtDistance(segments, distance);
+        // Draw pulse with gradient trail (1 pixel wide, fading back)
+        // Draw from back to front so the brightest part is on top
+        for (let i = pulseLength; i >= 0; i--) {
+          const distance = pulsePositionRef.current - i;
+          const point = getPointAtDistance(segments, distance);
 
-        if (point) {
-          const alpha = 1 - i / pulseLength;
-          ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-          ctx.fillRect(Math.round(point.x), Math.round(point.y), 1, 1);
+          if (point) {
+            const alpha = 1 - i / pulseLength;
+            ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.fillRect(Math.round(point.x), Math.round(point.y), 1, 1);
+          }
         }
       }
 
@@ -250,7 +255,15 @@ export default function PulseAnimation({
     pulseColor,
     lineColor,
     onPositionChange,
+    isActive,
   ]);
+
+  // Reset animation when becoming active
+  useEffect(() => {
+    if (isActive) {
+      pulsePositionRef.current = 0;
+    }
+  }, [isActive]);
 
   return (
     <canvas

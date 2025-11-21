@@ -105,10 +105,12 @@ const allignY = (
 
 interface IntegrationPulseAnimationProps {
   onStatusChange?: (status: { stepNumber: number; status: string }) => void;
+  isActive?: boolean;
 }
 
 export const MobileIntegrationPulseAnimation = ({
   onStatusChange,
+  isActive = true,
 }: IntegrationPulseAnimationProps) => {
   const [currentStatus, setCurrentStatus] = useState({
     stepNumber: 1,
@@ -435,6 +437,7 @@ export const MobileIntegrationPulseAnimation = ({
         pulseColor="#FFFFFF"
         lineColor="transparent"
         onPositionChange={handlePositionChange}
+        isActive={isActive}
       />
     </div>
   );

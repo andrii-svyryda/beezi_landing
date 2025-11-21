@@ -18,6 +18,23 @@ A modern landing page built with Next.js 14 App Router, configured for static ex
 npm install
 ```
 
+### Environment Variables
+
+Create a `.env.local` file in the root directory and add the following variables:
+
+```env
+# Book Demo API Endpoint
+NEXT_PUBLIC_BOOK_DEMO_API_URL=https://your-api-endpoint.com/api/book-demo
+```
+
+**Note:** Environment variables must be prefixed with `NEXT_PUBLIC_` to be accessible in the browser since this is a static export.
+
+You can copy `.env.example` as a starting point:
+
+```bash
+cp .env.example .env.local
+```
+
 ### Development
 
 Run the development server:

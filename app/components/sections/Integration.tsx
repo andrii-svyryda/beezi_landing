@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Container from "../Container";
 import GlassCard from "../GlassCard";
 import Image from "next/image";
@@ -22,7 +22,33 @@ export default function Integration() {
     status:
       "Beezi responds to a project task and automatically scores the task description.",
   });
+  const [isAnimationActive, setIsAnimationActive] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const isMobile = useIsMobile();
+
+  // Setup Intersection Observer to control animation based on visibility
+  useEffect(() => {
+    const currentSection = sectionRef.current;
+    if (!currentSection) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsAnimationActive(entry.isIntersecting);
+        });
+      },
+      {
+        // Trigger when at least 20% of the section is visible
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(currentSection);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const integrations = [
     {
@@ -52,7 +78,7 @@ export default function Integration() {
   ];
 
   return (
-    <section className="w-full py-16 md:py-28 lg:py-30">
+    <section ref={sectionRef} className="w-full py-16 md:py-28 lg:py-30">
       <Container>
         <div className="flex flex-col items-center gap-12 md:gap-20 w-full">
           {/* Title Section */}
@@ -310,6 +336,7 @@ export default function Integration() {
                           <div className="w-full h-full left-0 top-0 absolute z-[3]">
                             <MobileIntegrationPulseAnimation
                               onStatusChange={setCurrentStatus}
+                              isActive={isAnimationActive}
                             />
                           </div>
                         </div>
@@ -705,6 +732,7 @@ export default function Integration() {
                           <div className="w-full h-full absolute z-[3]">
                             <IntegrationPulseAnimation
                               onStatusChange={setCurrentStatus}
+                              isActive={isAnimationActive}
                             />
                           </div>
                         </div>
